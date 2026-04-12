@@ -34,4 +34,8 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
+    public static boolean testConnection(String user, String pass) {
+        // Check if the input matches your final constants
+        return USER.equals(user) && PASSWORD.equals(pass);
+    }
 }
