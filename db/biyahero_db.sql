@@ -38,8 +38,8 @@ CREATE TABLE `booking` (
   KEY `dropoff_stop` (`dropoff_stop`),
   CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`),
   CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`),
-  CONSTRAINT `booking_ibfk_3` FOREIGN KEY (`pickup_stop`) REFERENCES `routepoint` (`stop_id`),
-  CONSTRAINT `booking_ibfk_4` FOREIGN KEY (`dropoff_stop`) REFERENCES `routepoint` (`stop_id`)
+  CONSTRAINT `booking_ibfk_3` FOREIGN KEY (`pickup_stop`) REFERENCES `stop` (`stop_id`),
+  CONSTRAINT `booking_ibfk_4` FOREIGN KEY (`dropoff_stop`) REFERENCES `stop` (`stop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -129,31 +129,6 @@ INSERT INTO `route` VALUES (1,'Tacloban - Catarman',500.00);
 UNLOCK TABLES;
 
 --
--- Table structure for table `routepoint`
---
-
-DROP TABLE IF EXISTS `routepoint`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `routepoint` (
-  `stop_id` int NOT NULL AUTO_INCREMENT,
-  `stop_name` varchar(100) NOT NULL,
-  `city_province` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`stop_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `routepoint`
---
-
-LOCK TABLES `routepoint` WRITE;
-/*!40000 ALTER TABLE `routepoint` DISABLE KEYS */;
-INSERT INTO `routepoint` VALUES (1,'Tacloban Terminal','Leyte'),(2,'Catbalogan Terminal','Samar'),(3,'Catarman Terminal','Northern Samar');
-/*!40000 ALTER TABLE `routepoint` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `routestop`
 --
 
@@ -168,7 +143,7 @@ CREATE TABLE `routestop` (
   PRIMARY KEY (`route_id`,`stop_id`),
   KEY `stop_id` (`stop_id`),
   CONSTRAINT `routestop_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`),
-  CONSTRAINT `routestop_ibfk_2` FOREIGN KEY (`stop_id`) REFERENCES `routepoint` (`stop_id`)
+  CONSTRAINT `routestop_ibfk_2` FOREIGN KEY (`stop_id`) REFERENCES `stop` (`stop_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,6 +155,31 @@ LOCK TABLES `routestop` WRITE;
 /*!40000 ALTER TABLE `routestop` DISABLE KEYS */;
 INSERT INTO `routestop` VALUES (1,1,1,0.00),(1,2,2,107.00),(1,3,3,65.00);
 /*!40000 ALTER TABLE `routestop` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `stop`
+--
+
+DROP TABLE IF EXISTS `stop`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `stop` (
+  `stop_id` int NOT NULL AUTO_INCREMENT,
+  `stop_name` varchar(100) NOT NULL,
+  `city_province` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`stop_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `stop`
+--
+
+LOCK TABLES `stop` WRITE;
+/*!40000 ALTER TABLE `stop` DISABLE KEYS */;
+INSERT INTO `stop` VALUES (1,'Tacloban Terminal','Leyte'),(2,'Catbalogan Terminal','Samar'),(3,'Catarman Terminal','Northern Samar');
+/*!40000 ALTER TABLE `stop` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -251,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-12 15:12:50
+-- Dump completed on 2026-04-12 16:10:24
