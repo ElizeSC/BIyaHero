@@ -1,5 +1,5 @@
-package com.biyahero.dao;
-import com.biyahero.model.Driver;
+package dao;
+import model.Driver;
 import java.util.List;
 
 public interface DriverDAO {
@@ -7,6 +7,7 @@ public interface DriverDAO {
     Driver getDriverById(int id);
     Driver getDriverByName(String name);
     Driver getDriverByLicenseNo(String licenseNo);
+    void updateDriver(Driver driver);
     List<Driver> getAllDrivers();
     void deleteDriver(int id);
 }

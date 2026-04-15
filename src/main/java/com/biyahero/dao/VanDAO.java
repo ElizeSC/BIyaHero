@@ -1,6 +1,6 @@
-package com.biyahero.dao;
+package dao;
 
-import com.biyahero.model.Van;
+import model.Van;
 import java.util.List;
 
 public interface VanDAO {
@@ -9,6 +9,7 @@ public interface VanDAO {
     Van getVanByPlateNumber(String plateNumber);
     Van getVanByModel(String model);
     List<Van> getAllVans();
+    void updateVan(Van van);
     void updateVanStatus(int id, String status); // e.g., 'Available', 'In Transit', 'Maintenance'
     void deleteVan(int id);
 }

@@ -1,8 +1,8 @@
-package com.biyahero.dao.impl;
+package dao.impl;
 
-import com.biyahero.dao.VanDAO;
-import com.biyahero.model.Van;
-import com.biyahero.util.DBUtil;
+import dao.VanDAO;
+import model.Van;
+import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class VanDAOImpl implements VanDAO {
             }
 
         } catch (SQLException e) {
-            System.err.println("Error fetching van by com.biyahero.model: " + e.getMessage());
+            System.err.println("Error fetching van by model: " + e.getMessage());
         }
         return null;
     }
@@ -97,6 +97,24 @@ public class VanDAOImpl implements VanDAO {
             System.err.println("Error fetching all vans: " + e.getMessage());
         }
         return vans;
+    }
+
+    @Override
+    public void updateVan(Van van) {
+        String sql = "UPDATE van SET plate_number = ?, model = ?, capacity = ?, van_status = ? WHERE van_id = ?";
+        try (Connection conn = DBUtil.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, van.getPlateNumber());
+            stmt.setString(2, van.getModel());
+            stmt.setInt(3, van.getCapacity());
+            stmt.setString(4, van.getVanStatus());
+            stmt.setInt(5, van.getVanId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error updating van: " + e.getMessage());
+        }
     }
 
     @Override

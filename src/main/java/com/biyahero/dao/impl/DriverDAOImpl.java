@@ -1,8 +1,8 @@
-package com.biyahero.dao.impl;
+package dao.impl;
 
-import com.biyahero.dao.DriverDAO;
-import com.biyahero.model.Driver;
-import com.biyahero.util.DBUtil;
+import dao.DriverDAO;
+import model.Driver;
+import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -81,6 +81,23 @@ public class DriverDAOImpl implements DriverDAO {
     }
 
     @Override
+    public void updateDriver(Driver driver) {
+        String sql = "UPDATE driver SET license_no = ?, name = ?, contact_number = ? WHERE driver_id = ?";
+        try (Connection conn = DBUtil.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, driver.getLicenseNo());
+            stmt.setString(2, driver.getName());
+            stmt.setString(3, driver.getContactNumber());
+            stmt.setInt(4, driver.getDriverId());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error updating driver: " + e.getMessage());
+        }
+    }
+
+    @Override
     public List<Driver> getAllDrivers() {
         String sql = "SELECT * FROM driver";
         List<Driver> drivers = new ArrayList<>();
@@ -112,7 +129,7 @@ public class DriverDAOImpl implements DriverDAO {
         }
     }
 
-    // converts a raw DB row from ResultSet into a usable Van object
+    // converts a raw DB row from ResultSet into a usable Driver object
     private Driver mapRow(ResultSet rs) throws SQLException {
         return new Driver(
             rs.getInt("driver_id"),

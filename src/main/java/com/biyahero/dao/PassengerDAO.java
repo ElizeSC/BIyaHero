@@ -1,8 +1,8 @@
-package com.biyahero.dao;
-import com.biyahero.model.Passenger;
+package dao;
+import model.Passenger;
 import java.util.List;
 
 public interface PassengerDAO {
-    void addPassenger(Passenger passenger);
+    int addPassenger(Passenger passenger); 
     List<Passenger> getPassengersByBooking(int bookingId);
 }
