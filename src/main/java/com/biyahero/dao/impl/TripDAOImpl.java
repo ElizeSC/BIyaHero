@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.TripDAO;
-import model.Trip;
-import util.DBUtil;
+import com.biyahero.dao.TripDAO;
+import com.biyahero.model.Trip;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.time.LocalDateTime;

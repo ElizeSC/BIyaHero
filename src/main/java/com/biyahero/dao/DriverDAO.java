@@ -1,5 +1,5 @@
-package dao;
-import model.Driver;
+package com.biyahero.dao;
+import com.biyahero.model.Driver;
 import java.util.List;
 
 public interface DriverDAO {

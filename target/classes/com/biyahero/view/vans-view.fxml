@@ -5,7 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<VBox spacing="20" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="20" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.VanDriverController">
+
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>
@@ -28,12 +31,9 @@
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <TextField promptText="Search Van..." prefWidth="250" />
-
+        <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" />
         <ComboBox promptText="Display Van Information" prefWidth="200" />
-
         <Region HBox.hgrow="ALWAYS" />
-
         <Button styleClass="primary-button" text="+ Add Van" />
     </HBox>
 
@@ -44,11 +44,11 @@
 
     <TableView fx:id="vanTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn prefWidth="120" text="Van ID" />
-            <TableColumn prefWidth="150" text="Plate Number" />
-            <TableColumn prefWidth="150" text="Model" />
-            <TableColumn prefWidth="100" text="Capacity" />
-            <TableColumn prefWidth="120" text="Status" />
+            <TableColumn fx:id="colVanId" prefWidth="120" text="Van ID" />
+            <TableColumn fx:id="colPlate" prefWidth="150" text="Plate Number" />
+            <TableColumn fx:id="colModel" prefWidth="150" text="Model" />
+            <TableColumn fx:id="colCapacity" prefWidth="100" text="Capacity" />
+            <TableColumn fx:id="colStatus" prefWidth="120" text="Status" />
             <TableColumn prefWidth="180" text="Manage" />
         </columns>
     </TableView>

@@ -1,8 +1,8 @@
-package service;
+package com.biyahero.service;
 
-import dao.VanDAO;
-import dao.impl.VanDAOImpl;
-import model.Van;
+import com.biyahero.dao.VanDAO;
+import com.biyahero.dao.impl.VanDAOImpl;
+import com.biyahero.model.Van;
 
 import java.util.Comparator;
 import java.util.List;
