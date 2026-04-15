@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.biyahero.controller.LoginController">
-    <Label text="BiyaHero System - GUI Alpha"/>
-    <Button text="Click Me!"/>
+<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.LoginController" style="-fx-background-color: #f4f4f4;">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
+    </padding>
+
+    <Label text="BIYAHERO LOGIN" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+    <VBox spacing="5.0">
+        <Label text="Username:"/>
+        <TextField fx:id="usernameField" promptText="Enter database user"/>
+    </VBox>
+
+    <VBox spacing="5.0">
+        <Label text="Password:"/>
+        <PasswordField fx:id="passwordField" promptText="Enter database pass"/>
+    </VBox>
+
+    <Button text="Login to System" onAction="#handleLogin" maxWidth="Infinity"
+            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+    <Label fx:id="errorLabel" textFill="RED" wrapText="true"/>
 </VBox>
