@@ -1,4 +1,4 @@
-package com.biyahero;
+package com.biyahero.cli;
 
 import java.util.Scanner;
 import com.biyahero.util.DBUtil;
