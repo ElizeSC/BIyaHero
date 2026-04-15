@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.VanDAO;
-import model.Van;
-import util.DBUtil;
+import com.biyahero.dao.VanDAO;
+import com.biyahero.model.Van;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

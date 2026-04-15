@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.PassengerDAO;
-import model.Passenger;
-import util.DBUtil;
+import com.biyahero.dao.PassengerDAO;
+import com.biyahero.model.Passenger;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

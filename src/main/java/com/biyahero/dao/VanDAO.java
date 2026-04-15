@@ -1,6 +1,6 @@
-package dao;
+package com.biyahero.dao;
 
-import model.Van;
+import com.biyahero.model.Van;
 import java.util.List;
 
 public interface VanDAO {

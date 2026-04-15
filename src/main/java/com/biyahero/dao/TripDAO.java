@@ -1,5 +1,5 @@
-package dao;
-import model.Trip;
+package com.biyahero.dao;
+import com.biyahero.model.Trip;
 import java.util.List;
 
 public interface TripDAO {

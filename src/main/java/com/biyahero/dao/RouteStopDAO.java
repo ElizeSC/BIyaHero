@@ -1,5 +1,6 @@
-package dao;
-import model.RouteStop;
+package com.biyahero.dao;
+
+import com.biyahero.model.RouteStop;
 import java.util.List;
 
 public interface RouteStopDAO {

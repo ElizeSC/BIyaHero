@@ -5,7 +5,10 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<VBox spacing="20" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="20" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.VanDriverController">
+
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>
@@ -22,18 +25,19 @@
         <Region HBox.hgrow="ALWAYS" />
 
         <HBox styleClass="nav-bar">
-            <Button styleClass="primary-button" text="Vans" />
-            <Button style="-fx-background-color: transparent; -fx-text-fill: #2f3640;" text="Drivers" />
-        </HBox>
+            <Button fx:id="btnVans"
+                    styleClass="primary-button"
+                    text="Vans"
+                    onAction="#showVanTable" /> <Button fx:id="btnDrivers"
+                                                        style="-fx-background-color: transparent; -fx-text-fill: #2f3640;"
+                                                        text="Drivers"
+                                                        onAction="#showDriverTable" /> </HBox>
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <TextField promptText="Search Van..." prefWidth="250" />
-
+        <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" />
         <ComboBox promptText="Display Van Information" prefWidth="200" />
-
         <Region HBox.hgrow="ALWAYS" />
-
         <Button styleClass="primary-button" text="+ Add Van" />
     </HBox>
 
@@ -42,14 +46,24 @@
         <ComboBox promptText="Van ID" prefWidth="120" />
     </HBox>
 
-    <TableView fx:id="vanTable" VBox.vgrow="ALWAYS">
-        <columns>
-            <TableColumn prefWidth="120" text="Van ID" />
-            <TableColumn prefWidth="150" text="Plate Number" />
-            <TableColumn prefWidth="150" text="Model" />
-            <TableColumn prefWidth="100" text="Capacity" />
-            <TableColumn prefWidth="120" text="Status" />
-            <TableColumn prefWidth="180" text="Manage" />
-        </columns>
-    </TableView>
+    <StackPane VBox.vgrow="ALWAYS">
+        <TableView fx:id="vanTable">
+            <columns>
+                <TableColumn fx:id="colVanId" text="Van ID" prefWidth="120" />
+                <TableColumn fx:id="colPlate" text="Plate Number" prefWidth="150" />
+                <TableColumn fx:id="colModel" text="Model" prefWidth="150" />
+                <TableColumn fx:id="colCapacity" text="Capacity" prefWidth="100" />
+                <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
+            </columns>
+        </TableView>
+
+        <TableView fx:id="driverTable" visible="false">
+            <columns>
+                <TableColumn fx:id="colDriverId" text="Driver ID" prefWidth="120" />
+                <TableColumn fx:id="colDriverName" text="Name" prefWidth="200" />
+                <TableColumn fx:id="colLicense" text="License #" prefWidth="150" />
+                <TableColumn fx:id="colContact" text="Contact" prefWidth="150" />
+            </columns>
+        </TableView>
+    </StackPane>
 </VBox>

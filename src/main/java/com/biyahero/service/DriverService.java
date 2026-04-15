@@ -1,8 +1,8 @@
-package service;
+package com.biyahero.service;
 
-import dao.DriverDAO;
-import dao.impl.DriverDAOImpl;
-import model.Driver;
+import com.biyahero.dao.DriverDAO;
+import com.biyahero.dao.impl.DriverDAOImpl;
+import com.biyahero.model.Driver;
 
 import java.util.Comparator;
 import java.util.List;
