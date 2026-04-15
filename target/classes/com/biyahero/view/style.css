@@ -1,0 +1,276 @@
+/* 1. Global Variables */
+.root {
+    -fx-font-family: "Inter ExtraBold", "Inter Black", "Inter";
+    -fx-biyahero-blue: #3E49BB;
+    -fx-biyahero-bg: #F0F2FF;
+    -fx-biyahero-border: #E0E4EC;
+
+    -fx-weight-regular: 400;
+    -fx-weight-medium: 500;
+    -fx-weight-semibold: 600;
+    -fx-weight-bold: 700;
+    -fx-weight-black: 900;
+}
+
+/* 2. Hardcoded Textfield to stop the Warnings/Crashes */
+.text-field {
+    -fx-background-color: white; /* White fields pop better on soft blue bg */
+    -fx-background-radius: 12;
+    -fx-border-color: #E0E4EC;
+    -fx-border-radius: 12;
+    -fx-padding: 10 15;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused {
+    -fx-border-color: #3E49BB;
+    -fx-effect: dropshadow(three-pass-box, rgba(62, 73, 187, 0.1), 8, 0, 0, 0);
+}
+
+/* 3. The Main Container */
+.main-container {
+    -fx-background-color: #F0F2FF; /* Using hex directly here too for safety */
+    -fx-padding: 30;
+}
+
+/* 4. Figma-style Labels */
+.header-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #1A1A1A;
+    -fx-letter-spacing: -0.5px; /* Tighter tracking for that modern look */
+}
+
+.sub-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #7E869E;
+
+}
+
+.nav-pill {
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-padding: 4;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.06), 12, 0, 0, 4);
+}
+
+/* 5. The 'Update Location' style Buttons */
+/* Refined Primary Button */
+.primary-button {
+    -fx-background-color: #3E49BB;
+    -fx-background-radius: 12; /* Slightly less round, more modern */
+    -fx-effect: dropshadow(three-pass-box, rgba(62, 73, 187, 0.3), 10, 0, 0, 4);
+    -fx-transition: 0.2s;
+    -fx-text-fill: white;
+}
+
+.primary-button:hover {
+    -fx-background-color: #4C59D8;
+    -fx-effect: dropshadow(three-pass-box, rgba(62, 73, 187, 0.5), 15, 0, 0, 6);
+}
+
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: 600;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+}
+
+.nav-button-active {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-background-radius: 25;
+    -fx-font-weight: 700;
+}
+
+.add-button {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+    -fx-background-radius: 12;
+    -fx-font-weight: 700;
+    -fx-padding: 10 25;
+    -fx-effect: dropshadow(three-pass-box, rgba(39, 174, 96, 0.2), 10, 0, 0, 4);
+}
+
+
+
+
+
+
+
+/* 1. Kill the outer table borders and background */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5;
+}
+
+/* 2. Hide the 'extra' column at the end and the horizontal scrollbar track */
+.table-view .filler,
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+}
+
+/* 3. Style the Headers to be clean (no vertical lines) */
+.table-view .column-header,
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-size: 45;
+}
+
+.table-view .column-header {
+    -fx-border-color: transparent transparent -fx-biyahero-border transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* 4. The Row-to-Card Transformation */
+.table-row-cell {
+    -fx-background-color: white;
+    /* This creates the vertical gap between cards */
+    -fx-background-insets: 0 0 15 0;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: #E0E4EC;
+    -fx-border-width: 1;
+    -fx-padding: 15;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 10, 0, 0, 4);
+}
+
+/* 5. Fix: Hide the default empty cell look */
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: none;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-style: italic;
+    -fx-font-size: 16px;
+}
+
+.table-view .column-header,
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+    -fx-size: 45;
+    /* Instead of shorthand, define the bottom border clearly */
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #E0E4EC; /* Hardcoded hex to ensure no lookup failure */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* The Top Navbar Background (Light blue tint to match Figma bg) */
+.top-navbar {
+    -fx-background-color: #F0F2FF;
+    -fx-padding: 15 40;
+}
+
+.logo-text {
+    -fx-font-size: 24px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #3E49BB;
+    -fx-font-family: "Inter";
+}
+
+/* The White Navigation Pill */
+.nav-pill {
+    -fx-background-color: white;
+    -fx-background-radius: 40;
+    -fx-padding: 5 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 15, 0, 0, 5);
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: 700;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-font-family: "Inter";
+}
+
+.nav-button-active {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+}
+
+/* Ensure the center content area flows correctly */
+.main-layout {
+    -fx-background-color: #F0F2FF;
+}
+
+.progress-dot, .progress-dot-active {
+    -fx-min-width: 20px;
+    -fx-max-width: 20px;
+    -fx-min-height: 20px;
+    -fx-max-height: 20px;
+    -fx-background-radius: 50; /* Make it a perfect circle */
+}
+
+.progress-dot {
+    -fx-background-color: white;
+    -fx-border-color: #E0E4EC;
+    -fx-border-width: 2;
+}
+
+.progress-dot-active {
+    -fx-background-color: #0A0D2C; /* Dark Navy */
+}
+
+/* The line connecting the dots */
+.progress-line {
+    -fx-min-height: 2px;
+    -fx-max-height: 2px;
+    -fx-background-color: #E0E4EC;
+}
+
+/* Progress Stepper Lines */
+.progress-line, .progress-line-active {
+    -fx-min-height: 4px;
+    -fx-max-height: 4px;
+    -fx-translate-y: -10; /* Moves line up to align with center of dots */
+}
+
+.progress-line {
+    -fx-background-color: #E0E4EC;
+}
+
+.progress-line-active {
+    -fx-background-color: #0A0D2C;
+}
+
+/* Ensure the dots are actually dots */
+.progress-dot, .progress-dot-active {
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-height: 24px;
+    -fx-background-radius: 50;
+}
+
+.trip-id {
+    -fx-font-size: 20px;
+    -fx-font-weight: 900; /* JavaFX loves this */
+    -fx-text-fill: #0A0D2C;
+}
+
+.station-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: 700; /* JavaFX loves this */
+}
