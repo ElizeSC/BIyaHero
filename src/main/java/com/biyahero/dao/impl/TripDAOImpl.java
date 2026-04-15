@@ -1,8 +1,8 @@
-package com.biyahero.dao.impl;
+package dao.impl;
 
-import com.biyahero.dao.TripDAO;
-import com.biyahero.model.Trip;
-import com.biyahero.util.DBUtil;
+import dao.TripDAO;
+import model.Trip;
+import util.DBUtil;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -81,7 +81,7 @@ public class TripDAOImpl implements TripDAO {
         }
     }
 
-    // converts a raw DB row from ResultSet into a usable Van object
+    // converts a raw DB row from ResultSet into a usable Trip object
     private Trip mapRow(ResultSet rs) throws SQLException {
         LocalDateTime departureTime = rs.getTimestamp("departure_time").toLocalDateTime();
         return new Trip(

@@ -1,6 +1,6 @@
-package com.biyahero.dao;
+package dao;
 
-import com.biyahero.model.Route;
+import model.Route;
 import java.util.List;
 
 public interface RouteDAO {

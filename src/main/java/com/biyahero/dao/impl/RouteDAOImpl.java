@@ -1,8 +1,8 @@
-package com.biyahero.dao.impl;
+package dao.impl;
 
-import com.biyahero.dao.RouteDAO;
-import com.biyahero.model.Route;
-import com.biyahero.util.DBUtil;
+import dao.RouteDAO;
+import model.Route;
+import util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class RouteDAOImpl implements RouteDAO {
         }
     }
 
-    // converts a raw DB row from ResultSet into a usable Van object
+    // converts a raw DB row from ResultSet into a usable Route object
     private Route mapRow(ResultSet rs) throws SQLException {
         return new Route(
             rs.getInt("route_id"),
