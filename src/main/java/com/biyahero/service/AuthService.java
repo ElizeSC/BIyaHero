@@ -4,7 +4,7 @@ import com.biyahero.util.DBUtil;
 import java.sql.Connection;
 
 public class AuthService {
-    public boolean authenticate(String user, String pass) {
+    public static boolean authenticate(String user, String pass) {
         return DBUtil.testConnection(user, pass);
     }
 }

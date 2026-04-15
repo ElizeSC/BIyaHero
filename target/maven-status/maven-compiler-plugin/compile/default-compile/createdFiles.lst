@@ -19,7 +19,9 @@ com\biyahero\model\Trip.class
 com\biyahero\controller\LoginController.class
 com\biyahero\dao\impl\RouteDAOImpl.class
 com\biyahero\dao\impl\VanDAOImpl.class
+com\biyahero\Launcher.class
 com\biyahero\dao\BookingDAO.class
 com\biyahero\dao\RouteDAO.class
+com\biyahero\controller\MainController.class
 com\biyahero\service\AuthService.class
 com\biyahero\dao\impl\TripDAOImpl.class
