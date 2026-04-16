@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.StopDAO;
-import model.Stop;
-import util.DBUtil;
+import com.biyahero.dao.StopDAO;
+import com.biyahero.model.Stop;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

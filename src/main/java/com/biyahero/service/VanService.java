@@ -1,8 +1,8 @@
-package service;
+package com.biyahero.service;
 
-import dao.VanDAO;
-import dao.impl.VanDAOImpl;
-import model.Van;
+import com.biyahero.dao.VanDAO;
+import com.biyahero.dao.impl.VanDAOImpl;
+import com.biyahero.model.Van;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,6 +26,12 @@ public class VanService {
 
     public List<Van> getAllVans() {
         return vanDAO.getAllVans();
+    }
+
+    public List<Van> getAvailableVans() { // for creating a trip
+        return vanDAO.getAllVans().stream()
+            .filter(d -> "Available".equalsIgnoreCase(d.getVanStatus()))
+            .collect(Collectors.toList());
     }
 
     public Van getVanById(int vanId) {

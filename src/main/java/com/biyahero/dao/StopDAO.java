@@ -1,5 +1,6 @@
-package dao;
-import model.Stop;
+package com.biyahero.dao;
+
+import com.biyahero.model.Stop;
 import java.util.List;
 
 public interface StopDAO {

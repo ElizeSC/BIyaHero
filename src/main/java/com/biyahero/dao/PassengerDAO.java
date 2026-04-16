@@ -1,5 +1,5 @@
-package dao;
-import model.Passenger;
+package com.biyahero.dao;
+import com.biyahero.model.Passenger;
 import java.util.List;
 
 public interface PassengerDAO {

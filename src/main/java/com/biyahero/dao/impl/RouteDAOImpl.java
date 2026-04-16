@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.RouteDAO;
-import model.Route;
-import util.DBUtil;
+import com.biyahero.dao.RouteDAO;
+import com.biyahero.model.Route;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

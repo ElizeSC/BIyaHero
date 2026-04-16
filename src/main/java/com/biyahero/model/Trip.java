@@ -9,25 +9,33 @@ public class Trip {
     private int driverId;
     private LocalDateTime departureTime;
     private String tripStatus;
+    private LocalDateTime arrivalDt;
+    private Integer currentStopId; // nullable, boxed
 
     public Trip() {}
 
-    public Trip(int tripId, int routeId, int vanId, int driverId, LocalDateTime departureTime, String tripStatus) {
+    public Trip(int tripId, int routeId, int vanId, int driverId, LocalDateTime departureTime, 
+                String tripStatus, LocalDateTime arrivalDt, Integer currentStopId) {
         this.tripId = tripId;
         this.routeId = routeId;
         this.vanId = vanId;
         this.driverId = driverId;
         this.departureTime = departureTime;
         this.tripStatus = tripStatus;
+        this.arrivalDt = arrivalDt;
+        this.currentStopId = currentStopId;
     }
 
     // For INSERT (no tripId yet, auto-incremented by DB)
-    public Trip(int routeId, int vanId, int driverId, LocalDateTime departureTime, String tripStatus) {
+    public Trip(int routeId, int vanId, int driverId, LocalDateTime departureTime, 
+                String tripStatus, LocalDateTime arrivalDt, Integer currentStopId) {
         this.routeId = routeId;
         this.vanId = vanId;
         this.driverId = driverId;
         this.departureTime = departureTime;
         this.tripStatus = tripStatus;
+        this.arrivalDt = arrivalDt;
+        this.currentStopId = currentStopId;
     }
 
     // Getters and Setters
@@ -71,6 +79,20 @@ public class Trip {
     }
     public void setTripStatus(String tripStatus) { 
         this.tripStatus = tripStatus; 
+    }
+
+    public LocalDateTime getArrivalDt() { 
+        return arrivalDt; 
+    }
+    public void setArrivalDt(LocalDateTime arrivalDt) { 
+        this.arrivalDt = arrivalDt; 
+    }
+
+    public Integer getCurrentStopId() { 
+        return currentStopId; 
+    }
+    public void setCurrentStopId(Integer currentStopId) { 
+        this.currentStopId = currentStopId; 
     }
 
     public String getFormattedId() { 

@@ -1,5 +1,5 @@
-package dao;
-import model.Booking;
+package com.biyahero.dao;
+import com.biyahero.model.Booking;
 import java.util.List;
 
 public interface BookingDAO {

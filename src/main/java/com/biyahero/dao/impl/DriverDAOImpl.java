@@ -1,8 +1,8 @@
-package dao.impl;
+package com.biyahero.dao.impl;
 
-import dao.DriverDAO;
-import model.Driver;
-import util.DBUtil;
+import com.biyahero.dao.DriverDAO;
+import com.biyahero.model.Driver;
+import com.biyahero.util.DBUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class DriverDAOImpl implements DriverDAO {
 
     @Override
     public void addDriver(Driver driver) {
-        String sql = "INSERT INTO driver (license_no, name, contact_number) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO driver (license_no, name, contact_number, driver_status) VALUES (?, ?, ?, ?)";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -82,7 +82,7 @@ public class DriverDAOImpl implements DriverDAO {
 
     @Override
     public void updateDriver(Driver driver) {
-        String sql = "UPDATE driver SET license_no = ?, name = ?, contact_number = ? WHERE driver_id = ?";
+        String sql = "UPDATE driver SET license_no = ?, name = ?, contact_number = ?, driver_status = ? WHERE driver_id = ?";
         try (Connection conn = DBUtil.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -94,6 +94,21 @@ public class DriverDAOImpl implements DriverDAO {
 
         } catch (SQLException e) {
             System.err.println("Error updating driver: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void updateDriverStatus(int id, String status) {
+        String sql = "UPDATE driver SET driver_status = ? WHERE driver_id = ?";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, status);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error updating driver status: " + e.getMessage());
         }
     }
 
@@ -135,7 +150,8 @@ public class DriverDAOImpl implements DriverDAO {
             rs.getInt("driver_id"),
             rs.getString("license_no"),
             rs.getString("name"),
-            rs.getString("contact_number")
+            rs.getString("contact_number"),
+            rs.getString("driver_status")
         );
     }
 }
