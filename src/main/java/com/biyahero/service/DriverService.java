@@ -11,18 +11,24 @@ import java.util.stream.Collectors;
 public class DriverService {
     private final DriverDAO driverDAO = new DriverDAOImpl();
 
-    public void addDriver(String licenseNo, String name, String contactNumber) {
+    public void addDriver(String licenseNo, String name, String contactNumber, String driverStatus) {
         // validation before hitting the DAO
         if (licenseNo == null || licenseNo.trim().isEmpty()) {
             throw new IllegalArgumentException("License No cannot be empty.");
         }
 
-        Driver driver = new Driver(licenseNo.trim().toUpperCase(), name, contactNumber);
+        Driver driver = new Driver(licenseNo.trim().toUpperCase(), name, contactNumber, driverStatus);
         driverDAO.addDriver(driver);
     }
 
     public List<Driver> getAllDrivers() {
         return driverDAO.getAllDrivers();
+    }
+
+    public List<Driver> getAvailableDrivers() { // for creating a trip
+        return driverDAO.getAllDrivers().stream()
+            .filter(d -> "Available".equalsIgnoreCase(d.getDriverStatus()))
+            .collect(Collectors.toList());
     }
 
     public Driver getDriverById(int driverId) {
@@ -49,7 +55,17 @@ public class DriverService {
         }
 
         driverDAO.updateDriver(existingDriver);
-    }   
+    }  
+    
+    public void updateDriverStatus(int driverId, String status) {
+        if (status == null || status.trim().isEmpty()) {
+            throw new IllegalArgumentException("Status cannot be empty.");
+        }
+
+        Driver existingDriver = getDriverById(driverId);
+        existingDriver.setDriverStatus(status.trim());
+        driverDAO.updateDriver(existingDriver);
+    }
 
     public void deleteDriver(int driverId) {
         driverDAO.deleteDriver(driverId);

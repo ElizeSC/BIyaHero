@@ -8,6 +8,7 @@ public interface DriverDAO {
     Driver getDriverByName(String name);
     Driver getDriverByLicenseNo(String licenseNo);
     void updateDriver(Driver driver);
+    void updateDriverStatus(int id, String status); // e.g., 'Available', 'On Trip', 'Off Duty'
     List<Driver> getAllDrivers();
     void deleteDriver(int id);
 }

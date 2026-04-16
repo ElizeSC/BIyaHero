@@ -28,6 +28,12 @@ public class VanService {
         return vanDAO.getAllVans();
     }
 
+    public List<Van> getAvailableVans() { // for creating a trip
+        return vanDAO.getAllVans().stream()
+            .filter(d -> "Available".equalsIgnoreCase(d.getVanStatus()))
+            .collect(Collectors.toList());
+    }
+
     public Van getVanById(int vanId) {
         Van van = vanDAO.getVanById(vanId);
         if (van == null) {

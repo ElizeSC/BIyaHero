@@ -5,21 +5,24 @@ public class Driver {
     private String licenseNo;
     private String name;
     private String contactNumber;
+    private String driverStatus;
 
     public Driver() {}
 
-    public Driver(int driverId, String licenseNo, String name, String contactNumber) {
+    public Driver(int driverId, String licenseNo, String name, String contactNumber, String driverStatus) {
         this.driverId = driverId;
         this.licenseNo = licenseNo;
         this.name = name;
         this.contactNumber = contactNumber;
+        this.driverStatus = driverStatus;
     }
 
     // For INSERT (no driverId yet, auto-incremented by DB)
-    public Driver(String licenseNo, String name, String contactNumber) {
+    public Driver(String licenseNo, String name, String contactNumber, String driverStatus) {
         this.licenseNo = licenseNo;
         this.name = name;
         this.contactNumber = contactNumber;
+        this.driverStatus = driverStatus;
     }
 
     // Getters and Setters
@@ -49,6 +52,13 @@ public class Driver {
     }
     public void setContactNumber(String contactNumber) { 
         this.contactNumber = contactNumber; 
+    }
+
+    public String getDriverStatus() { 
+        return driverStatus; 
+    }
+    public void setDriverStatus(String driverStatus) { 
+        this.driverStatus = driverStatus; 
     }
 
     public String getFormattedId() { 
