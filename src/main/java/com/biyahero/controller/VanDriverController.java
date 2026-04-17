@@ -18,24 +18,21 @@ import java.io.IOException;
 
 public class VanDriverController {
 
+    // Van Table
     @FXML private TableView<Van> vanTable;
     @FXML private TableColumn<Van, String> colVanId, colPlate, colModel, colStatus;
     @FXML private TableColumn<Van, Integer> colCapacity;
     @FXML private TableColumn<Van, Void> colVanAction;
 
+    // Driver Table
     @FXML private TableView<Driver> driverTable;
-    @FXML private TableColumn<Driver, String> colDriverId, colDriverName, colLicense, colContact;
+    @FXML private TableColumn<Driver, String> colDriverId, colDriverName, colLicense, colContact, colDriverStatus;
     @FXML private TableColumn<Driver, Void> colDriverAction;
 
+    // UI Elements
     @FXML private TextField searchField;
-    @FXML private Button btnVans, btnDrivers;
-
-    @FXML private Label lblContextTitle; // Add this fx:id to your "Vans and Drivers" label if you want to change it
-    @FXML private ComboBox<String> infoComboBox; // Add fx:id to your "Display Van Information" combo
-    @FXML private Button btnAddEntry; // Add fx:id to your "+ Add Van" button
-    @FXML private ComboBox<String> sortComboBox;
-
-    @FXML private TableColumn<Driver, String> colDriverStatus;
+    @FXML private Button btnVans, btnDrivers, btnAddEntry;
+    @FXML private ComboBox<String> infoComboBox, sortComboBox;
 
     private final VanService vanService = new VanService();
     private final DriverService driverService = new DriverService();
@@ -67,14 +64,17 @@ public class VanDriverController {
     }
 
     private void setupActionButtons() {
-        // Van Actions (Edit/Delete)
+        // Van Action Buttons (Edit/Delete)
         colVanAction.setCellFactory(param -> new TableCell<>() {
             private final Button edit = new Button("Edit");
             private final Button delete = new Button("Delete");
             private final HBox box = new HBox(10, edit, delete);
             {
-                edit.setOnAction(e -> handleEditVan(getTableView().getItems().get(getIndex())));
-                delete.setOnAction(e -> handleDeleteVan(getTableView().getItems().get(getIndex())));
+                edit.setOnAction(e -> openModal("/com/biyahero/view/add-van-dialog.fxml", "Edit Van", getTableView().getItems().get(getIndex())));
+                delete.setOnAction(e -> {
+                    vanService.deleteVan(getTableView().getItems().get(getIndex()).getVanId());
+                    loadData();
+                });
             }
             @Override protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -82,14 +82,17 @@ public class VanDriverController {
             }
         });
 
-        // Driver Actions (Edit/Delete)
+        // Driver Action Buttons (Edit/Delete)
         colDriverAction.setCellFactory(param -> new TableCell<>() {
             private final Button edit = new Button("Edit");
             private final Button delete = new Button("Delete");
             private final HBox box = new HBox(10, edit, delete);
             {
-                edit.setOnAction(e -> handleEditDriver(getTableView().getItems().get(getIndex())));
-                delete.setOnAction(e -> handleDeleteDriver(getTableView().getItems().get(getIndex())));
+                edit.setOnAction(e -> openModal("/com/biyahero/view/add-driver-dialog.fxml", "Edit Driver", getTableView().getItems().get(getIndex())));
+                delete.setOnAction(e -> {
+                    driverService.deleteDriver(getTableView().getItems().get(getIndex()).getDriverId());
+                    loadData();
+                });
             }
             @Override protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -117,23 +120,28 @@ public class VanDriverController {
         openModal(path, title, null);
     }
 
-    private void handleEditVan(Van van) { openModal("/com/biyahero/view/add-van-dialog.fxml", "Edit Van", van); }
-    private void handleEditDriver(Driver d) { openModal("/com/biyahero/view/add-driver-dialog.fxml", "Edit Driver", d); }
-
     private void openModal(String path, String title, Object data) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Parent root = loader.load();
-            if (data instanceof Van) ((AddVanController)loader.getController()).setExistingData((Van)data);
-            if (data instanceof Driver) ((AddDriverController)loader.getController()).setExistingData((Driver)data);
+
+            // Pass data based on the object type
+            if (data instanceof Van) {
+                ((AddVanController) loader.getController()).setExistingData((Van) data);
+            } else if (data instanceof Driver) {
+                ((AddDriverController) loader.getController()).setExistingData((Driver) data);
+            }
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(title);
             stage.setScene(new Scene(root));
             stage.showAndWait();
-            loadData();
-        } catch (IOException e) { e.printStackTrace(); }
+
+            loadData(); // Refresh after closing
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML private void showVanTable() { toggle(true); }
@@ -142,9 +150,8 @@ public class VanDriverController {
     private void toggle(boolean vanView) {
         this.isVanView = vanView;
 
-        // Reset both buttons to inactive first
-        btnVans.getStyleClass().removeAll("tab-button-active", "tab-button-inactive", "primary-button");
-        btnDrivers.getStyleClass().removeAll("tab-button-active", "tab-button-inactive", "primary-button");
+        btnVans.getStyleClass().removeAll("tab-button-active", "tab-button-inactive");
+        btnDrivers.getStyleClass().removeAll("tab-button-active", "tab-button-inactive");
 
         if (vanView) {
             btnVans.getStyleClass().add("tab-button-active");
@@ -154,19 +161,14 @@ public class VanDriverController {
             btnDrivers.getStyleClass().add("tab-button-active");
         }
 
-        // Update texts
         searchField.setPromptText(vanView ? "Search Van..." : "Search Driver...");
         btnAddEntry.setText(vanView ? "+ Add Van" : "+ Add Driver");
         infoComboBox.setPromptText(vanView ? "Display Van Information" : "Display Driver Information");
         sortComboBox.setPromptText(vanView ? "Van ID" : "Driver ID");
 
-        // Table visibility
         vanTable.setVisible(vanView);
         vanTable.setManaged(vanView);
         driverTable.setVisible(!vanView);
         driverTable.setManaged(!vanView);
     }
-
-    private void handleDeleteVan(Van v) { vanService.deleteVan(v.getVanId()); loadData(); }
-    private void handleDeleteDriver(Driver d) { driverService.deleteDriver(d.getDriverId()); loadData(); }
 }

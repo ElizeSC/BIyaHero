@@ -15,7 +15,7 @@
     </padding>
 
     <VBox spacing="5">
-        <Label styleClass="header-title" text="Register Van" style="-fx-font-size: 20px;"/>
+        <Label fx:id="titleLabel" styleClass="header-title" text="Register New Van" />
         <Label styleClass="sub-header" text="Enter van details to add to the fleet." />
     </VBox>
 
