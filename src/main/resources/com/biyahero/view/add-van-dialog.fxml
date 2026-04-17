@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="20" styleClass="main-container" prefWidth="400" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.AddVanController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding>
+        <Insets top="30" right="40" bottom="30" left="40"/>
+    </padding>
+
+    <VBox spacing="5">
+        <Label styleClass="header-title" text="Register Van" style="-fx-font-size: 20px;"/>
+        <Label styleClass="sub-header" text="Enter van details to add to the fleet." />
+    </VBox>
+
+    <Separator />
+
+    <VBox spacing="15">
+        <VBox spacing="5">
+            <Label text="Plate Number" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="plateField" promptText="e.g. ABC 1234" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Model" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="modelField" promptText="e.g. Toyota Hiace" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label text="Initial Status" style="-fx-font-weight: bold;"/>
+            <ComboBox fx:id="statusComboBox" prefWidth="400" promptText="Select Status" />
+        </VBox>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: transparent; -fx-text-fill: #636e72;" />
+        <Button text="Save Van" onAction="#handleSave" styleClass="primary-button" />
+    </HBox>
+</VBox>

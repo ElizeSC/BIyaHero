@@ -274,3 +274,23 @@
     -fx-font-size: 11px;
     -fx-font-weight: 700; /* JavaFX loves this */
 }
+
+/* The Active State (Purple) */
+.tab-button-active {
+    -fx-background-color: #3f51b5;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+/* The Inactive State (Transparent/Ghost) */
+.tab-button-inactive {
+    -fx-background-color: transparent;
+    -fx-text-fill: #2f3640;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.tab-button-inactive:hover {
+    -fx-background-color: #f1f2f6; /* Subtle light grey on hover */
+}
