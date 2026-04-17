@@ -25,25 +25,21 @@
         <Region HBox.hgrow="ALWAYS" />
 
         <HBox styleClass="nav-bar">
-            <Button fx:id="btnVans"
-                    styleClass="primary-button"
-                    text="Vans"
-                    onAction="#showVanTable" /> <Button fx:id="btnDrivers"
-                                                        style="-fx-background-color: transparent; -fx-text-fill: #2f3640;"
-                                                        text="Drivers"
-                                                        onAction="#showDriverTable" /> </HBox>
+            <Button fx:id="btnVans" styleClass="tab-button-active" text="Vans" onAction="#showVanTable" />
+            <Button fx:id="btnDrivers" styleClass="tab-button-inactive" text="Drivers" onAction="#showDriverTable" />
+        </HBox>
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="15">
         <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" />
-        <ComboBox promptText="Display Van Information" prefWidth="200" />
+        <ComboBox fx:id="infoComboBox" promptText="Display Van Information" prefWidth="200" />
         <Region HBox.hgrow="ALWAYS" />
-        <Button styleClass="primary-button" text="+ Add Van" />
+        <Button fx:id="btnAddEntry" styleClass="primary-button" text="+ Add Van" onAction="#handleOpenAddModal"/>
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label styleClass="sub-header" text="Sort by:" />
-        <ComboBox promptText="Van ID" prefWidth="120" />
+        <ComboBox fx:id="sortComboBox" promptText="Van ID" prefWidth="120" />
     </HBox>
 
     <StackPane VBox.vgrow="ALWAYS">
@@ -54,15 +50,18 @@
                 <TableColumn fx:id="colModel" text="Model" prefWidth="150" />
                 <TableColumn fx:id="colCapacity" text="Capacity" prefWidth="100" />
                 <TableColumn fx:id="colStatus" text="Status" prefWidth="120" />
+                <TableColumn fx:id="colVanAction" text="Manage" prefWidth="180" />
             </columns>
         </TableView>
 
-        <TableView fx:id="driverTable" visible="false">
+        <TableView fx:id="driverTable" visible="false" managed="false">
             <columns>
                 <TableColumn fx:id="colDriverId" text="Driver ID" prefWidth="120" />
                 <TableColumn fx:id="colDriverName" text="Name" prefWidth="200" />
                 <TableColumn fx:id="colLicense" text="License #" prefWidth="150" />
                 <TableColumn fx:id="colContact" text="Contact" prefWidth="150" />
+                <TableColumn fx:id="colDriverStatus" text="Status" prefWidth="120" />
+                <TableColumn fx:id="colDriverAction" text="Manage" prefWidth="180" />
             </columns>
         </TableView>
     </StackPane>

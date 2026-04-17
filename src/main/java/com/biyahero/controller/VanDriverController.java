@@ -6,34 +6,44 @@ import com.biyahero.service.VanService;
 import com.biyahero.service.DriverService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 public class VanDriverController {
 
-    // --- FXML UI Components ---
+    // Van Table
     @FXML private TableView<Van> vanTable;
     @FXML private TableColumn<Van, String> colVanId, colPlate, colModel, colStatus;
     @FXML private TableColumn<Van, Integer> colCapacity;
+    @FXML private TableColumn<Van, Void> colVanAction;
 
+    // Driver Table
     @FXML private TableView<Driver> driverTable;
-    @FXML private TableColumn<Driver, String> colDriverId, colDriverName, colLicense, colContact;
+    @FXML private TableColumn<Driver, String> colDriverId, colDriverName, colLicense, colContact, colDriverStatus;
+    @FXML private TableColumn<Driver, Void> colDriverAction;
 
+    // UI Elements
     @FXML private TextField searchField;
-    @FXML private Button btnVans, btnDrivers;
+    @FXML private Button btnVans, btnDrivers, btnAddEntry;
+    @FXML private ComboBox<String> infoComboBox, sortComboBox;
 
-    // --- Services ---
     private final VanService vanService = new VanService();
     private final DriverService driverService = new DriverService();
-
-    // State tracker to know which list to search
     private boolean isVanView = true;
 
     @FXML
     public void initialize() {
         setupVanTable();
         setupDriverTable();
-        loadInitialData();
+        setupActionButtons();
+        loadData();
         setupSearch();
     }
 
@@ -50,70 +60,115 @@ public class VanDriverController {
         colDriverName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colLicense.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colDriverStatus.setCellValueFactory(new PropertyValueFactory<>("driverStatus"));
     }
 
-    private void loadInitialData() {
-        try {
-            vanTable.setItems(FXCollections.observableArrayList(vanService.getAllVans()));
-            driverTable.setItems(FXCollections.observableArrayList(driverService.getAllDrivers()));
-        } catch (Exception e) {
-            System.err.println("Error loading initial data: " + e.getMessage());
-        }
-    }
+    private void setupActionButtons() {
+        // Van Action Buttons (Edit/Delete)
+        colVanAction.setCellFactory(param -> new TableCell<>() {
+            private final Button edit = new Button("Edit");
+            private final Button delete = new Button("Delete");
+            private final HBox box = new HBox(10, edit, delete);
+            {
+                edit.setOnAction(e -> openModal("/com/biyahero/view/add-van-dialog.fxml", "Edit Van", getTableView().getItems().get(getIndex())));
+                delete.setOnAction(e -> {
+                    vanService.deleteVan(getTableView().getItems().get(getIndex()).getVanId());
+                    loadData();
+                });
+            }
+            @Override protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : box);
+            }
+        });
 
-    private void setupSearch() {
-        searchField.textProperty().addListener((obs, oldVal, newVal) -> {
-            if (isVanView) {
-                vanTable.setItems(FXCollections.observableArrayList(vanService.searchVans(newVal)));
-            } else {
-                driverTable.setItems(FXCollections.observableArrayList(driverService.searchDriver(newVal)));
+        // Driver Action Buttons (Edit/Delete)
+        colDriverAction.setCellFactory(param -> new TableCell<>() {
+            private final Button edit = new Button("Edit");
+            private final Button delete = new Button("Delete");
+            private final HBox box = new HBox(10, edit, delete);
+            {
+                edit.setOnAction(e -> openModal("/com/biyahero/view/add-driver-dialog.fxml", "Edit Driver", getTableView().getItems().get(getIndex())));
+                delete.setOnAction(e -> {
+                    driverService.deleteDriver(getTableView().getItems().get(getIndex()).getDriverId());
+                    loadData();
+                });
+            }
+            @Override protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : box);
             }
         });
     }
 
-    @FXML
-    private void showVanTable() {
-        isVanView = true;
-        toggleTables(true);
+    private void loadData() {
+        vanTable.setItems(FXCollections.observableArrayList(vanService.getAllVans()));
+        driverTable.setItems(FXCollections.observableArrayList(driverService.getAllDrivers()));
+    }
 
-        // Update Button UI
-        updateButtonStyle(btnVans, true);
-        updateButtonStyle(btnDrivers, false);
-
-        searchField.setPromptText("Search Van...");
+    private void setupSearch() {
+        searchField.textProperty().addListener((obs, old, newVal) -> {
+            if (isVanView) vanTable.setItems(FXCollections.observableArrayList(vanService.searchVans(newVal)));
+            else driverTable.setItems(FXCollections.observableArrayList(driverService.searchDriver(newVal)));
+        });
     }
 
     @FXML
-    private void showDriverTable() {
-        isVanView = false;
-        toggleTables(false);
-
-        // Update Button UI
-        updateButtonStyle(btnDrivers, true);
-        updateButtonStyle(btnVans, false);
-
-        searchField.setPromptText("Search Driver...");
+    private void handleOpenAddModal() {
+        String path = isVanView ? "/com/biyahero/view/add-van-dialog.fxml" : "/com/biyahero/view/add-driver-dialog.fxml";
+        String title = isVanView ? "Add Van" : "Add Driver";
+        openModal(path, title, null);
     }
 
-    // Helper method to keep things clean
-    private void toggleTables(boolean showVans) {
-        vanTable.setVisible(showVans);
-        vanTable.setManaged(showVans);
-        driverTable.setVisible(!showVans);
-        driverTable.setManaged(!showVans);
-    }
+    private void openModal(String path, String title, Object data) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent root = loader.load();
 
-    // This helper manages the CSS classes dynamically
-    private void updateButtonStyle(Button button, boolean active) {
-        if (active) {
-            if (!button.getStyleClass().contains("primary-button")) {
-                button.getStyleClass().add("primary-button");
+            // Pass data based on the object type
+            if (data instanceof Van) {
+                ((AddVanController) loader.getController()).setExistingData((Van) data);
+            } else if (data instanceof Driver) {
+                ((AddDriverController) loader.getController()).setExistingData((Driver) data);
             }
-            button.setStyle(""); // Clear any inline "transparent" styles
-        } else {
-            button.getStyleClass().remove("primary-button");
-            // Apply the "inactive" look manually if it's not in your CSS
-            button.setStyle("-fx-background-color: transparent; -fx-text-fill: #2f3640; -fx-cursor: hand;");
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
+            loadData(); // Refresh after closing
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+    @FXML private void showVanTable() { toggle(true); }
+    @FXML private void showDriverTable() { toggle(false); }
+
+    private void toggle(boolean vanView) {
+        this.isVanView = vanView;
+
+        btnVans.getStyleClass().removeAll("tab-button-active", "tab-button-inactive");
+        btnDrivers.getStyleClass().removeAll("tab-button-active", "tab-button-inactive");
+
+        if (vanView) {
+            btnVans.getStyleClass().add("tab-button-active");
+            btnDrivers.getStyleClass().add("tab-button-inactive");
+        } else {
+            btnVans.getStyleClass().add("tab-button-inactive");
+            btnDrivers.getStyleClass().add("tab-button-active");
+        }
+
+        searchField.setPromptText(vanView ? "Search Van..." : "Search Driver...");
+        btnAddEntry.setText(vanView ? "+ Add Van" : "+ Add Driver");
+        infoComboBox.setPromptText(vanView ? "Display Van Information" : "Display Driver Information");
+        sortComboBox.setPromptText(vanView ? "Van ID" : "Driver ID");
+
+        vanTable.setVisible(vanView);
+        vanTable.setManaged(vanView);
+        driverTable.setVisible(!vanView);
+        driverTable.setManaged(!vanView);
     }
 }
