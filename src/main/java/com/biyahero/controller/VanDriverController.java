@@ -35,6 +35,8 @@ public class VanDriverController {
     @FXML private Button btnAddEntry; // Add fx:id to your "+ Add Van" button
     @FXML private ComboBox<String> sortComboBox;
 
+    @FXML private TableColumn<Driver, String> colDriverStatus;
+
     private final VanService vanService = new VanService();
     private final DriverService driverService = new DriverService();
     private boolean isVanView = true;
@@ -61,6 +63,7 @@ public class VanDriverController {
         colDriverName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colLicense.setCellValueFactory(new PropertyValueFactory<>("licenseNo"));
         colContact.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+        colDriverStatus.setCellValueFactory(new PropertyValueFactory<>("driverStatus"));
     }
 
     private void setupActionButtons() {

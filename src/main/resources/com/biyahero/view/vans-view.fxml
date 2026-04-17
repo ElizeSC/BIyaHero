@@ -60,6 +60,7 @@
                 <TableColumn fx:id="colDriverName" text="Name" prefWidth="200" />
                 <TableColumn fx:id="colLicense" text="License #" prefWidth="150" />
                 <TableColumn fx:id="colContact" text="Contact" prefWidth="150" />
+                <TableColumn fx:id="colDriverStatus" text="Status" prefWidth="120" />
                 <TableColumn fx:id="colDriverAction" text="Manage" prefWidth="180" />
             </columns>
         </TableView>
