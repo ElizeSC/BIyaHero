@@ -64,6 +64,7 @@ CREATE TABLE `driver` (
   `license_no` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `contact_number` varchar(15) DEFAULT NULL,
+  `driver_status` varchar(20) NOT NULL DEFAULT 'Available',
   PRIMARY KEY (`driver_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -74,7 +75,7 @@ CREATE TABLE `driver` (
 
 LOCK TABLES `driver` WRITE;
 /*!40000 ALTER TABLE `driver` DISABLE KEYS */;
-INSERT INTO `driver` VALUES (1,'N01-23-45678','Juan Dela Cruz','09171234567');
+INSERT INTO `driver` VALUES (1,'N01-23-45678','Juan Dela Cruz','09171234567','Available');
 /*!40000 ALTER TABLE `driver` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,10 +197,14 @@ CREATE TABLE `trip` (
   `route_id` int DEFAULT NULL,
   `departure_dt` datetime DEFAULT NULL,
   `trip_status` varchar(20) DEFAULT 'Scheduled',
+  `arrival_dt` datetime DEFAULT NULL,
+  `current_stop_id` int DEFAULT NULL,
   PRIMARY KEY (`trip_id`),
   KEY `van_id` (`van_id`),
   KEY `driver_id` (`driver_id`),
   KEY `route_id` (`route_id`),
+  KEY `fk_current_stop` (`current_stop_id`),
+  CONSTRAINT `fk_current_stop` FOREIGN KEY (`current_stop_id`) REFERENCES `stop` (`stop_id`),
   CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`van_id`) REFERENCES `van` (`van_id`),
   CONSTRAINT `trip_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
   CONSTRAINT `trip_ibfk_3` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`)
@@ -227,7 +232,7 @@ CREATE TABLE `van` (
   `plate_number` varchar(10) NOT NULL,
   `model` varchar(50) DEFAULT NULL,
   `capacity` int DEFAULT '15',
-  `van_status` varchar(20) DEFAULT 'Available',
+  `van_status` varchar(20) NOT NULL DEFAULT 'Available',
   PRIMARY KEY (`van_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -251,4 +256,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-04-12 16:10:24
+-- Dump completed on 2026-04-17 16:34:25
