@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+
 public class TripController {
 
     @FXML private TableView<Trip> tripTable;
@@ -116,5 +117,36 @@ public class TripController {
     private void handleCancel(Trip t) {
         tripService.cancelTrip(t.getTripId());
         loadData();
+    }
+
+    @FXML
+    public void refreshTable() {
+        // 1. Get the list of trips from your partner's service
+        // Make sure 'tripService' is initialized at the top of your class!
+        var trips = tripService.getAllTrips();
+
+        // 2. Convert to ObservableList so JavaFX TableView can read it
+        javafx.collections.ObservableList<com.biyahero.model.Trip> observableTrips =
+                javafx.collections.FXCollections.observableArrayList(trips);
+
+        // 3. Set the items to the table
+        tripTable.setItems(observableTrips);
+    }
+
+    @FXML
+    private void handleOpenScheduleDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/add-trip-dialog.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Schedule New Trip");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+            refreshTable(); // Refresh the list after closing
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

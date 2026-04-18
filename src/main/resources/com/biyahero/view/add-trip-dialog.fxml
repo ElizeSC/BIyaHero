@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25;"
+      prefWidth="400" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.AddTripController">
+
+    <Label text="Schedule New Trip" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <VBox spacing="5">
+        <Label text="Select Route" styleClass="station-label"/>
+        <ComboBox fx:id="routeComboBox" maxWidth="Infinity" promptText="Choose Route..."/>
+    </VBox>
+
+    <HBox spacing="10">
+        <VBox HBox.hgrow="ALWAYS" spacing="5">
+            <Label text="Departure Date" styleClass="station-label"/>
+            <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
+        </VBox>
+        <VBox HBox.hgrow="ALWAYS" spacing="5">
+            <Label text="Time" styleClass="station-label"/>
+            <TextField fx:id="timeField" promptText="HH:mm"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="5">
+        <Label text="Assign Van" styleClass="station-label"/>
+        <ComboBox fx:id="vanComboBox" maxWidth="Infinity" promptText="Available Vans"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Assign Driver" styleClass="station-label"/>
+        <ComboBox fx:id="driverComboBox" maxWidth="Infinity" promptText="Available Drivers"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="nav-button"/>
+        <Button text="Save Trip" onAction="#handleSave" styleClass="primary-button"/>
+    </HBox>
+</VBox>

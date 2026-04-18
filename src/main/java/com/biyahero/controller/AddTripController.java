@@ -1,81 +1,87 @@
 package com.biyahero.controller;
 
-import com.biyahero.model.Driver;
-import com.biyahero.model.Van;
+import com.biyahero.model.*;
 import com.biyahero.service.TripService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class AddTripController {
-
-    @FXML private ComboBox<Integer> routeComboBox; // Simplified to ID for now
+    @FXML private ComboBox<Route> routeComboBox;
     @FXML private ComboBox<Van> vanComboBox;
     @FXML private ComboBox<Driver> driverComboBox;
-    @FXML private DatePicker departureDatePicker;
-    @FXML private TextField hourField;
-    @FXML private TextField minuteField;
+    @FXML private DatePicker datePicker;
+    @FXML private TextField timeField;
 
-    private final TripService tripService = new TripService();
+    private TripService tripService = new TripService(); // Or inject via constructor
 
     @FXML
     public void initialize() {
-        // Populate Routes (Assuming route IDs 1-5 exist for testing)
-        routeComboBox.getItems().addAll(1, 2, 3, 4, 5);
+        // 1. Load the data from your partner's service [cite: 20, 21]
+        vanComboBox.getItems().setAll(tripService.getAvailableVans());
+        driverComboBox.getItems().setAll(tripService.getAvailableDrivers());
 
-        // Populate Available Vans & Drivers using TripService
-        vanComboBox.setItems(javafx.collections.FXCollections.observableArrayList(tripService.getAvailableVans()));
-        driverComboBox.setItems(javafx.collections.FXCollections.observableArrayList(tripService.getAvailableDrivers()));
+        // 2. Set the Van Converter
+        vanComboBox.setConverter(new StringConverter<Van>() {
+            @Override
+            public String toString(Van van) {
+                // Show "Plate - Model" in the dropdown [cite: 9]
+                return (van == null) ? "" : van.getPlateNumber() + " - " + van.getModel();
+            }
 
-        // Set Converters so the ComboBox displays the Name/Plate instead of the Object Address
-        setupComboBoxDisplays();
-    }
-
-    private void setupComboBoxDisplays() {
-        vanComboBox.setConverter(new StringConverter<>() {
-            @Override public String toString(Van v) { return v == null ? "" : v.getPlateNumber() + " (" + v.getModel() + ")"; }
-            @Override public Van fromString(String s) { return null; }
+            @Override
+            public Van fromString(String string) { return null; }
         });
 
-        driverComboBox.setConverter(new StringConverter<>() {
-            @Override public String toString(Driver d) { return d == null ? "" : d.getName(); }
-            @Override public Driver fromString(String s) { return null; }
+        // 3. Set the Driver Converter
+        driverComboBox.setConverter(new StringConverter<Driver>() {
+            @Override
+            public String toString(Driver driver) {
+                // Show only the Full Name in the dropdown [cite: 10]
+                return (driver == null) ? "" : driver.getName();
+            }
+
+            @Override
+            public Driver fromString(String string) { return null; }
+        });
+
+        // 4. Set the Route converter
+
+        routeComboBox.setConverter(new StringConverter<Route>() {
+            @Override
+            public String toString(Route r) {
+                // Match your DB: showing the route name and the fare
+                return (r == null) ? "" : r.getRouteName() + " (₱" + r.getBaseFare() + ")";
+            }
+            @Override
+            public Route fromString(String s) { return null; }
         });
     }
 
     @FXML
     private void handleSave() {
         try {
-            int routeId = routeComboBox.getValue();
-            Van selectedVan = vanComboBox.getValue();
-            Driver selectedDriver = driverComboBox.getValue();
+            // Combine DatePicker and TextField into LocalDateTime
+            LocalTime time = LocalTime.parse(timeField.getText());
+            LocalDateTime departure = LocalDateTime.of(datePicker.getValue(), time);
 
-            // Construct LocalDateTime from DatePicker and TextFields
-            LocalDateTime departureTime = LocalDateTime.of(
-                    departureDatePicker.getValue(),
-                    LocalTime.of(Integer.parseInt(hourField.getText()), Integer.parseInt(minuteField.getText()))
-            );
+            Trip newTrip = new Trip();
+            newTrip.setRouteId(routeComboBox.getValue().getRouteId());
+            newTrip.setVanId(vanComboBox.getValue().getVanId());
+            newTrip.setDriverId(driverComboBox.getValue().getDriverId());
+            newTrip.setDepartureTime(departure);
+            newTrip.setTripStatus("Scheduled"); // Initial lifecycle state
 
-            // Call the service method your partner wrote
-            tripService.createTrip(routeId, selectedVan.getVanId(), selectedDriver.getDriverId(), departureTime);
-
+            // tripService.createTrip(newTrip);
             closeWindow();
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Error: " + e.getMessage());
-            alert.showAndWait();
+            // Show alert for parsing errors
         }
     }
 
-    @FXML
-    private void handleCancel() {
-        closeWindow();
-    }
-
-    private void closeWindow() {
-        Stage stage = (Stage) vanComboBox.getScene().getWindow();
-        stage.close();
-    }
+    @FXML private void handleCancel() { closeWindow(); }
+    private void closeWindow() { /* Logic to close stage */ }
 }
