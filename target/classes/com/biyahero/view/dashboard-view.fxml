@@ -63,9 +63,11 @@
                 <Label text="Tacloban" style="-fx-font-size: 10; -fx-text-fill: #7E869E;" />
             </VBox>
 
-            <VBox spacing="10" style="-fx-padding: 0 0 0 40;">
-                <Button text="Update Location" styleClass="button" prefWidth="140" />
-                <Button text="Update Occupancy" styleClass="button" prefWidth="140" />
+            <VBox styleClass="button-container" alignment="CENTER">
+                <Button text="Update Location"
+                        styleClass="trip-action-btn, btn-location" />
+                <Button text="Update Occupancy"
+                        styleClass="trip-action-btn, btn-occupancy" />
             </VBox>
         </HBox>
     </VBox>

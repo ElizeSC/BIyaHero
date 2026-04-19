@@ -31,15 +31,16 @@
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="15">
-        <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" />
-        <ComboBox fx:id="infoComboBox" promptText="Display Van Information" prefWidth="200" />
+        <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" styleClass="text-field" />
+        <ComboBox fx:id="infoComboBox" promptText="Display Van Information" prefWidth="200" styleClass="combo-box" />
+
         <Region HBox.hgrow="ALWAYS" />
         <Button fx:id="btnAddEntry" styleClass="primary-button" text="+ Add Van" onAction="#handleOpenAddModal"/>
     </HBox>
 
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label styleClass="sub-header" text="Sort by:" />
-        <ComboBox fx:id="sortComboBox" promptText="Van ID" prefWidth="120" />
+        <ComboBox fx:id="sortComboBox" promptText="Van ID" prefWidth="120" styleClass="combo-box" />
     </HBox>
 
     <StackPane VBox.vgrow="ALWAYS">
