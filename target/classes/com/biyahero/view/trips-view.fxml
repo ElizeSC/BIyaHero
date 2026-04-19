@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<VBox spacing="20.0" styleClass="main-container" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.TripController">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <VBox HBox.hgrow="ALWAYS">
+            <Label styleClass="header-title" text="Trip Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label styleClass="sub-header" text="Manage schedules and dispatch drivers." textFill="#636e72" />
+        </VBox>
+
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <TextField fx:id="searchField" prefWidth="250.0" promptText="Search by Trip ID or Status..." styleClass="search-field" />
+            <Button onAction="#handleAddTrip" styleClass="primary-button" text="+ Schedule Trip"
+                    style="-fx-background-color: #4834d4; -fx-text-fill: white; -fx-padding: 8 15; -fx-cursor: hand;"/>
+        </HBox>
+    </HBox>
+
+    <TableView fx:id="tripTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+        <columns>
+            <TableColumn fx:id="colTripId" text="TRIP ID" prefWidth="80" />
+            <TableColumn fx:id="colRoute" text="ROUTE" prefWidth="150" />
+            <TableColumn fx:id="colDeparture" text="DEPARTURE" prefWidth="150" />
+            <TableColumn fx:id="colArrival" text="ARRIVAL" prefWidth="150" />
+            <TableColumn fx:id="colStatus" text="STATUS" prefWidth="100" />
+            <TableColumn fx:id="colActions" text="DISPATCH ACTIONS" prefWidth="250" />
+        </columns>
+    </TableView>
+
+</VBox>

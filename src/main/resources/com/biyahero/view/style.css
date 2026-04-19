@@ -12,6 +12,11 @@
     -fx-weight-black: 900;
 }
 
+.root-container {
+    /* Soft gradient from top-left to bottom-right */
+    -fx-background-color: linear-gradient(to bottom right, #F8FAFC, #EFF6FF);
+}
+
 /* 2. Hardcoded Textfield to stop the Warnings/Crashes */
 .text-field {
     -fx-background-color: white; /* White fields pop better on soft blue bg */
@@ -216,11 +221,12 @@
 }
 
 .progress-dot, .progress-dot-active {
-    -fx-min-width: 20px;
-    -fx-max-width: 20px;
-    -fx-min-height: 20px;
-    -fx-max-height: 20px;
-    -fx-background-radius: 50; /* Make it a perfect circle */
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-height: 24px;
+    -fx-background-radius: 100; /* Forces circle shape */
+    -fx-border-radius: 100;
 }
 
 .progress-dot {
@@ -231,6 +237,7 @@
 
 .progress-dot-active {
     -fx-background-color: #0A0D2C; /* Dark Navy */
+    -fx-border-color: #0A0D2C;
 }
 
 /* The line connecting the dots */
@@ -293,4 +300,241 @@
 
 .tab-button-inactive:hover {
     -fx-background-color: #f1f2f6; /* Subtle light grey on hover */
+}
+
+/* The Card Container */
+.trip-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #E2E8F0; /* Light gray border */
+    -fx-border-radius: 12;
+    -fx-padding: 20;
+    /* This adds the 'depth' you're missing */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 4);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover Effect */
+.trip-card:hover {
+    -fx-border-color: #4F46E5; /* BiyaHero Purple/Blue */
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.15), 15, 0, 0, 6);
+    -fx-translate-y: -2; /* Subtle lift */
+}
+
+/* Base Style for Trip Actions */
+.btn-action {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-border-color: #CBD5E1;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.btn-action:hover {
+    -fx-background-color: #E2E8F0;
+    -fx-text-fill: #1E293B;
+}
+
+/* Specific Primary Action (Update Location) */
+.btn-location {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #4F46E5;
+    -fx-border-color: #C7D2FE;
+}
+
+.btn-location:hover {
+    -fx-background-color: #4F46E5;
+    -fx-text-fill: white;
+}
+
+/* Container for the stacked buttons */
+.button-container {
+    -fx-alignment: CENTER;
+    -fx-spacing: 10;
+    -fx-padding: 0 0 0 20; /* Add some space between the line and buttons */
+}
+
+/* Base button style */
+.trip-action-btn {
+    -fx-pref-width: 140; /* Fixed width so they line up perfectly */
+    -fx-pref-height: 35;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease;
+}
+
+/* Blue/Purple Secondary Style (Update Location) */
+.btn-location {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #4F46E5;
+    -fx-border-color: #C7D2FE;
+    -fx-border-radius: 8;
+}
+
+.btn-location:hover {
+    -fx-background-color: #4F46E5;
+    -fx-text-fill: white;
+}
+
+/* Gray Subtle Style (Update Occupancy) */
+.btn-occupancy {
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #64748B;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 8;
+}
+
+.btn-occupancy:hover {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #1E293B;
+    -fx-border-color: #CBD5E1;
+}
+
+/* Base Style for all stops (The Circle) */
+.stop-marker {
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-width: 3px;
+    -fx-background-color: white; /* Default background */
+    -fx-border-color: #E2E8F0;    /* Default "Upcoming" border */
+}
+
+/* The "Reached" State (The responsive part) */
+.stop-marker.reached {
+    -fx-background-color: #1E293B; /* Filled color */
+    -fx-border-color: #1E293B;
+}
+
+/* The connecting line between stops */
+.progress-connector {
+    -fx-pref-height: 4px;
+    -fx-background-color: #E2E8F0; /* Default gray line */
+}
+
+.progress-connector.active {
+    -fx-background-color: #1E293B; /* Active dark line */
+}
+
+/* Container for the Edit/Delete buttons in the table */
+.action-btn-container {
+    -fx-alignment: CENTER;
+    -fx-spacing: 10;
+}
+
+/* Base style for Edit/Delete */
+.btn-table {
+    -fx-background-radius: 8;
+    -fx-padding: 5 15;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.btn-table-edit {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #C7D2FE;
+    -fx-border-radius: 8;
+}
+
+.btn-table-edit:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+.btn-table-delete {
+    -fx-background-color: #FFF1F2;
+    -fx-text-fill: #E11D48;
+    -fx-border-color: #FECDD3;
+    -fx-border-radius: 8;
+}
+
+.btn-table-delete:hover {
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
+}
+
+/* Styling the Search Field and ComboBoxes */
+.text-field, .combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E0E4EC;
+    -fx-border-radius: 10;
+    -fx-padding: 5 12;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1A1A1A;
+    -fx-cursor: hand;
+}
+
+/* Specific fix for ComboBox arrow and background */
+.combo-box {
+    -fx-background-insets: 0;
+}
+
+.combo-box .cell {
+    -fx-text-fill: #1A1A1A;
+}
+
+/* Hover & Focus states */
+.text-field:focused, .combo-box:hover, .combo-box:focused {
+    -fx-border-color: #3E49BB;
+    -fx-effect: dropshadow(three-pass-box, rgba(62, 73, 187, 0.05), 10, 0, 0, 0);
+}
+
+/* Style the popup list inside the ComboBox */
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E0E4EC;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.combo-box > .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box > .arrow-button > .arrow {
+    -fx-background-color: #7E869E; /* Muted gray arrow */
+}
+
+
+/* Base style for table buttons */
+.btn-manage {
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-width: 1;
+    -fx-padding: 4 10;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+/* Edit: BiyaHero Blue */
+.btn-edit-row {
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #3E49BB;
+}
+
+.btn-edit-row:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+/* Delete: Danger Red */
+.btn-delete-row {
+    -fx-text-fill: #E11D48;
+    -fx-border-color: #E11D48;
+}
+
+.btn-delete-row:hover {
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
 }

@@ -16,7 +16,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class VanDriverController {
+public class VanDriverController  {
 
     // Van Table
     @FXML private TableView<Van> vanTable;
@@ -33,6 +33,7 @@ public class VanDriverController {
     @FXML private TextField searchField;
     @FXML private Button btnVans, btnDrivers, btnAddEntry;
     @FXML private ComboBox<String> infoComboBox, sortComboBox;
+
 
     private final VanService vanService = new VanService();
     private final DriverService driverService = new DriverService();
@@ -70,6 +71,12 @@ public class VanDriverController {
             private final Button delete = new Button("Delete");
             private final HBox box = new HBox(10, edit, delete);
             {
+                // --- THE STYLING LINES ---
+                edit.getStyleClass().addAll("btn-manage", "btn-edit-row");
+                delete.getStyleClass().addAll("btn-manage", "btn-delete-row");
+                box.setAlignment(javafx.geometry.Pos.CENTER);
+                // -------------------------
+
                 edit.setOnAction(e -> openModal("/com/biyahero/view/add-van-dialog.fxml", "Edit Van", getTableView().getItems().get(getIndex())));
                 delete.setOnAction(e -> {
                     vanService.deleteVan(getTableView().getItems().get(getIndex()).getVanId());
@@ -88,6 +95,12 @@ public class VanDriverController {
             private final Button delete = new Button("Delete");
             private final HBox box = new HBox(10, edit, delete);
             {
+                // --- THE STYLING LINES ---
+                edit.getStyleClass().addAll("btn-manage", "btn-edit-row");
+                delete.getStyleClass().addAll("btn-manage", "btn-delete-row");
+                box.setAlignment(javafx.geometry.Pos.CENTER);
+                // -------------------------
+
                 edit.setOnAction(e -> openModal("/com/biyahero/view/add-driver-dialog.fxml", "Edit Driver", getTableView().getItems().get(getIndex())));
                 delete.setOnAction(e -> {
                     driverService.deleteDriver(getTableView().getItems().get(getIndex()).getDriverId());
