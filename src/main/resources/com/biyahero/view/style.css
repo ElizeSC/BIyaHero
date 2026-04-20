@@ -1,3 +1,5 @@
+
+
 /* 1. Global Variables */
 .root {
     -fx-font-family: "Inter ExtraBold", "Inter Black", "Inter";
@@ -537,4 +539,175 @@
 .btn-delete-row:hover {
     -fx-background-color: #E11D48;
     -fx-text-fill: white;
+}
+
+.reports-table {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #f1f2f6;
+    -fx-border-width: 2;
+    -fx-padding: 0;
+}
+
+.reports-table .column-header-background {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.reports-table .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 45;
+}
+
+.reports-table .column-header .label {
+    -fx-text-fill: #7f8c8d;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.reports-table .table-row-cell {
+    -fx-cell-size: 40;
+    -fx-border-color: transparent transparent #f1f2f6 transparent;
+}
+
+.reports-table .table-row-cell:filled:selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+}
+
+/* Button Styling - Matching your Main UI */
+.btn-primary {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-transition: 0.3s;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #2980b9;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #2c3e50;
+    -fx-border-color: #dcdde1;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #f5f6fa;
+    -fx-border-color: #2c3e50;
+}
+
+/* Summary Cards Look */
+.summary-container {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 5);
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #dcdde1;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.2), 5, 0, 0, 0);
+}
+
+/* Filter Card Outline */
+.filter-card {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-padding: 25;
+    /* Subtle shadow to make it pop from the background */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 4);
+}
+
+.filter-card .label {
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+}
+
+/* Rounded Stats Cards */
+.stat-card {
+    -fx-background-color: white;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 12;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 8, 0, 0, 2);
+}
+
+.stat-card .label {
+    -fx-text-fill: #64748b; /* Muted label text */
+}
+
+/* The Green Generate Button from your mockup */
+.btn-generate {
+    -fx-background-color: white;
+    -fx-border-color: #22c55e;
+    -fx-text-fill: #16a34a;
+    -fx-border-radius: 20;
+    -fx-padding: 8 20;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-generate:hover {
+    -fx-background-color: #f0fdf4;
+    -fx-border-color: #15803d;
+}
+
+/* Modernizing the Table Rows to look like Cards */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-background-insets: 6; /* Creates the card separation */
+    -fx-background-radius: 10;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 12;
+    -fx-text-fill: #1e293b;
+}
+
+.modern-table .table-row-cell:filled:hover {
+    -fx-border-color: #3498db;
+    -fx-effect: dropshadow(three-pass-box, rgba(52, 152, 219, 0.1), 5, 0, 0, 0);
+}
+
+.modern-table .table-row-cell .text {
+    -fx-fill: white;
+}
+
+/* Form Controls (DatePickers/TextFields) */
+.date-picker, .modern-text-field, .modern-combo {
+    -fx-background-color: white;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.date-picker:focused, .modern-text-field:focused {
+    -fx-border-color: #3498db;
 }
