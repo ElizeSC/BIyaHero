@@ -11,21 +11,6 @@ import java.util.List;
 public class RouteDAOImpl implements RouteDAO {
 
     @Override
-    public void addRoute(Route route) {
-        String sql = "INSERT INTO route (route_name, base_fare) VALUES (?, ?)";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, route.getRouteName());
-            stmt.setDouble(2, route.getBaseFare());
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.err.println("Error adding route: " + e.getMessage());
-        }
-    }
-
-    @Override
     public Route getRouteById(int id) {
         String sql = "SELECT * FROM route WHERE route_id = ?";
         try (Connection conn = DBUtil.getConnection();

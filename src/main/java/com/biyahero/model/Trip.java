@@ -96,7 +96,7 @@ public class Trip {
     }
 
     public String getFormattedId() { 
-        return String.format("TRP%03d", tripId); 
+        return String.format("TRP%04d", tripId); 
     }
 
     @Override
