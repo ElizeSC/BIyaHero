@@ -11,21 +11,6 @@ import java.util.List;
 public class StopDAOImpl implements StopDAO {
 
     @Override
-    public void addStop(Stop stop) {
-        String sql = "INSERT INTO stop (stop_name, city_province) VALUES (?, ?)";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, stop.getStopName());
-            stmt.setString(2, stop.getCityProvince());
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.err.println("Error adding stop: " + e.getMessage());
-        }
-    }
-
-    @Override
     public Stop getStopById(int id) {
         String sql = "SELECT * FROM stop WHERE stop_id = ?";
         try (Connection conn = DBUtil.getConnection();

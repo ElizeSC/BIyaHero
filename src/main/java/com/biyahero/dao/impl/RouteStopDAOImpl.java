@@ -11,23 +11,6 @@ import java.util.List;
 public class RouteStopDAOImpl implements RouteStopDAO {
 
     @Override
-    public void addStopToRoute(RouteStop routeStop) {
-        String sql = "INSERT INTO routestop (route_id, stop_id, stop_order, dist_from_prev) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, routeStop.getRouteId());
-            stmt.setInt(2, routeStop.getStopId());
-            stmt.setInt(3, routeStop.getStopOrder());
-            stmt.setDouble(4, routeStop.getDistanceFromPrev());
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            System.err.println("Error adding stop to route: " + e.getMessage());
-        }
-    }
-
-    @Override
     public List<RouteStop> getStopsForRoute(int routeId) {
         String sql = "SELECT * FROM routestop WHERE route_id = ? ORDER BY stop_order ASC";
         List<RouteStop> stops = new ArrayList<>();

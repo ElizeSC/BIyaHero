@@ -5,8 +5,6 @@ import com.biyahero.model.Passenger;
 import com.biyahero.util.DBUtil;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PassengerDAOImpl implements PassengerDAO {
 
@@ -35,26 +33,23 @@ public class PassengerDAOImpl implements PassengerDAO {
     }
 
     @Override
-    public List<Passenger> getPassengersByBooking(int bookingId) {
+    public Passenger getPassengerByBookingId(int bookingId) {
         String sql = """
-                SELECT p.* FROM passenger p
-                JOIN booking b ON p.passenger_id = b.passenger_id
-                WHERE b.booking_id = ?
-                """;
-        List<Passenger> passengers = new ArrayList<>();
+            SELECT p.* FROM passenger p
+            JOIN booking b ON p.passenger_id = b.passenger_id
+            WHERE b.booking_id = ?
+            """;
         try (Connection conn = DBUtil.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, bookingId);
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                passengers.add(mapRow(rs));
+            if (rs.next()) {
+                return mapRow(rs);
             }
-
         } catch (SQLException e) {
-            System.err.println("Error fetching passengers for booking: " + e.getMessage());
+            System.err.println("Error fetching passenger for booking: " + e.getMessage());
         }
-        return passengers;
+        return null;
     }
 
     // converts a raw DB row from ResultSet into a usable Passenger object
