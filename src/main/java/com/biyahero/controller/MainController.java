@@ -35,6 +35,13 @@ public class MainController {
         loadView("/com/biyahero/view/vans-view.fxml");
     }
 
+
+    @FXML
+    private void showReportsView() {
+        updateActiveTab(btnReports); // Highlights the Reports button
+        loadView("/com/biyahero/view/reports-view.fxml"); // Uses your existing helper
+    }
+
     private void loadView(String fxmlPath) {
         try {
             Node node = FXMLLoader.load(getClass().getResource(fxmlPath));
