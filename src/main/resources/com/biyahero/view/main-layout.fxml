@@ -33,7 +33,7 @@
                 <Button fx:id="btnDashboard" onAction="#showDashboard" text="Dashboard" styleClass="nav-button, nav-button-active" />
                 <Button fx:id="btnVans" onAction="#showVans" text="Vans &amp; Drivers" styleClass="nav-button" />
                 <Button fx:id="btnScheduled" onAction="#showScheduledTrips" text="Scheduled" styleClass="nav-button" />
-                <Button fx:id="btnReports" text="Reports" styleClass="nav-button" />
+                <Button fx:id="btnReports" onAction="#showReportsView"  text="Reports" styleClass="nav-button" />
             </HBox>
 
             <Region HBox.hgrow="ALWAYS" />

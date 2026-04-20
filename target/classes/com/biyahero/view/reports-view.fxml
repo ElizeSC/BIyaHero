@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.ReportsController">
+
+    <top>
+        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <Label text="System Reports &amp; Data Export" textFill="#2c3e50">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <Label text="From:" />
+                        <DatePicker fx:id="startDatePicker" prefWidth="150.0" />
+                        <Label text="To:" />
+                        <DatePicker fx:id="endDatePicker" prefWidth="150.0" />
+                        <Separator orientation="VERTICAL" />
+                        <Button fx:id="filterButton" mnemonicParsing="false" onAction="#handleFilter" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Apply Filter" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="reportsTable" prefHeight="400.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colTripId" prefWidth="100.0" text="Trip ID" />
+                <TableColumn fx:id="colDate" prefWidth="120.0" text="Date" />
+                <TableColumn fx:id="colRoute" prefWidth="180.0" text="Route" />
+                <TableColumn fx:id="colDriver" prefWidth="150.0" text="Driver" />
+                <TableColumn fx:id="colOccupancy" prefWidth="100.0" text="Occupancy" />
+                <TableColumn fx:id="colRevenue" prefWidth="100.0" text="Revenue" />
+            </columns>
+            <BorderPane.margin>
+                <Insets left="20.0" />
+            </BorderPane.margin>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox prefWidth="220.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets left="20.0" right="20.0" />
+            </padding>
+            <children>
+                <Label text="Export Actions" textFill="#7f8c8d">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="exportCsvBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportToCSV" prefHeight="40.0" text="Export to CSV (.csv)" />
+                <Button fx:id="exportJsonBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportToJSON" prefHeight="40.0" text="Export to JSON (.json)" />
+                <Button fx:id="backupSqlBtn" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#exportToSQL" prefHeight="40.0" style="-fx-border-color: #e67e22; -fx-background-color: transparent; -fx-text-fill: #e67e22;" text="Full System Backup (SQL)" />
+
+                <Separator prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                    </VBox.margin>
+                </Separator>
+
+                <Label text="Summary" textFill="#7f8c8d">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="totalTripsLabel" text="Total Trips: 0" />
+                <Label fx:id="totalRevenueLabel" text="Total Revenue: ₱0.00">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </right>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            </padding>
+            <children>
+                <Label text="BiyaHero Admin Console v1.0" textFill="#bdc3c7" />
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
