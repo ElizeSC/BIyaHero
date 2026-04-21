@@ -1,7 +1,6 @@
 package com.biyahero.controller;
 
 import com.biyahero.model.Trip;
-import com.biyahero.model.Route;
 import com.biyahero.service.TripService;
 import com.biyahero.service.RouteService;
 import javafx.collections.FXCollections;
@@ -16,14 +15,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TripController {
 
     @FXML private TableView<Trip> tripTable;
-    @FXML private TableColumn<Trip, String> colTripId;
+    @FXML private TableColumn<Trip, Integer> colTripId; // Changed to Integer
     @FXML private TableColumn<Trip, String> colRoute;
     @FXML private TableColumn<Trip, LocalDateTime> colDeparture;
     @FXML private TableColumn<Trip, LocalDateTime> colArrival;
@@ -41,17 +42,19 @@ public class TripController {
         refreshTable();
         setupSearch();
     }
+
     private void setupTableColumns() {
-        // 1. MUST match Trip{tripId=...}
+        // 1. Basic Mappings
         colTripId.setCellValueFactory(new PropertyValueFactory<>("tripId"));
-
-        // 2. MUST match Trip{tripStatus=...}
         colStatus.setCellValueFactory(new PropertyValueFactory<>("tripStatus"));
-
-        // 3. MUST match Trip{departureTime=...}
         colDeparture.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        colArrival.setCellValueFactory(new PropertyValueFactory<>("arrivalDt"));
 
-        // 4. Custom Route Column (using routeId from the log)
+        // 2. Date Formatting for Departure and Arrival
+        colDeparture.setCellFactory(column -> createDateCell());
+        colArrival.setCellFactory(column -> createDateCell());
+
+        // 3. Custom Route Name Mapping
         colRoute.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
@@ -59,17 +62,12 @@ public class TripController {
                 if (empty || getTableRow() == null || getTableRow().getItem() == null) {
                     setText(null);
                 } else {
-                    Trip trip = (Trip) getTableRow().getItem();
-                    // This pulls the name based on the routeId we saw in your log
+                    Trip trip = getTableRow().getItem();
                     var route = routeService.getRouteById(trip.getRouteId());
-                    setText(route != null ? route.getRouteName() : "Route " + trip.getRouteId());
+                    setText(route != null ? route.getRouteName() : "Route #" + trip.getRouteId());
                 }
             }
         });
-
-        // 5. Arrival Column (Check if your Trip model has getArrivalDt or getArrivalTime)
-        // If it's missing from your Trip{...} toString, this might still be blank
-        colArrival.setCellValueFactory(new PropertyValueFactory<>("arrivalDt"));
 
         setupActionButtons();
     }
@@ -79,29 +77,40 @@ public class TripController {
             private final Button startBtn = new Button("Depart");
             private final Button completeBtn = new Button("Arrive");
             private final Button cancelBtn = new Button("Cancel");
-            private final HBox box = new HBox(8, startBtn, completeBtn, cancelBtn);
+            private final Button bookBtn = new Button("Book");
+            private final HBox box = new HBox(10, bookBtn, startBtn, completeBtn, cancelBtn);
 
             {
                 box.setAlignment(javafx.geometry.Pos.CENTER);
-                startBtn.getStyleClass().add("action-button-start");
-                completeBtn.getStyleClass().add("action-button-complete");
-                cancelBtn.getStyleClass().add("action-button-delete");
 
+                // Styling
+                startBtn.getStyleClass().add("btn-table-edit"); // Using your CSS classes
+                completeBtn.getStyleClass().add("btn-table-edit");
+                cancelBtn.getStyleClass().add("btn-table-delete");
+                bookBtn.getStyleClass().add("primary-button");
+
+                // Handlers
                 startBtn.setOnAction(e -> handleStart(getTableView().getItems().get(getIndex())));
                 completeBtn.setOnAction(e -> handleComplete(getTableView().getItems().get(getIndex())));
                 cancelBtn.setOnAction(e -> handleCancel(getTableView().getItems().get(getIndex())));
+                bookBtn.setOnAction(e -> handleBooking(getTableView().getItems().get(getIndex())));
             }
 
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
+                if (empty || getTableRow().getItem() == null) {
                     setGraphic(null);
                 } else {
-                    Trip trip = getTableView().getItems().get(getIndex());
-                    startBtn.setDisable(!"Scheduled".equals(trip.getTripStatus()));
-                    completeBtn.setDisable(!"En Route".equals(trip.getTripStatus()));
-                    cancelBtn.setDisable("Completed".equals(trip.getTripStatus()) || "Cancelled".equals(trip.getTripStatus()));
+                    Trip trip = getTableRow().getItem();
+                    String status = trip.getTripStatus();
+
+                    // LOGIC: Enable/Disable based on Status
+                    bookBtn.setDisable(!("Scheduled".equals(status) || "En Route".equals(status)));
+                    startBtn.setDisable(!"Scheduled".equals(status));
+                    completeBtn.setDisable(!"En Route".equals(status));
+                    cancelBtn.setDisable("Completed".equals(status) || "Cancelled".equals(status));
+
                     setGraphic(box);
                 }
             }
@@ -110,8 +119,15 @@ public class TripController {
 
     @FXML
     public void refreshTable() {
-        List<Trip> trips = tripService.getAllTrips();
-        tripTable.setItems(FXCollections.observableArrayList(trips));
+        List<Trip> allTrips = tripService.getAllTrips();
+
+        // FILTER: Only show "Scheduled" in this view.
+        // "En Route" trips will move to your Dashboard.
+        List<Trip> scheduledOnly = allTrips.stream()
+                .filter(t -> "Scheduled".equals(t.getTripStatus()))
+                .collect(Collectors.toList());
+
+        tripTable.setItems(FXCollections.observableArrayList(scheduledOnly));
     }
 
     private void setupSearch() {
@@ -119,21 +135,45 @@ public class TripController {
             if (newVal == null || newVal.trim().isEmpty()) {
                 refreshTable();
             } else {
-                // FIXED: Changed searchTrip to searchScheduledTrips
-                tripTable.setItems(FXCollections.observableArrayList(tripService.searchScheduledTrips(newVal)));
+                // Filters search results to keep only Scheduled trips
+                List<Trip> results = tripService.searchScheduledTrips(newVal).stream()
+                        .filter(t -> "Scheduled".equals(t.getTripStatus()))
+                        .collect(Collectors.toList());
+                tripTable.setItems(FXCollections.observableArrayList(results));
             }
         });
     }
 
-    // FXML calls this from your button: onAction="#handleAddTrip"
     @FXML
     private void handleAddTrip() {
+        openDialog("/com/biyahero/view/add-trip-dialog.fxml", "Schedule New Trip", null);
+    }
+
+    private void handleBooking(Trip trip) {
+        openDialog("/com/biyahero/view/add-booking-dialog.fxml", "New Booking - Trip #" + trip.getTripId(), trip);
+    }
+
+    // Helper to open windows and avoid "Location not set" repetition
+    private void openDialog(String fxmlPath, String title, Trip tripData) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/add-trip-dialog.fxml"));
+            URL location = getClass().getResource(fxmlPath);
+            if (location == null) {
+                System.err.println("FXML File not found at: " + fxmlPath);
+                return;
+            }
+
+            FXMLLoader loader = new FXMLLoader(location);
             Parent root = loader.load();
+
+            // Pass data to controller if it's a booking
+            if (tripData != null && loader.getController() instanceof AddBookingController) {
+                AddBookingController controller = loader.getController();
+                controller.setTripData(tripData);
+            }
+
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Schedule New Trip");
+            stage.setTitle(title);
             stage.setScene(new Scene(root));
             stage.showAndWait();
             refreshTable();
@@ -144,11 +184,10 @@ public class TripController {
 
     private void handleStart(Trip t) {
         tripService.startTrip(t.getTripId());
-        refreshTable();
+        refreshTable(); // Will cause trip to disappear from this view and move to dashboard
     }
 
     private void handleComplete(Trip t) {
-        // Find the last stop for the route to trigger the completion status
         var stops = routeService.getRouteStops(t.getRouteId());
         if (!stops.isEmpty()) {
             int lastStopId = stops.get(stops.size() - 1).getStopId();
@@ -167,7 +206,11 @@ public class TripController {
             @Override
             protected void updateItem(LocalDateTime item, boolean empty) {
                 super.updateItem(item, empty);
-                setText(empty || item == null ? "" : formatter.format(item));
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(item));
+                }
             }
         };
     }
