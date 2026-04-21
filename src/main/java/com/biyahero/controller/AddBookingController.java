@@ -90,4 +90,11 @@ public class AddBookingController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    public void setSeatNumber(int seatNumber) {
+        if (seatNumberField != null) {
+            seatNumberField.setText(String.valueOf(seatNumber));
+            seatNumberField.setEditable(false); // User can't change it now
+        }
+    }
 }

@@ -149,8 +149,23 @@ public class TripController {
         openDialog("/com/biyahero/view/add-trip-dialog.fxml", "Schedule New Trip", null);
     }
 
+    // Inside TripController.java
     private void handleBooking(Trip trip) {
-        openDialog("/com/biyahero/view/add-booking-dialog.fxml", "New Booking - Trip #" + trip.getTripId(), trip);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/seat-plan-dialog.fxml"));
+            Parent root = loader.load();
+
+            SeatPlanController controller = loader.getController();
+            controller.setTripData(trip);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Select Seat - Trip #" + trip.getTripId());
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Helper to open windows and avoid "Location not set" repetition
