@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="20" styleClass="main-container" stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.AddBookingController"
+      prefWidth="450">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="5">
+        <Label text="New Booking" styleClass="header-title" style="-fx-font-size: 24;"/>
+        <Label text="Enter passenger and trip details below." styleClass="sub-header"/>
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50"/>
+            <ColumnConstraints percentWidth="50"/>
+        </columnConstraints>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" spacing="5">
+            <Label text="Passenger Name" styleClass="sub-header"/>
+            <TextField fx:id="passengerNameField" promptText="Full Name"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="5">
+            <Label text="Contact Number" styleClass="sub-header"/>
+            <TextField fx:id="contactField" promptText="0917..."/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" spacing="5">
+            <Label text="Address" styleClass="sub-header"/>
+            <TextField fx:id="addressField" promptText="City/Province"/>
+        </VBox>
+
+        <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="5">
+            <Label text="Seat Number (1-15)" styleClass="sub-header"/>
+            <TextField fx:id="seatNumberField" promptText="e.g. 5"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
+            <Label text="Fare (PHP)" styleClass="sub-header"/>
+            <TextField fx:id="fareField" promptText="500.00"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="5">
+            <Label text="Pickup Stop ID" styleClass="sub-header"/>
+            <TextField fx:id="pickupStopField" promptText="ID Number"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="5">
+            <Label text="Dropoff Stop ID" styleClass="sub-header"/>
+            <TextField fx:id="dropoffStopField" promptText="ID Number"/>
+        </VBox>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-secondary"/>
+        <Button text="Confirm Booking" onAction="#handleSaveBooking" styleClass="primary-button"/>
+    </HBox>
+
+</VBox>

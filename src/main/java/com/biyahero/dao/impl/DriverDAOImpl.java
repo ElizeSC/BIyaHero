@@ -82,14 +82,16 @@ public class DriverDAOImpl implements DriverDAO {
 
     @Override
     public void updateDriver(Driver driver) {
+        // There are 5 question marks here
         String sql = "UPDATE driver SET license_no = ?, name = ?, contact_number = ?, driver_status = ? WHERE driver_id = ?";
         try (Connection conn = DBUtil.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, driver.getLicenseNo());
             stmt.setString(2, driver.getName());
             stmt.setString(3, driver.getContactNumber());
-            stmt.setInt(4, driver.getDriverId());
+            stmt.setString(4, driver.getDriverStatus()); // FIXED: This was missing
+            stmt.setInt(5, driver.getDriverId());        // FIXED: This is now correctly index 5
             stmt.executeUpdate();
 
         } catch (SQLException e) {
