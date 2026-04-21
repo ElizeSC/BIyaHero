@@ -697,7 +697,12 @@
 }
 
 .modern-table .table-row-cell .text {
-    -fx-fill: white;
+    -fx-fill: #1A1A1A; /* Dark gray/black for visibility */
+}
+
+/* Also ensure the general label text in the row is visible */
+.table-row-cell .label {
+    -fx-text-fill: #1A1A1A;
 }
 
 /* Form Controls (DatePickers/TextFields) */
