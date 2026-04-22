@@ -716,3 +716,21 @@
 .date-picker:focused, .modern-text-field:focused {
     -fx-border-color: #3498db;
 }
+
+/* Seat Styling */
+.seat-button-available {
+    -fx-background-color: #27AE60; /* Emerald Green */
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.seat-button-occupied {
+    -fx-background-color: #F1C40F; /* Sunflower Yellow */
+    -fx-background-radius: 8;
+}
+
+.seat-button-available:hover {
+    -fx-background-color: #2ECC71;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}

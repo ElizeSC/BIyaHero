@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" styleClass="main-container" stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.SeatPlanController"
+      prefWidth="350">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="5" alignment="CENTER">
+        <Label text="Select a Seat" styleClass="header-title" style="-fx-font-size: 22;"/>
+        <Label text="Choose an available seat (Green) to book." styleClass="sub-header"/>
+    </VBox>
+
+    <StackPane style="-fx-background-color: #F4F7FA; -fx-background-radius: 15; -fx-padding: 20;">
+        <GridPane fx:id="seatGrid" hgap="15" vgap="15" alignment="CENTER">
+        </GridPane>
+    </StackPane>
+
+    <HBox spacing="20" alignment="CENTER">
+        <HBox spacing="5" alignment="CENTER">
+            <Region style="-fx-background-color: #2ECC71; -fx-pref-width: 15; -fx-pref-height: 15; -fx-background-radius: 3;"/>
+            <Label text="Available" style="-fx-font-size: 12;"/>
+        </HBox>
+        <HBox spacing="5" alignment="CENTER">
+            <Region style="-fx-background-color: #F1C40F; -fx-pref-width: 15; -fx-pref-height: 15; -fx-background-radius: 3;"/>
+            <Label text="Booked" style="-fx-font-size: 12;"/>
+        </HBox>
+    </HBox>
+
+    <HBox alignment="CENTER">
+        <Button text="Close" onAction="#handleClose" styleClass="btn-secondary" prefWidth="100"/>
+    </HBox>
+</VBox>
