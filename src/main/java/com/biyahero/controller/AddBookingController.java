@@ -1,86 +1,148 @@
 package com.biyahero.controller;
 
+import com.biyahero.model.Booking;
+import com.biyahero.model.RouteStop;
+import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
 import com.biyahero.service.BookingService;
+import com.biyahero.service.RouteService;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class AddBookingController {
 
-    // FXML IDs: Ensure these match your add-booking-dialog.fxml exactly
     @FXML private TextField passengerNameField;
     @FXML private TextField contactField;
     @FXML private TextField addressField;
     @FXML private TextField seatNumberField;
-    @FXML private TextField pickupStopField;
-    @FXML private TextField dropoffStopField;
+    @FXML private ComboBox<String> pickupStopCombo;
+    @FXML private ComboBox<String> dropoffStopCombo;
     @FXML private TextField fareField;
 
     private final BookingService bookingService = new BookingService();
+    private final RouteService routeService = new RouteService();
     private Trip selectedTrip;
 
-    /**
-     * Called by TripController when the 'Book' button is clicked.
-     */
+    // Change this to RouteStop to match what your service returns
+    private List<RouteStop> routeStops;
+
     public void setTripData(Trip trip) {
         this.selectedTrip = trip;
-        // Optional: Pre-fill a default fare if needed
-        if (fareField != null) fareField.setText("0.00");
+        System.out.println("DEBUG: Opening booking for Trip ID: " + trip.getTripId() + " (Route: " + trip.getRouteId() + ")");
+
+        try {
+            // 1. Get the RouteStops
+            List<com.biyahero.model.RouteStop> routeStopLinks = routeService.getRouteStops(trip.getRouteId());
+
+            if (routeStopLinks == null || routeStopLinks.isEmpty()) {
+                System.out.println("DEBUG ERROR: No RouteStops found for Route ID " + trip.getRouteId());
+                return;
+            }
+
+            System.out.println("DEBUG: Found " + routeStopLinks.size() + " route stops.");
+
+            // 2. Fetch the actual names
+            List<String> stopNames = routeStopLinks.stream()
+                    .map(rs -> {
+                        var stop = routeService.getStopById(rs.getStopId());
+                        if (stop == null) {
+                            System.out.println("DEBUG WARNING: Stop not found for ID " + rs.getStopId());
+                            return "Unknown ID: " + rs.getStopId();
+                        }
+                        return stop.getStopName();
+                    })
+                    .collect(Collectors.toList());
+
+            // 3. Set the items
+            pickupStopCombo.setItems(FXCollections.observableArrayList(stopNames));
+            dropoffStopCombo.setItems(FXCollections.observableArrayList(stopNames));
+
+            this.routeStops = routeStopLinks;
+
+            System.out.println("DEBUG: ComboBoxes populated with: " + stopNames);
+
+        } catch (Exception e) {
+            System.err.println("DEBUG EXCEPTION: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        if (seatNumberField != null) {
+            seatNumberField.setText(String.valueOf(seatNumber));
+            seatNumberField.setEditable(false);
+        }
     }
 
     @FXML
     private void handleSaveBooking() {
-        if (selectedTrip == null) {
-            showError("No trip selected.");
-            return;
-        }
+        String name = passengerNameField.getText();
 
         try {
-            // 1. Gather numerical data
-            int tripId = selectedTrip.getTripId();
-            int seatNum = Integer.parseInt(seatNumberField.getText());
-            int pickupId = Integer.parseInt(pickupStopField.getText());
-            int dropoffId = Integer.parseInt(dropoffStopField.getText());
-            double fare = Double.parseDouble(fareField.getText());
+            // 3. Get the selected stop names
+            String pName = pickupStopCombo.getValue();
+            String dName = dropoffStopCombo.getValue();
 
-            // 2. Gather text data
-            String name = passengerNameField.getText();
-            String contact = contactField.getText();
-            String address = addressField.getText();
+            if (pName == null || dName == null) {
+                showError("Please select both pickup and drop-off points.");
+                return;
+            }
 
-            // 3. Call the specific Service method (handles Passenger + Booking)
+            // 4. Map names back to IDs using the routeService
+            int pickupId = routeStops.stream()
+                    .map(rs -> routeService.getStopById(rs.getStopId()))
+                    .filter(s -> s != null && s.getStopName().equals(pName))
+                    .findFirst()
+                    .get().getStopId();
+
+            int dropoffId = routeStops.stream()
+                    .map(rs -> routeService.getStopById(rs.getStopId()))
+                    .filter(s -> s != null && s.getStopName().equals(dName))
+                    .findFirst()
+                    .get().getStopId();
+
+            // 5. Call Service (If DB fails, DAO must throw exception to trigger catch)
             bookingService.createBooking(
-                    tripId,
-                    seatNum,
+                    selectedTrip.getTripId(),
+                    Integer.parseInt(seatNumberField.getText()),
                     pickupId,
                     dropoffId,
-                    fare,
+                    Double.parseDouble(fareField.getText()),
                     name,
-                    contact,
-                    address
+                    contactField.getText(),
+                    addressField.getText()
             );
 
-            // 4. Success! Close the dialog
+            // 6. Success!
+            showInfo("Booking Successful", "Passenger " + name + " has been booked.");
             closeWindow();
 
-        } catch (NumberFormatException e) {
-            showError("Invalid Input: Seat, Stops, and Fare must be numbers.");
-        } catch (IllegalStateException | IllegalArgumentException e) {
-            // This catches service errors (e.g., Seat Taken, Trip Cancelled)
-            showError(e.getMessage());
+        } catch (Exception e) {
+            // This catches NumberFormatErrors or the RuntimeException from your DAO
+            showError("Booking Failed: " + e.getMessage());
         }
     }
 
-    @FXML
-    private void handleCancel() {
-        closeWindow();
-    }
+    @FXML private void handleCancel() { closeWindow(); }
 
     private void closeWindow() {
         Stage stage = (Stage) passengerNameField.getScene().getWindow();
         stage.close();
+    }
+
+    private void showInfo(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void showError(String message) {
@@ -89,12 +151,5 @@ public class AddBookingController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        if (seatNumberField != null) {
-            seatNumberField.setText(String.valueOf(seatNumber));
-            seatNumberField.setEditable(false); // User can't change it now
-        }
     }
 }

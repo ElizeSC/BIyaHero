@@ -53,13 +53,13 @@
         </VBox>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="5">
-            <Label text="Pickup Stop ID" styleClass="sub-header"/>
-            <TextField fx:id="pickupStopField" promptText="ID Number"/>
+            <Label text="Pickup Stop" styleClass="sub-header"/>
+            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="5">
-            <Label text="Dropoff Stop ID" styleClass="sub-header"/>
-            <TextField fx:id="dropoffStopField" promptText="ID Number"/>
+            <Label text="Dropoff Stop" styleClass="sub-header"/>
+            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop"/>
         </VBox>
     </GridPane>
 

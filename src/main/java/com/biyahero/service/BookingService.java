@@ -47,6 +47,7 @@ public class BookingService {
 
         // create booking
         Booking booking = new Booking(tripId, passengerId, seatNumber, pickupStopId, dropoffStopId, farePaid, "Reserved");
+
         bookingDAO.createBooking(booking);
         return booking;
     }
