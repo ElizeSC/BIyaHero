@@ -22,7 +22,7 @@ public class TripService {
     public void createTrip(int routeId, int vanId, int driverId, LocalDateTime departureTime) {
         if (routeId <= 0){
             throw new IllegalArgumentException("Route ID must be a positive integer.");
-        } 
+        }
 
         if (vanId <= 0){
             throw new IllegalArgumentException("Van ID must be a positive integer.");
@@ -69,8 +69,8 @@ public class TripService {
         return tripDAO.getTripsByRoute(routeId);
     }
 
-    public void updateTrip(int tripId, Integer routeId, Integer vanId, Integer driverId, 
-                       LocalDateTime departureTime, LocalDateTime arrivalDt, Integer currentStopId) {
+    public void updateTrip(int tripId, Integer routeId, Integer vanId, Integer driverId,
+                           LocalDateTime departureTime, LocalDateTime arrivalDt, Integer currentStopId) {
         Trip trip = getTripById(tripId);
 
         // van reassignment
@@ -97,10 +97,10 @@ public class TripService {
 
         if (routeId != null && routeId > 0){
             trip.setRouteId(routeId);
-        } 
+        }
         if (departureTime != null){
             trip.setDepartureTime(departureTime);
-        } 
+        }
         if (arrivalDt != null){
             trip.setArrivalDt(arrivalDt);
         }
@@ -184,71 +184,71 @@ public class TripService {
     }
 
     // active trips
-    public List<Trip> getActiveTrips() { // show raw en route trips 
+    public List<Trip> getActiveTrips() { // show raw en route trips
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "En Route".equals(t.getTripStatus()))
-            .collect(Collectors.toList());
+                .filter(t -> "En Route".equals(t.getTripStatus()))
+                .collect(Collectors.toList());
     }
 
     public List<Trip> getScheduledTrips() { // show raw scheduled trips
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "Scheduled".equals(t.getTripStatus()))
-            .collect(Collectors.toList());
+                .filter(t -> "Scheduled".equals(t.getTripStatus()))
+                .collect(Collectors.toList());
     }
 
-    public List<Trip> getCompletedTrips() { // returns raw all completed trips, for report 
+    public List<Trip> getCompletedTrips() { // returns raw all completed trips, for report
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "Completed".equals(t.getTripStatus()))
-            .collect(Collectors.toList());
+                .filter(t -> "Completed".equals(t.getTripStatus()))
+                .collect(Collectors.toList());
     }
-    
+
     // search, filter, sort
 
     public List<Trip> searchActiveTrips(String keyword) { // search in en route trips dashboard
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "En Route".equals(t.getTripStatus()))
-            .filter(t ->
-                String.valueOf(t.getTripId()).contains(keyword) ||
-                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
-            )
-            .collect(Collectors.toList());
+                .filter(t -> "En Route".equals(t.getTripStatus()))
+                .filter(t ->
+                        String.valueOf(t.getTripId()).contains(keyword) ||
+                                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
+                )
+                .collect(Collectors.toList());
     }
 
     public List<Trip> searchScheduledTrips(String keyword) { // search in scheduled trips dashboard
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "Scheduled".equals(t.getTripStatus()))
-            .filter(t ->
-                String.valueOf(t.getTripId()).contains(keyword) ||
-                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
-            )
-            .collect(Collectors.toList());
+                .filter(t -> "Scheduled".equals(t.getTripStatus()))
+                .filter(t ->
+                        String.valueOf(t.getTripId()).contains(keyword) ||
+                                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
+                )
+                .collect(Collectors.toList());
     }
 
     public List<Trip> searchCompletedTrips(String keyword) { // search for a completed trip in reports
         return tripDAO.getAllTrips().stream()
-            .filter(t -> "Completed".equals(t.getTripStatus()))
-            .filter(t ->
-                String.valueOf(t.getTripId()).contains(keyword) ||
-                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
-            )
-            .collect(Collectors.toList());
+                .filter(t -> "Completed".equals(t.getTripStatus()))
+                .filter(t ->
+                        String.valueOf(t.getTripId()).contains(keyword) ||
+                                t.getFormattedId().toLowerCase().contains(keyword.toLowerCase())
+                )
+                .collect(Collectors.toList());
     }
 
     public List<Trip> filterByStatus(String status) { // works for all status but for will use only completed or cancelled in reports
         return tripDAO.getAllTrips().stream()
-            .filter(t -> t.getTripStatus() != null && t.getTripStatus().equalsIgnoreCase(status))
-            .collect(Collectors.toList());
+                .filter(t -> t.getTripStatus() != null && t.getTripStatus().equalsIgnoreCase(status))
+                .collect(Collectors.toList());
     }
 
     public List<Trip> sortByTripId(List<Trip> trips) { // default sorted list for en route trips, and a sorting option for completed trips
         return trips.stream()
-            .sorted(Comparator.comparingInt(Trip::getTripId))
-            .collect(Collectors.toList());
+                .sorted(Comparator.comparingInt(Trip::getTripId))
+                .collect(Collectors.toList());
     }
 
     public List<Trip> sortByDepartureTime(List<Trip> trips) { // default sorted list for scheduled trips, and a sorting option for completed trips
         return trips.stream()
-            .sorted(Comparator.comparing(Trip::getDepartureTime))
-            .collect(Collectors.toList());
+                .sorted(Comparator.comparing(Trip::getDepartureTime))
+                .collect(Collectors.toList());
     }
 }

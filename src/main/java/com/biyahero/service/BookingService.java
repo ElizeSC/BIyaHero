@@ -15,8 +15,8 @@ public class BookingService {
     private final PassengerDAO passengerDAO = new PassengerDAOImpl();
     private final TripService tripService = new TripService();
 
-    // booking management and passenger records 
-    public Booking createBooking(int tripId, int seatNumber, int pickupStopId, int dropoffStopId, 
+    // booking management and passenger records
+    public Booking createBooking(int tripId, int seatNumber, int pickupStopId, int dropoffStopId,
                                 double farePaid, String passengerName, String contactNumber, String address) {
 
         // validate if trip exists and is not completed/cancelled
@@ -96,7 +96,7 @@ public class BookingService {
     // roadside passenger assignment
     public Booking assignWalkInPassenger(int tripId, int seatNumber, int pickupStopId, int dropoffStopId,
                                         double farePaid, String passengerName, String contactNumber, String address) {
-        
+
                                             var trip = tripService.getTripById(tripId);
         if (!"En Route".equals(trip.getTripStatus())) {
             throw new IllegalStateException("Walk-in assignment only allowed for En Route trips.");

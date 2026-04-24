@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" alignment="CENTER" prefWidth="350" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.StopSelectionController">
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30" />
+    </padding>
+
+    <VBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Update Location" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #0A0D2C;" />
+        <Label text="Select the next arrival point" style="-fx-text-fill: #7E869E;" />
+    </VBox>
+
+    <ComboBox fx:id="stopComboBox" maxWidth="Infinity" styleClass="combo-box" />
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: transparent; -fx-text-fill: #7E869E;" />
+        <Button fx:id="confirmButton" text="Update Van" onAction="#handleConfirm"
+                style="-fx-background-color: #4E5DFF; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 8 20;" />
+    </HBox>
+</VBox>

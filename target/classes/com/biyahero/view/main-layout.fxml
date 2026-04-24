@@ -43,6 +43,6 @@
     </top>
 
     <center>
-        <VBox fx:id="contentArea" styleClass="main-container" />
+        <VBox fx:id="mainContentArea" styleClass="main-container" />
     </center>
 </BorderPane>
