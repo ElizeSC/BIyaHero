@@ -200,21 +200,20 @@ public class TripController {
     }
 
     private void handleStart(Trip t) {
-        // 1. Get the stops for the route to find the starting point
-        var stops = routeService.getRouteStops(t.getRouteId());
+        // 1. FIRST: Change the status to "En Route"
+        // This satisfies the Service's requirement that the trip must be En Route
+        tripService.startTrip(t.getTripId());
 
+        // 2. SECOND: Now that it's officially "En Route", set the starting location
+        var stops = routeService.getRouteStops(t.getRouteId());
         if (!stops.isEmpty()) {
-            // Sort to find the actual origin (Order 1)
+            // Sort to find the first stop (Order 1)
             stops.sort(Comparator.comparingInt(RouteStop::getStopOrder));
             int firstStopId = stops.get(0).getStopId();
 
-            // 2. Explicitly tell the service to update the stop AND the status
-            // This ensures the database has a valid 'current_stop_id'
+            // Now this call will succeed because the status is already updated!
             tripService.updateCurrentStop(t.getTripId(), firstStopId);
         }
-
-        // 3. Now trigger the status change
-        tripService.startTrip(t.getTripId());
 
         refreshTable();
     }
