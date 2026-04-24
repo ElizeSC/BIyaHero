@@ -1,26 +1,42 @@
 package com.biyahero.cli;
 
 import java.util.Scanner;
-import com.biyahero.util.DBUtil;
 
 public class CLIApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        AuthMenu authMenu = new AuthMenu(scanner);
 
-        System.out.println("=== BIYAHERO SYSTEM LOGIN ===");
-        System.out.print("Enter Database Username: ");
-        String inputUser = scanner.nextLine();
+        if (authMenu.show()) {
+            showMainMenu(scanner);
+        }
 
-        System.out.print("Enter Database Password: ");
-        String inputPass = scanner.nextLine();
+        scanner.close();
+    }
 
-        // Pass these credentials to your utility to see if they work
-        if (DBUtil.testConnection(inputUser, inputPass)) {
-            System.out.println("\n✅ ACCESS GRANTED.");
-            System.out.println("Welcome, Dispatcher. System initialized.");
-        } else {
-            System.out.println("\n❌ ACCESS DENIED.");
-            System.out.println("Invalid Administrative Credentials.");
+    private static void showMainMenu(Scanner scanner) {
+        boolean running = true;
+        while (running) {
+            System.out.println("\n=== MAIN MENU ===");
+            System.out.println("[1] Vans & Drivers");
+            System.out.println("[2] Trips");
+            System.out.println("[3] Bookings");
+            System.out.println("[4] Reports");
+            System.out.println("[0] Exit");
+            System.out.print("Select: ");
+
+            String input = scanner.nextLine().trim();
+            switch (input) {
+                case "1" -> VanDriverMenu.show(scanner);
+                case "2" -> TripMenu.show(scanner);
+                case "3" -> BookingMenu.show(scanner);
+                case "4" -> ReportMenu.show(scanner);
+                case "0" -> {
+                    System.out.println("Exiting...");
+                    running = false;
+                }
+                default -> System.out.println("Invalid option. Try again.");
+            }
         }
     }
 }
