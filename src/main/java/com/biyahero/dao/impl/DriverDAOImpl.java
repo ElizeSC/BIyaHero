@@ -19,6 +19,7 @@ public class DriverDAOImpl implements DriverDAO {
             stmt.setString(1, driver.getLicenseNo());
             stmt.setString(2, driver.getName());
             stmt.setString(3, driver.getContactNumber());
+            stmt.setString(4, driver.getDriverStatus());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -90,8 +91,8 @@ public class DriverDAOImpl implements DriverDAO {
             stmt.setString(1, driver.getLicenseNo());
             stmt.setString(2, driver.getName());
             stmt.setString(3, driver.getContactNumber());
-            stmt.setString(4, driver.getDriverStatus()); // FIXED: This was missing
-            stmt.setInt(5, driver.getDriverId());        // FIXED: This is now correctly index 5
+            stmt.setString(4, driver.getDriverStatus()); 
+            stmt.setInt(5, driver.getDriverId());     
             stmt.executeUpdate();
 
         } catch (SQLException e) {
