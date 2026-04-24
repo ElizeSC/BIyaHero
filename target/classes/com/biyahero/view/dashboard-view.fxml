@@ -1,74 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import java.net.URL?>
 
-<VBox spacing="25" styleClass="dashboard-content" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="25" styleClass="dashboard-content" VBox.vgrow="ALWAYS"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.DashboardController">
     <stylesheets>
-        <URL value="@style.css" />
+        <URL value="@style.css"/>
     </stylesheets>
-
     <padding>
-        <Insets top="40" right="40" bottom="40" left="40" />
+        <Insets top="40" right="40" bottom="40" left="40"/>
     </padding>
 
     <HBox alignment="CENTER_LEFT">
         <VBox spacing="5">
-            <Label text="Active trips" styleClass="header-title" />
-            <Label text="Monitor en-route trips" styleClass="sub-header" />
+            <Label text="Active Trips" styleClass="header-title"/>
+            <Label text="Monitor en-route trips" styleClass="sub-header"/>
         </VBox>
-        <Region HBox.hgrow="ALWAYS" />
-        <TextField promptText="Search for a trip..." prefWidth="300" styleClass="text-field" />
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField promptText="Search for a trip..." prefWidth="300" styleClass="text-field"/>
     </HBox>
 
-    <VBox spacing="20" styleClass="table-row-cell" style="-fx-padding: 25;">
-        <HBox alignment="TOP_LEFT">
-            <VBox spacing="2">
-                <Label text="TRP001" style="-fx-font-size: 20; -fx-font-weight: 800; -fx-text-fill: #0A0D2C;" />
-                <Label text="30015 • Juan Dela Cruz" styleClass="sub-header" />
-            </VBox>
-            <Region HBox.hgrow="ALWAYS" />
-            <VBox alignment="TOP_RIGHT">
-                <Label text="Catarman ➔ Tacloban" style="-fx-font-weight: 700; -fx-text-fill: #0A0D2C;" />
-                <Label text="Passengers: n/n" styleClass="sub-header" />
-            </VBox>
-        </HBox>
-
-        <HBox alignment="CENTER" spacing="0">
-            <VBox alignment="CENTER" spacing="10">
-                <Region styleClass="progress-dot-active" />
-                <Label text="Catarman" style="-fx-font-size: 10; -fx-font-weight: bold;" />
-            </VBox>
-
-            <Region styleClass="progress-line-active" HBox.hgrow="ALWAYS" />
-
-            <VBox alignment="CENTER" spacing="10">
-                <Region styleClass="progress-dot-active" />
-                <Label text="Calbayog" style="-fx-font-size: 10; -fx-font-weight: bold;" />
-            </VBox>
-
-            <Region styleClass="progress-line" HBox.hgrow="ALWAYS" />
-
-            <VBox alignment="CENTER" spacing="10">
-                <Region styleClass="progress-dot" />
-                <Label text="Catbalogan" style="-fx-font-size: 10; -fx-text-fill: #7E869E;" />
-            </VBox>
-
-            <Region styleClass="progress-line" HBox.hgrow="ALWAYS" />
-
-            <VBox alignment="CENTER" spacing="10">
-                <Region styleClass="progress-dot" />
-                <Label text="Tacloban" style="-fx-font-size: 10; -fx-text-fill: #7E869E;" />
-            </VBox>
-
-            <VBox styleClass="button-container" alignment="CENTER">
-                <Button text="Update Location"
-                        styleClass="trip-action-btn, btn-location" />
-                <Button text="Update Occupancy"
-                        styleClass="trip-action-btn, btn-occupancy" />
-            </VBox>
-        </HBox>
-    </VBox>
+    <VBox fx:id="activeTripsContainer" spacing="20"/>
 </VBox>

@@ -1,5 +1,6 @@
 package com.biyahero.controller;
 
+import com.biyahero.model.RouteStop;
 import com.biyahero.model.Trip;
 import com.biyahero.service.TripService;
 import com.biyahero.service.RouteService;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -198,8 +200,23 @@ public class TripController {
     }
 
     private void handleStart(Trip t) {
+        // 1. Get the stops for the route to find the starting point
+        var stops = routeService.getRouteStops(t.getRouteId());
+
+        if (!stops.isEmpty()) {
+            // Sort to find the actual origin (Order 1)
+            stops.sort(Comparator.comparingInt(RouteStop::getStopOrder));
+            int firstStopId = stops.get(0).getStopId();
+
+            // 2. Explicitly tell the service to update the stop AND the status
+            // This ensures the database has a valid 'current_stop_id'
+            tripService.updateCurrentStop(t.getTripId(), firstStopId);
+        }
+
+        // 3. Now trigger the status change
         tripService.startTrip(t.getTripId());
-        refreshTable(); // Will cause trip to disappear from this view and move to dashboard
+
+        refreshTable();
     }
 
     private void handleComplete(Trip t) {
