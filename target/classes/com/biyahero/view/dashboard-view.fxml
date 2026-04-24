@@ -4,16 +4,12 @@
 <?import javafx.geometry.*?>
 <?import java.net.URL?>
 
-<VBox spacing="25" styleClass="dashboard-content" VBox.vgrow="ALWAYS"
+<VBox spacing="25" VBox.vgrow="ALWAYS"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.DashboardController">
-    <stylesheets>
-        <URL value="@style.css"/>
-    </stylesheets>
-    <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
-    </padding>
+    <stylesheets><URL value="@style.css"/></stylesheets>
+    <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
 
     <HBox alignment="CENTER_LEFT">
         <VBox spacing="5">
@@ -21,7 +17,9 @@
             <Label text="Monitor en-route trips" styleClass="sub-header"/>
         </VBox>
         <Region HBox.hgrow="ALWAYS"/>
-        <TextField promptText="Search for a trip..." prefWidth="300" styleClass="text-field"/>
+        <TextField fx:id="searchField"
+                   promptText="Search by Trip ID..."
+                   prefWidth="300" styleClass="text-field"/>
     </HBox>
 
     <VBox fx:id="activeTripsContainer" spacing="20"/>
