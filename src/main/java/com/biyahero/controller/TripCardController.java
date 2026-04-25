@@ -88,16 +88,16 @@ public class TripCardController {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/biyahero/view/stop-selection-dialog.fxml"));
-            VBox root = loader.load();
+            Parent root = loader.load(); // <-- Parent, not VBox
 
             StopSelectionController ctrl = loader.getController();
-            // Pass -1 if trip hasn't hit any stop yet; setStops handles it gracefully
             int currentStop = currentTrip.getCurrentStopId() != null
                     ? currentTrip.getCurrentStopId() : -1;
             ctrl.setStops(routeService.getRouteStops(currentTrip.getRouteId()), currentStop);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Update Location — " + currentTrip.getFormattedId());
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
@@ -106,7 +106,9 @@ public class TripCardController {
                 tripService.updateCurrentStop(currentTrip.getTripId(), next);
                 parentController.refreshDashboard();
             }
-        } catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

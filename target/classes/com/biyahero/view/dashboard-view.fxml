@@ -22,5 +22,13 @@
                    prefWidth="300" styleClass="text-field"/>
     </HBox>
 
-    <VBox fx:id="activeTripsContainer" spacing="20"/>
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <content>
+            <VBox fx:id="activeTripsContainer">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                </padding>
+            </VBox>
+        </content>
+    </ScrollPane>
 </VBox>
