@@ -31,4 +31,4 @@ BiyaHero is a modern, JavaFX-based Transport Management System designed for van 
 - **Cabantac, Daisha Lynn**
 
 ---
-*Developed for Milestone 4 - Transport Management System Project.*
+*CMSC 127 - File Processing and Database Systems AY 2025-2026*
