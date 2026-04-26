@@ -3,7 +3,9 @@ package com.biyahero.controller;
 import com.biyahero.service.AuthService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -15,35 +17,43 @@ public class LoginController {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label errorLabel;
+    @FXML private Button btnLogin;
+
+    // Inject the service
+    private final AuthService authService = new AuthService();
 
     @FXML
     private void handleLogin() {
         String user = usernameField.getText();
         String pass = passwordField.getText();
 
-        if (AuthService.authenticate(user, pass)) {
-            try {
-                // 1. Get the current "Stage" (the window)
-                Stage stage = (Stage) usernameField.getScene().getWindow();
-
-                // 2. Load the Main Layout frame
-// Change "main-layout.fxml" to "main-dashboard.fxml"
-                // Inside handleLogin
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/main-layout.fxml"));
-                Scene scene = new Scene(loader.load());
-
-                // 3. Set the new scene and show it
-                stage.setScene(scene);
-                stage.setTitle("BiyaHero - Admin Dashboard");
-                stage.centerOnScreen(); // Makes it look professional
-                stage.show();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-                errorLabel.setText("❌ Failed to load Dashboard.");
-            }
+        if (authService.authenticate(user, pass)) {
+            transitionToDashboard();
         } else {
-            errorLabel.setText("❌ Invalid Credentials.");
+            showError("Invalid username or password.");
         }
+    }
+
+    private void transitionToDashboard() {
+        try {
+            // Load your MainView (the one with the purple pill nav)
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/main-layout.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) btnLogin.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException e) {
+            showError("Failed to load dashboard.");
+            e.printStackTrace();
+        }
+    }
+
+    private void showError(String message) {
+        errorLabel.setText(message);
+        errorLabel.setVisible(true);
+        errorLabel.setManaged(true);
+        // Optional: Add a "shake" animation to the login card here later!
     }
 }
