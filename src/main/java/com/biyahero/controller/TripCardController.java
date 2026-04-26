@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.util.Comparator;
 import java.util.List;
 
+
 public class TripCardController {
     @FXML private Label tripIdLabel, driverInfoLabel, routeLabel, occupancyLabel;
     @FXML private HBox progressHBox;
@@ -23,6 +24,8 @@ public class TripCardController {
     private final TripService tripService       = new TripService();
     private final RouteService routeService     = new RouteService();
     private final BookingService bookingService = new BookingService();
+    private final DriverService driverService = new DriverService();
+    private final VanService vanService = new VanService();
 
     public void setTripData(Trip trip, DashboardController parent) {
         this.currentTrip     = trip;
@@ -40,7 +43,10 @@ public class TripCardController {
         }
 
         tripIdLabel.setText(trip.getFormattedId());
-        driverInfoLabel.setText("Van: " + trip.getVanId() + " • Driver: " + trip.getDriverId());
+        String vanModel = vanService.getVanById(trip.getVanId()).getModel();
+        String driverName = driverService.getDriverById(trip.getDriverId()).getName();
+
+        driverInfoLabel.setText("Van: " + vanModel + " • Driver: " + driverName);
 
         int occupied = bookingService.getOccupiedSeats(trip.getTripId()).size();
         occupancyLabel.setText("Passengers: " + occupied + "/15");
