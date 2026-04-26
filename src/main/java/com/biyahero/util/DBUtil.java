@@ -1,21 +1,47 @@
 package com.biyahero.util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class DBUtil {
-    // Make sure these match your local MySQL settings!
-    private static final String URL = "jdbc:mysql://localhost:3306/biyahero_db";
-    private static final String USER = "biyahero_admin";
-    private static final String PASSWORD = "biyahero123";
+
+    private static String URL;
+    private static String USER;
+    private static String PASSWORD;
+
+    // Load credentials once when the class is first used
+    static {
+        Properties props = new Properties();
+        try (InputStream in = DBUtil.class
+                .getClassLoader()
+                .getResourceAsStream("config.properties")) {
+
+            if (in == null) {
+                throw new RuntimeException(
+                        "config.properties not found. " +
+                                "Copy config.properties.example to config.properties " +
+                                "and fill in your database credentials.");
+            }
+
+            props.load(in);
+            URL      = props.getProperty("db.url");
+            USER     = props.getProperty("db.user");
+            PASSWORD = props.getProperty("db.password");
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load config.properties", e);
+        }
+    }
 
     private static Connection connection = null;
 
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
-                // This string is for the mysql-connector-j driver
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
             }
@@ -34,8 +60,8 @@ public class DBUtil {
             e.printStackTrace();
         }
     }
+
     public static boolean testConnection(String user, String pass) {
-        // Check if the input matches your final constants
         return USER.equals(user) && PASSWORD.equals(pass);
     }
 }

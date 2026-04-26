@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 
-<VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.biyahero.controller.LoginController" style="-fx-background-color: #f4f4f4;">
-    <padding>
-        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
-    </padding>
+<StackPane prefHeight="600.0" prefWidth="800.0" styleClass="login-root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.LoginController">
 
-    <Label text="BIYAHERO LOGIN" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
 
-    <VBox spacing="5.0">
-        <Label text="Username:"/>
-        <TextField fx:id="usernameField" promptText="Enter database user"/>
+    <VBox alignment="CENTER" spacing="20">
+        <VBox alignment="CENTER" spacing="10" styleClass="login-card" maxWidth="400">
+            <padding>
+                <Insets top="40" right="40" bottom="40" left="40" />
+            </padding>
+
+            <Label text="B" styleClass="login-logo-icon" />
+            <Label text="BiyaHero" styleClass="login-header-title" />
+            <Label text="Transport Management System" styleClass="login-subtitle" />
+
+            <Region prefHeight="20" />
+
+            <VBox spacing="15" alignment="CENTER_LEFT">
+                <VBox spacing="5">
+                    <Label text="Username" styleClass="input-label" />
+                    <TextField fx:id="usernameField" promptText="Enter your username" styleClass="login-input" />
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label text="Password" styleClass="input-label" />
+                    <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="login-input" />
+                </VBox>
+            </VBox>
+
+            <Region prefHeight="10" />
+
+            <Button fx:id="btnLogin" text="Login to Dashboard" onAction="#handleLogin" maxWidth="Infinity" styleClass="login-button" />
+
+            <Label fx:id="errorLabel" text="" styleClass="error-text" managed="false" visible="false" />
+        </VBox>
     </VBox>
-
-    <VBox spacing="5.0">
-        <Label text="Password:"/>
-        <PasswordField fx:id="passwordField" promptText="Enter database pass"/>
-    </VBox>
-
-    <Button text="Login to System" onAction="#handleLogin" maxWidth="Infinity"
-            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;"/>
-
-    <Label fx:id="errorLabel" textFill="RED" wrapText="true"/>
-</VBox>
+</StackPane>
