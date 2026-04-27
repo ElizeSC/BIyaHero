@@ -30,12 +30,11 @@
 
     <TableView fx:id="tripTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
         <columns>
-            <TableColumn fx:id="colTripId" text="TRIP ID" prefWidth="80" />
-            <TableColumn fx:id="colRoute" text="ROUTE" prefWidth="150" />
-            <TableColumn fx:id="colDeparture" text="DEPARTURE" prefWidth="150" />
-            <TableColumn fx:id="colArrival" text="ARRIVAL" prefWidth="150" />
-            <TableColumn fx:id="colStatus" text="STATUS" prefWidth="100" />
-            <TableColumn fx:id="colActions" text="DISPATCH ACTIONS" prefWidth="250" />
+            <TableColumn fx:id="colTripId"     text="TRIP ID"     prefWidth="80"/>
+            <TableColumn fx:id="colRoute"      text="ROUTE"       prefWidth="180"/>
+            <TableColumn fx:id="colDeparture"  text="DEPARTURE"   prefWidth="150"/>
+            <TableColumn fx:id="colAssignment" text="ASSIGNMENT"  prefWidth="180"/>
+            <TableColumn fx:id="colActions"    text="ACTIONS"     prefWidth="220"/>
         </columns>
     </TableView>
 
