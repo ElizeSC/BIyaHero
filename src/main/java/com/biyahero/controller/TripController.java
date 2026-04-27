@@ -25,13 +25,13 @@ import java.util.stream.Collectors;
 
 public class TripController {
 
+
     @FXML private TableView<Trip> tripTable;
-    @FXML private TableColumn<Trip, Integer> colTripId; // Changed to Integer
-    @FXML private TableColumn<Trip, String> colRoute;
-    @FXML private TableColumn<Trip, LocalDateTime> colDeparture;
-    @FXML private TableColumn<Trip, LocalDateTime> colArrival;
-    @FXML private TableColumn<Trip, String> colStatus;
-    @FXML private TableColumn<Trip, Void> colActions;
+    @FXML private TableColumn<Trip, Integer> colTripId;
+    @FXML private TableColumn<Trip, String>  colRoute;
+    @FXML private TableColumn<Trip, String>  colDeparture;
+    @FXML private TableColumn<Trip, String>  colAssignment;
+    @FXML private TableColumn<Trip, Void>    colActions;
     @FXML private TextField searchField;
 
     private final TripService tripService = new TripService();
@@ -46,28 +46,38 @@ public class TripController {
     }
 
     private void setupTableColumns() {
-        // 1. Basic Mappings
         colTripId.setCellValueFactory(new PropertyValueFactory<>("tripId"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("tripStatus"));
-        colDeparture.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-        colArrival.setCellValueFactory(new PropertyValueFactory<>("arrivalDt"));
 
-        // 2. Date Formatting for Departure and Arrival
-        colDeparture.setCellFactory(column -> createDateCell());
-        colArrival.setCellFactory(column -> createDateCell());
-
-        // 3. Custom Route Name Mapping
-        colRoute.setCellFactory(column -> new TableCell<>() {
+        // Route name lookup
+        colRoute.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty || getTableRow() == null || getTableRow().getItem() == null) {
-                    setText(null);
-                } else {
-                    Trip trip = getTableRow().getItem();
-                    var route = routeService.getRouteById(trip.getRouteId());
-                    setText(route != null ? route.getRouteName() : "Route #" + trip.getRouteId());
-                }
+                if (empty || getTableRow().getItem() == null) { setText(null); return; }
+                var route = routeService.getRouteById(getTableRow().getItem().getRouteId());
+                setText(route != null ? route.getRouteName() : "—");
+            }
+        });
+
+        // Departure formatted
+        colDeparture.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || getTableRow().getItem() == null) { setText(null); return; }
+                var dt = getTableRow().getItem().getDepartureTime();
+                setText(dt != null ? formatter.format(dt) : "—");
+            }
+        });
+
+        // Van plate + Driver ID (replaces the useless Arrival column)
+        colAssignment.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || getTableRow().getItem() == null) { setText(null); return; }
+                Trip t = getTableRow().getItem();
+                setText("Van " + t.getVanId() + "  •  Driver " + t.getDriverId());
             }
         });
 
@@ -76,26 +86,20 @@ public class TripController {
 
     private void setupActionButtons() {
         colActions.setCellFactory(param -> new TableCell<>() {
-            private final Button startBtn = new Button("Depart");
-            private final Button completeBtn = new Button("Arrive");
+            private final Button startBtn  = new Button("Depart");
             private final Button cancelBtn = new Button("Cancel");
-            private final Button bookBtn = new Button("Book");
-            private final HBox box = new HBox(10, bookBtn, startBtn, completeBtn, cancelBtn);
+            private final Button bookBtn   = new Button("Book");
+            private final HBox   box       = new HBox(10, bookBtn, startBtn, cancelBtn);
 
             {
                 box.setAlignment(javafx.geometry.Pos.CENTER);
-
-                // Styling
-                startBtn.getStyleClass().add("btn-table-edit"); // Using your CSS classes
-                completeBtn.getStyleClass().add("btn-table-edit");
+                startBtn .getStyleClass().add("btn-table-edit");
                 cancelBtn.getStyleClass().add("btn-table-delete");
-                bookBtn.getStyleClass().add("primary-button");
+                bookBtn  .getStyleClass().add("primary-button");
 
-                // Handlers
-                startBtn.setOnAction(e -> handleStart(getTableView().getItems().get(getIndex())));
-                completeBtn.setOnAction(e -> handleComplete(getTableView().getItems().get(getIndex())));
+                startBtn .setOnAction(e -> handleStart(getTableView().getItems().get(getIndex())));
                 cancelBtn.setOnAction(e -> handleCancel(getTableView().getItems().get(getIndex())));
-                bookBtn.setOnAction(e -> handleBooking(getTableView().getItems().get(getIndex())));
+                bookBtn  .setOnAction(e -> handleBooking(getTableView().getItems().get(getIndex())));
             }
 
             @Override
@@ -104,13 +108,11 @@ public class TripController {
                 if (empty || getTableRow().getItem() == null) {
                     setGraphic(null);
                 } else {
-                    Trip trip = getTableRow().getItem();
+                    Trip trip   = getTableRow().getItem();
                     String status = trip.getTripStatus();
 
-                    // LOGIC: Enable/Disable based on Status
-                    bookBtn.setDisable(!("Scheduled".equals(status) || "En Route".equals(status)));
-                    startBtn.setDisable(!"Scheduled".equals(status));
-                    completeBtn.setDisable(!"En Route".equals(status));
+                    bookBtn  .setDisable(!("Scheduled".equals(status) || "En Route".equals(status)));
+                    startBtn .setDisable(!"Scheduled".equals(status));
                     cancelBtn.setDisable("Completed".equals(status) || "Cancelled".equals(status));
 
                     setGraphic(box);

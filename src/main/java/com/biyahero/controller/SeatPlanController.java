@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import java.util.List;
 
 public class SeatPlanController {
@@ -26,57 +27,92 @@ public class SeatPlanController {
 
     private void renderSeats() {
         seatGrid.getChildren().clear();
-        List<Integer> occupiedSeats = bookingService.getOccupiedSeats(currentTrip.getTripId());
+        List<Integer> occupied = bookingService.getOccupiedSeats(currentTrip.getTripId());
 
         int seatNum = 1;
-        // Typical van layout: 3 seats per row (adjust rows/cols as needed for your specific van)
         for (int row = 0; row < 5; row++) {
             for (int col = 0; col < 3; col++) {
                 if (seatNum > 15) break;
 
-                Button seatBtn = new Button(String.valueOf(seatNum));
-                seatBtn.setPrefSize(50, 50);
+                Button btn = new Button(String.valueOf(seatNum));
+                btn.setPrefSize(50, 50);
 
-                final int selectedSeat = seatNum;
+                final int seat = seatNum;
 
-                if (occupiedSeats.contains(selectedSeat)) {
-                    // Styled for "Occupied" (Yellow)
-                    seatBtn.setStyle("-fx-background-color: #F1C40F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;");
-                    seatBtn.setOnAction(e -> {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Seat Unavailable");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Seat " + selectedSeat + " is already booked for this trip.");
-                        alert.showAndWait();
+                if (occupied.contains(seat)) {
+                    btn.setStyle(
+                            "-fx-background-color: #F1C40F; -fx-text-fill: white; " +
+                                    "-fx-font-weight: bold; -fx-background-radius: 8;");
+                    btn.setOnAction(e -> {
+                        Alert a = new Alert(Alert.AlertType.WARNING);
+                        a.setHeaderText(null);
+                        a.setContentText("Seat " + seat + " is already booked.");
+                        a.showAndWait();
                     });
                 } else {
-                    // Styled for "Available" (Green)
-                    seatBtn.setStyle("-fx-background-color: #2ECC71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;");
-                    seatBtn.setOnAction(e -> openBookingForm(selectedSeat));
+                    btn.setStyle(
+                            "-fx-background-color: #2ECC71; -fx-text-fill: white; " +
+                                    "-fx-font-weight: bold; -fx-background-radius: 8; " +
+                                    "-fx-cursor: hand;");
+                    btn.setOnAction(e -> openBookingForm(seat));
                 }
 
-                seatGrid.add(seatBtn, col, row);
+                seatGrid.add(btn, col, row);
                 seatNum++;
             }
         }
     }
 
-    private void openBookingForm(int seatNumber) {
+    /**
+     * Routes to the appropriate form based on trip status:
+     *   En Route  → simplified walk-in dialog (no personal info needed)
+     *   Scheduled → full booking form
+     */
+    private void openBookingForm(int seat) {
+        if ("En Route".equals(currentTrip.getTripStatus())) {
+            openWalkInForm(seat);
+        } else {
+            openFullBookingForm(seat);
+        }
+    }
+
+    private void openWalkInForm(int seat) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/add-booking-dialog.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/biyahero/view/walk-in-dialog.fxml"));
             Parent root = loader.load();
 
-            AddBookingController controller = loader.getController();
-            controller.setTripData(currentTrip);
-            controller.setSeatNumber(seatNumber); // Pass the clicked seat number!
+            WalkInBookingController ctrl = loader.getController();
+            ctrl.setData(currentTrip, seat);
 
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Booking Info - Seat " + seatNumber);
+            stage.setTitle("Quick Boarding — Seat " + seat);
             stage.setScene(new Scene(root));
             stage.showAndWait();
 
-            // Refresh the seat plan after the booking form closes to show the new yellow seat
+            renderSeats(); // refresh seat colours after booking
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openFullBookingForm(int seat) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/biyahero/view/add-booking-dialog.fxml"));
+            Parent root = loader.load();
+
+            AddBookingController ctrl = loader.getController();
+            ctrl.setTripData(currentTrip);
+            ctrl.setSeatNumber(seat);
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("New Booking — Seat " + seat);
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+
             renderSeats();
         } catch (Exception e) {
             e.printStackTrace();

@@ -123,4 +123,41 @@ public class BookingService {
             .filter(p -> p != null)
             .collect(Collectors.toList());
     }
+
+    /**
+     * Simplified booking for roadside walk-in passengers.
+     * No personal info required — just seat, stops, and fare.
+     */
+    public Booking createWalkInBooking(int tripId, int seatNumber,
+                                       int pickupStopId, int dropoffStopId,
+                                       double farePaid) {
+
+        var trip = tripService.getTripById(tripId);
+        if (!"En Route".equals(trip.getTripStatus())) {
+            throw new IllegalStateException(
+                    "Walk-in boarding is only allowed for En Route trips.");
+        }
+        if (!isValidSeat(seatNumber)) {
+            throw new IllegalArgumentException(
+                    "Invalid seat: " + seatNumber + ". Must be 1–15.");
+        }
+        if (isSeatTaken(tripId, seatNumber)) {
+            throw new IllegalStateException(
+                    "Seat " + seatNumber + " is already taken.");
+        }
+
+        // Anonymous passenger — name tracks which trip/seat for record-keeping
+        Passenger passenger = new Passenger(
+                "Walk-in (Seat " + seatNumber + ")", "", "");
+        int passengerId = passengerDAO.addPassenger(passenger);
+        if (passengerId == -1) {
+            throw new IllegalStateException("Failed to create passenger record.");
+        }
+
+        Booking booking = new Booking(
+                tripId, passengerId, seatNumber,
+                pickupStopId, dropoffStopId, farePaid, "Reserved");
+        bookingDAO.createBooking(booking);
+        return booking;
+    }
 }
