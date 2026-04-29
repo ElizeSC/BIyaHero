@@ -91,8 +91,8 @@ public class DriverDAOImpl implements DriverDAO {
             stmt.setString(1, driver.getLicenseNo());
             stmt.setString(2, driver.getName());
             stmt.setString(3, driver.getContactNumber());
-            stmt.setString(4, driver.getDriverStatus()); 
-            stmt.setInt(5, driver.getDriverId());     
+            stmt.setString(4, driver.getDriverStatus());
+            stmt.setInt(5, driver.getDriverId());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -150,11 +150,11 @@ public class DriverDAOImpl implements DriverDAO {
     // converts a raw DB row from ResultSet into a usable Driver object
     private Driver mapRow(ResultSet rs) throws SQLException {
         return new Driver(
-            rs.getInt("driver_id"),
-            rs.getString("license_no"),
-            rs.getString("name"),
-            rs.getString("contact_number"),
-            rs.getString("driver_status")
+                rs.getInt("driver_id"),
+                rs.getString("license_no"),
+                rs.getString("name"),
+                rs.getString("contact_number"),
+                rs.getString("driver_status")
         );
     }
 }
