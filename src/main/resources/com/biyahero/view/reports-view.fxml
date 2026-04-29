@@ -48,7 +48,8 @@
 
                                 <HBox spacing="10.0" alignment="CENTER_LEFT">
                                     <children>
-                                        <Button onAction="#handleTripReportPopup" styleClass="btn-generate-outline" text="Generate Trip Report" />
+                                        <TextField fx:id="tripIdSearchField" promptText="Enter Trip ID (e.g. 101)" styleClass="login-input"/>
+                                        <Button text="Generate Trip Report" onAction="#handleGenerateManifest" styleClass="primary-button"/>
                                         <!-- Kept inline font-size; no CSS class covers 10px helper text -->
                                         <Label text="This will export data about specific trip including customer manifest" styleClass="sub-header" style="-fx-font-size: 10px;" />
                                     </children>
@@ -60,6 +61,7 @@
                             <children>
                                 <Button maxWidth="Infinity" onAction="#exportToCSV" styleClass="btn-action" text="Generate CSV Report" />
                                 <Button maxWidth="Infinity" onAction="#exportToJSON" styleClass="btn-action" text="Generate JSON Report" />
+                                <Button maxWidth="Infinity" onAction="#exportToPDF" styleClass="btn-action" text="Generate PDF Report" />
                                 <Button maxWidth="Infinity" onAction="#exportToSQL" styleClass="btn-action-alt" text="Generate SQL Backup File" />
                             </children>
                         </VBox>
