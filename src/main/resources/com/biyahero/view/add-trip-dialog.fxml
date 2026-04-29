@@ -2,41 +2,54 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 
-<VBox spacing="15" style="-fx-background-color: white; -fx-padding: 25;"
-      prefWidth="400" xmlns:fx="http://javafx.com/fxml/1"
+<!-- Added missing stylesheet import; switched root from inline style to login-card for dialog surface -->
+<VBox spacing="15" styleClass="login-card" prefWidth="400"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.AddTripController">
 
-    <Label text="Schedule New Trip" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <!-- Replaced inline font/weight with header-title class -->
+    <Label text="Schedule New Trip" styleClass="header-title"/>
 
     <VBox spacing="5">
-        <Label text="Select Route" styleClass="station-label"/>
-        <ComboBox fx:id="routeComboBox" maxWidth="Infinity" promptText="Choose Route..."/>
+        <Label text="Select Route" styleClass="input-label"/>
+        <ComboBox fx:id="routeComboBox" maxWidth="Infinity" promptText="Choose Route..." styleClass="combo-box"/>
     </VBox>
 
     <HBox spacing="10">
         <VBox HBox.hgrow="ALWAYS" spacing="5">
-            <Label text="Departure Date" styleClass="station-label"/>
+            <Label text="Departure Date" styleClass="input-label"/>
             <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
         </VBox>
         <VBox HBox.hgrow="ALWAYS" spacing="5">
-            <Label text="Time" styleClass="station-label"/>
-            <TextField fx:id="timeField" promptText="HH:mm"/>
+            <Label text="Time" styleClass="input-label"/>
+            <TextField fx:id="timeField" promptText="HH:mm" styleClass="text-field"/>
         </VBox>
     </HBox>
 
     <VBox spacing="5">
-        <Label text="Assign Van" styleClass="station-label"/>
-        <ComboBox fx:id="vanComboBox" maxWidth="Infinity" promptText="Available Vans"/>
+        <Label text="Assign Van" styleClass="input-label"/>
+        <ComboBox fx:id="vanComboBox" maxWidth="Infinity" promptText="Available Vans" styleClass="combo-box"/>
     </VBox>
 
     <VBox spacing="5">
-        <Label text="Assign Driver" styleClass="station-label"/>
-        <ComboBox fx:id="driverComboBox" maxWidth="Infinity" promptText="Available Drivers"/>
+        <Label text="Assign Driver" styleClass="input-label"/>
+        <ComboBox fx:id="driverComboBox" maxWidth="Infinity" promptText="Available Drivers" styleClass="combo-box"/>
     </VBox>
 
-    <HBox spacing="10" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
-        <Button text="Cancel" onAction="#handleCancel" styleClass="nav-button"/>
+    <!-- Removed inline padding; VBox spacing="15" already provides top gap -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <!-- Replaced nav-button (wrong class) with btn-secondary -->
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-secondary"/>
         <Button text="Save Trip" onAction="#handleSave" styleClass="primary-button"/>
     </HBox>
 </VBox>
