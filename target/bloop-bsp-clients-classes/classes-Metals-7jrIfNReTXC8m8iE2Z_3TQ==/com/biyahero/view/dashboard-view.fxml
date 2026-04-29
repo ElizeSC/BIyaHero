@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import java.net.URL?>
+
+<VBox spacing="25" VBox.vgrow="ALWAYS"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.DashboardController">
+    <stylesheets><URL value="@style.css"/></stylesheets>
+    <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+    <HBox alignment="CENTER_LEFT">
+        <VBox spacing="5">
+            <Label text="Active Trips" styleClass="header-title"/>
+            <Label text="Monitor en-route trips" styleClass="sub-header"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField"
+                   promptText="Search by Trip ID..."
+                   prefWidth="300" styleClass="text-field"/>
+    </HBox>
+
+    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <content>
+            <VBox fx:id="activeTripsContainer">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10" />
+                </padding>
+            </VBox>
+        </content>
+    </ScrollPane>
+</VBox>
