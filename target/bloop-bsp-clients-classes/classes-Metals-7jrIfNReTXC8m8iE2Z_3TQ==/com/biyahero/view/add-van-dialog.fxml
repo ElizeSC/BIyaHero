@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<!-- Added missing stylesheet import; switched root from inline style to login-card for dialog surface -->
+<VBox spacing="15" styleClass="login-card" prefWidth="400"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.AddTripController">
+
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <!-- Replaced inline font/weight with header-title class -->
+    <Label text="Schedule New Trip" styleClass="header-title"/>
+
+    <VBox spacing="5">
+        <Label text="Select Route" styleClass="input-label"/>
+        <ComboBox fx:id="routeComboBox" maxWidth="Infinity" promptText="Choose Route..." styleClass="combo-box"/>
+    </VBox>
+
+    <HBox spacing="10">
+        <VBox HBox.hgrow="ALWAYS" spacing="5">
+            <Label text="Departure Date" styleClass="input-label"/>
+            <DatePicker fx:id="datePicker" maxWidth="Infinity"/>
+        </VBox>
+        <VBox HBox.hgrow="ALWAYS" spacing="5">
+            <Label text="Time" styleClass="input-label"/>
+            <TextField fx:id="timeField" promptText="HH:mm" styleClass="text-field"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="5">
+        <Label text="Assign Van" styleClass="input-label"/>
+        <ComboBox fx:id="vanComboBox" maxWidth="Infinity" promptText="Available Vans" styleClass="combo-box"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Assign Driver" styleClass="input-label"/>
+        <ComboBox fx:id="driverComboBox" maxWidth="Infinity" promptText="Available Drivers" styleClass="combo-box"/>
+    </VBox>
+
+    <!-- Removed inline padding; VBox spacing="15" already provides top gap -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <!-- Replaced nav-button (wrong class) with btn-secondary -->
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-secondary"/>
+        <Button text="Save Trip" onAction="#handleSave" styleClass="primary-button"/>
+    </HBox>
+</VBox>

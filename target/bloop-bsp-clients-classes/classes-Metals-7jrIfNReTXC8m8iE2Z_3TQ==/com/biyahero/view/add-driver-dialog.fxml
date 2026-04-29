@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Replaced main-container with login-card for proper dialog surface -->
+<VBox prefWidth="450.0" spacing="20" styleClass="login-card"
+      xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.AddDriverController">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding>
+        <Insets bottom="30" left="40" right="40" top="30" />
+    </padding>
+
+    <VBox spacing="5">
+        <!-- Removed conflicting inline font-size; header-title CSS handles it -->
+        <Label fx:id="titleLabel" styleClass="header-title" text="Register New Driver" />
+        <Label styleClass="sub-header" text="Fill in the driver's credential information." />
+    </VBox>
+
+    <Separator />
+
+    <VBox spacing="15">
+        <VBox spacing="5">
+            <!-- Replaced all inline -fx-font-weight:bold labels with input-label class -->
+            <Label styleClass="input-label" text="Full Name" />
+            <TextField fx:id="nameField" promptText="e.g. Juan Dela Cruz" styleClass="text-field"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="input-label" text="License Number" />
+            <TextField fx:id="licenseField" promptText="e.g. N01-XX-XXXXXX" styleClass="text-field"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="input-label" text="Contact Number" />
+            <TextField fx:id="contactField" promptText="e.g. 0917 123 4567" styleClass="text-field"/>
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="input-label" text="Status" />
+            <ComboBox fx:id="statusComboBox" prefWidth="400.0" promptText="Select Status" styleClass="combo-box"/>
+        </VBox>
+    </VBox>
+
+    <Region VBox.vgrow="ALWAYS" />
+
+    <HBox alignment="CENTER_RIGHT" spacing="15">
+        <!-- Replaced transparent inline style with btn-secondary class -->
+        <Button onAction="#handleCancel" styleClass="btn-secondary" text="Cancel" />
+        <Button onAction="#handleSave" styleClass="primary-button" text="Save Driver" />
+    </HBox>
+
+</VBox>

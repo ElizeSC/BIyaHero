@@ -1,8 +1,10 @@
 package com.biyahero.cli;
 
 import com.biyahero.model.TripReport;
+import com.biyahero.service.FileService;
 import com.biyahero.service.ReportService;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -11,16 +13,21 @@ import java.util.Scanner;
 
 public class ReportMenu {
     private static final ReportService reportService = new ReportService();
+    private static final FileService   fileService   = new FileService();
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter DT_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static final DateTimeFormatter DT_FORMATTER   = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static void show(Scanner scanner) {
         boolean running = true;
         while (running) {
             System.out.println("\n=== DATA REPORTS ===");
             System.out.println("[1] View Reports by Date Range");
-            System.out.println("[2] Export All (Full Historical Dataset)");
+            System.out.println("[2] View All Reports");
             System.out.println("[3] Search Reports");
+            System.out.println("[4] Export to CSV");
+            System.out.println("[5] Export to JSON");
+            System.out.println("[6] Export SQL Backup");
+            System.out.println("[7] Export to PDF");
             System.out.println("[0] Back");
             System.out.print("Select: ");
 
@@ -28,13 +35,17 @@ public class ReportMenu {
                 case "1" -> viewByDateRange(scanner);
                 case "2" -> viewAllReports();
                 case "3" -> searchReports(scanner);
+                case "4" -> exportCSV(scanner);
+                case "5" -> exportJSON(scanner);
+                case "6" -> exportSQL(scanner);
+                case "7" -> exportPDF(scanner);
                 case "0" -> running = false;
-                default -> System.out.println("Invalid option.");
+                default  -> System.out.println("Invalid option.");
             }
         }
     }
 
-    // VIEW BY DATE RANGE 
+    // ── VIEW ─────────────────────────────────────────────────────────────────
 
     private static void viewByDateRange(Scanner scanner) {
         System.out.print("Start Date (yyyy-MM-dd): ");
@@ -45,7 +56,7 @@ public class ReportMenu {
 
         try {
             LocalDate startDate = LocalDate.parse(startInput, DATE_FORMATTER);
-            LocalDate endDate = LocalDate.parse(endInput, DATE_FORMATTER);
+            LocalDate endDate   = LocalDate.parse(endInput,   DATE_FORMATTER);
 
             List<TripReport> reports = reportService.getReportsByDateRange(startDate, endDate);
             if (reports.isEmpty()) {
@@ -65,22 +76,17 @@ public class ReportMenu {
         }
     }
 
-    // EXPORT ALL
-
     private static void viewAllReports() {
         List<TripReport> reports = reportService.getAllReports();
         if (reports.isEmpty()) {
             System.out.println("No completed trips found.");
             return;
         }
-
-        System.out.println("\n--- Full Historical Dataset ---");
+        System.out.println("\n--- All Completed Trips ---");
         printReportHeader();
         reports.forEach(ReportMenu::printReport);
         printSummary(reports);
     }
-
-    // SEARCH REPORTS 
 
     private static void searchReports(Scanner scanner) {
         System.out.print("Search (Trip ID, Driver, or Route): ");
@@ -91,13 +97,78 @@ public class ReportMenu {
             System.out.println("No reports found.");
             return;
         }
-
         printReportHeader();
         results.forEach(ReportMenu::printReport);
         printSummary(results);
     }
 
-    // DISPLAY HELPERS
+    // ── EXPORT ───────────────────────────────────────────────────────────────
+
+    private static void exportCSV(Scanner scanner) {
+        List<TripReport> reports = reportService.getAllReports();
+        if (reports.isEmpty()) { System.out.println("No reports to export."); return; }
+
+        System.out.print("Output file path (e.g. reports/trip_report.csv): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "trip_report.csv";
+
+        try {
+            fileService.exportTripReportsToCSV(reports, path);
+            System.out.println("CSV exported successfully → " + path);
+        } catch (IOException e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    private static void exportJSON(Scanner scanner) {
+        List<TripReport> reports = reportService.getAllReports();
+        if (reports.isEmpty()) { System.out.println("No reports to export."); return; }
+
+        System.out.print("Output file path (e.g. reports/trip_report.json): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "trip_report.json";
+
+        try {
+            fileService.exportTripReportsToJSON(reports, path);
+            System.out.println("JSON exported successfully → " + path);
+        } catch (IOException e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    private static void exportSQL(Scanner scanner) {
+        List<TripReport> reports = reportService.getAllReports();
+        if (reports.isEmpty()) { System.out.println("No reports to export."); return; }
+
+        System.out.print("Output file path (e.g. reports/biyahero_backup.sql): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "biyahero_backup.sql";
+
+        try {
+            fileService.exportTripReportsToSQL(reports, path);
+            System.out.println("SQL backup exported successfully → " + path);
+        } catch (IOException e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    private static void exportPDF(Scanner scanner) {
+        List<TripReport> reports = reportService.getAllReports();
+        if (reports.isEmpty()) { System.out.println("No reports to export."); return; }
+
+        System.out.print("Output file path (e.g. reports/trip_report.pdf): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "trip_report.pdf";
+
+        try {
+            fileService.exportTripReportsToPDF(reports, path, "All Completed Trips");
+            System.out.println("PDF exported successfully → " + path);
+        } catch (IOException e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    // ── DISPLAY HELPERS ───────────────────────────────────────────────────────
 
     private static void printReportHeader() {
         System.out.printf("%-10s %-20s %-25s %-18s %-15s %-12s%n",
@@ -117,19 +188,14 @@ public class ReportMenu {
     }
 
     private static void printSummary(List<TripReport> reports) {
-        double totalRevenue = reports.stream()
-            .mapToDouble(TripReport::getTotalRevenue)
-            .sum();
-        int totalTrips = reports.size();
+        double totalRevenue = reports.stream().mapToDouble(TripReport::getTotalRevenue).sum();
         double avgOccupancy = reports.stream()
             .mapToDouble(r -> r.getTotalCapacity() > 0
-                ? (r.getBookedSeats() * 100.0) / r.getTotalCapacity()
-                : 0)
-            .average()
-            .orElse(0);
+                ? (r.getBookedSeats() * 100.0) / r.getTotalCapacity() : 0)
+            .average().orElse(0);
 
         System.out.println("-".repeat(102));
         System.out.printf("Total Trips: %-10d Avg Occupancy: %-10.1f%% Total Revenue: PHP %.2f%n",
-            totalTrips, avgOccupancy, totalRevenue);
+            reports.size(), avgOccupancy, totalRevenue);
     }
 }
