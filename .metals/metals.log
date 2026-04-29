@@ -167,3 +167,1940 @@ INFO: Unsupported notification method: $/setTrace
 Apr 29, 2026 12:59:59 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
 WARNING: Unmatched cancel notification for request id 339
 2026.04.29 13:00:59 INFO  running 'C:\Program Files\Eclipse Adoptium\jdk-17.0.13.11-hotspot\bin\java.exe -Dfile.encoding=UTF-8 -Dmaven.multiModuleProjectDirectory=C:\Users\Daisha\Downloads\BIyaHero -Dmaven.home=C:\Users\Daisha\AppData\Local\Temp\metals9485600533023851540 -cp C:\Users\Daisha\AppData\Local\Temp\metals9485600533023851540\maven-wrapper.jar org.apache.maven.wrapper.MavenWrapperMain generate-sources ch.epfl.scala:bloop-maven-plugin:2.0.3:bloopInstall -DdownloadSources=true'
+2026.04.29 13:01:03 INFO  [INFO] Scanning for projects...
+2026.04.29 13:01:03 INFO  [INFO] 
+2026.04.29 13:01:03 INFO  [INFO] -----------------------< com.biyahero:BiyaHero >------------------------
+2026.04.29 13:01:03 INFO  [INFO] Building BiyaHero 1.0-SNAPSHOT
+2026.04.29 13:01:03 INFO  [INFO]   from pom.xml
+2026.04.29 13:01:03 INFO  [INFO] --------------------------------[ jar ]---------------------------------
+2026.04.29 13:01:03 INFO  [WARNING] 6 problems were encountered while building the effective model for org.openjfx:javafx-controls:jar:21 during dependency collection step for project (use -X to see details)
+2026.04.29 13:01:03 INFO  [INFO] 
+2026.04.29 13:01:03 INFO  [INFO] --- bloop:2.0.3:bloopInstall (default-cli) @ BiyaHero ---
+2026.04.29 13:01:06 INFO  [ERROR] org.scala-lang:scala([0-9]?)-library is missing from project dependencies
+2026.04.29 13:01:06 INFO  [ERROR] org.scala-lang:scala([0-9]?)-library is missing from project dependencies
+2026.04.29 13:01:06 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:21:compile (sources = false)
+2026.04.29 13:01:06 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:21:compile (sources = false)
+2026.04.29 13:01:06 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:21:compile (sources = true)
+2026.04.29 13:01:06 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:21:compile (sources = true)
+2026.04.29 13:01:06 INFO  [INFO] Resolving artifact: com.itextpdf:sign:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:06 INFO  [INFO] SUCCESS: com.itextpdf:sign:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:06 INFO  [INFO] Resolving artifact: com.itextpdf:sign:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:06 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/sign/7.2.5/sign-7.2.5-sources.jar
+Apr 29, 2026 1:01:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTrace
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 3.6/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 5.0/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 6.4/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 7.7/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 9.1/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 10/136 kB 
+2026.04.29 13:01:08 INFO  Progress (1): 12/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 13/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 15/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 16/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 17/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 19/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 20/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 21/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 23/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 24/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 26/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 27/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 28/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 29/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 31/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 32/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 33/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 35/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 36/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 37/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 39/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 40/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 41/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 43/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 44/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 46/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 47/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 48/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 50/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 51/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 52/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 54/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 55/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 59/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 64/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 68/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 72/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 76/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 81/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 85/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 89/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 93/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 97/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 102/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 106/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 110/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 114/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 119/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 123/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 127/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 131/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 136/136 kB
+2026.04.29 13:01:08 INFO  Progress (1): 136 kB    
+2026.04.29 13:01:08 INFO                      
+2026.04.29 13:01:08 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/sign/7.2.5/sign-7.2.5-sources.jar (136 kB at 93 kB/s)
+2026.04.29 13:01:08 INFO  [INFO] SUCCESS: com.itextpdf:sign:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:08 INFO  [INFO] Resolving artifact: com.itextpdf:forms:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:08 INFO  [INFO] SUCCESS: com.itextpdf:forms:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:08 INFO  [INFO] Resolving artifact: com.itextpdf:forms:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:08 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/forms/7.2.5/forms-7.2.5-sources.jar
+2026.04.29 13:01:08 INFO  Progress (1): 3.8/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 8.0/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 12/141 kB 
+2026.04.29 13:01:08 INFO  Progress (1): 16/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 21/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 25/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 29/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 33/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 37/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 41/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 46/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 50/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 54/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 58/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 63/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 67/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 71/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 75/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 80/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 84/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 100/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 117/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 133/141 kB
+2026.04.29 13:01:08 INFO  Progress (1): 141 kB    
+2026.04.29 13:01:08 INFO                      
+2026.04.29 13:01:08 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/forms/7.2.5/forms-7.2.5-sources.jar (141 kB at 729 kB/s)
+2026.04.29 13:01:08 INFO  [INFO] SUCCESS: com.itextpdf:forms:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:08 INFO  [INFO] Resolving artifact: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:08 INFO  [INFO] SUCCESS: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:08 INFO  [INFO] Resolving artifact: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:08 INFO  Downloading from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.70/bcprov-jdk15on-1.70-sources.jar
+2026.04.29 13:01:08 INFO  Progress (1): 0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 0.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.5/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.6/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.7/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.8/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 1.9/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.0/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.1/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.2/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.3/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.4/3.0 MB
+2026.04.29 13:01:08 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.5/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.6/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.7/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.8/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 2.9/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 3.0/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 3.0/3.0 MB
+2026.04.29 13:01:09 INFO  Progress (1): 3.0 MB    
+2026.04.29 13:01:09 INFO                      
+2026.04.29 13:01:09 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcprov-jdk15on/1.70/bcprov-jdk15on-1.70-sources.jar (3.0 MB at 3.9 MB/s)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:svg:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: com.itextpdf:svg:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:svg:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/svg/7.2.5/svg-7.2.5-sources.jar
+2026.04.29 13:01:09 INFO  Progress (1): 7.7/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 8.2/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 25/201 kB 
+2026.04.29 13:01:09 INFO  Progress (1): 33/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 49/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 66/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 82/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 98/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 115/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 123/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 139/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 147/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 156/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 172/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 180/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 197/201 kB
+2026.04.29 13:01:09 INFO  Progress (1): 201 kB    
+2026.04.29 13:01:09 INFO                      
+2026.04.29 13:01:09 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/svg/7.2.5/svg-7.2.5-sources.jar (201 kB at 1.2 MB/s)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: com.itextpdf:svg:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = true)
+2026.04.29 13:01:09 INFO  Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-sources.jar
+2026.04.29 13:01:09 INFO  Progress (1): 7.7/58 kB
+2026.04.29 13:01:09 INFO  Progress (1): 16/58 kB 
+2026.04.29 13:01:09 INFO  Progress (1): 32/58 kB
+2026.04.29 13:01:09 INFO  Progress (1): 49/58 kB
+2026.04.29 13:01:09 INFO  Progress (1): 58 kB   
+2026.04.29 13:01:09 INFO                     
+2026.04.29 13:01:09 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36-sources.jar (58 kB at 388 kB/s)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/styled-xml-parser/7.2.5/styled-xml-parser-7.2.5-sources.jar
+2026.04.29 13:01:09 INFO  Progress (1): 7.7/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 16/536 kB 
+2026.04.29 13:01:09 INFO  Progress (1): 24/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 40/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 57/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 73/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 90/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 106/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 122/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 139/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 155/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 172/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 188/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 204/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 221/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 237/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 246/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 262/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 279/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 295/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 311/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 328/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 344/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 360/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 377/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 393/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 410/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 426/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 442/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 459/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 475/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 492/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 508/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 524/536 kB
+2026.04.29 13:01:09 INFO  Progress (1): 536 kB    
+2026.04.29 13:01:09 INFO                      
+2026.04.29 13:01:09 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/styled-xml-parser/7.2.5/styled-xml-parser-7.2.5-sources.jar (536 kB at 2.6 MB/s)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:win:21:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:win:21:compile (sources = true)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:hyph:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] SUCCESS: com.itextpdf:hyph:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:09 INFO  [INFO] Resolving artifact: com.itextpdf:hyph:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/hyph/7.2.5/hyph-7.2.5-sources.jar
+2026.04.29 13:01:09 INFO  [ERROR] FAILURE com.itextpdf:hyph:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:09 INFO  org.eclipse.aether.resolution.ArtifactResolutionException: The following artifacts could not be resolved: com.itextpdf:hyph:jar:sources:7.2.5 (absent): Could not find artifact com.itextpdf:hyph:jar:sources:7.2.5 in central (https://repo.maven.apache.org/maven2)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:473)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:10 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:298)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:10 INFO  Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact com.itextpdf:hyph:jar:sources:7.2.5 in central (https://repo.maven.apache.org/maven2)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed (ArtifactTransportListener.java:42)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run (BasicRepositoryConnector.java:417)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get (BasicRepositoryConnector.java:260)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads (DefaultArtifactResolver.java:537)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:449)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:10 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:298)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:barcodes:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:barcodes:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:barcodes:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/barcodes/7.2.5/barcodes-7.2.5-sources.jar
+2026.04.29 13:01:10 INFO  Progress (1): 7.7/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 16/150 kB 
+2026.04.29 13:01:10 INFO  Progress (1): 32/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 49/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 65/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 81/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 98/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 106/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 123/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 139/150 kB
+2026.04.29 13:01:10 INFO  Progress (1): 150 kB    
+2026.04.29 13:01:10 INFO                      
+2026.04.29 13:01:10 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/barcodes/7.2.5/barcodes-7.2.5-sources.jar (150 kB at 887 kB/s)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:barcodes:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:io:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:io:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:io:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/io/7.2.5/io-7.2.5-sources.jar
+2026.04.29 13:01:10 INFO  Progress (1): 7.7/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 16/628 kB 
+2026.04.29 13:01:10 INFO  Progress (1): 25/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 41/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 57/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 74/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 90/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 106/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 123/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 139/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 156/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 172/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 188/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 205/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 221/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 238/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 254/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 270/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 287/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 303/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 319/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 336/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 352/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 369/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 385/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 401/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 418/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 434/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 451/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 467/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 483/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 500/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 516/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 532/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 549/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 565/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 582/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 598/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 614/628 kB
+2026.04.29 13:01:10 INFO  Progress (1): 628 kB    
+2026.04.29 13:01:10 INFO                      
+2026.04.29 13:01:10 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/io/7.2.5/io-7.2.5-sources.jar (628 kB at 2.8 MB/s)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:io:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:win:21:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:win:21:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:win:21:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:win:21:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:font-asian:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:font-asian:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:font-asian:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/font-asian/7.2.5/font-asian-7.2.5-sources.jar
+2026.04.29 13:01:10 INFO  [ERROR] FAILURE com.itextpdf:font-asian:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  org.eclipse.aether.resolution.ArtifactResolutionException: The following artifacts could not be resolved: com.itextpdf:font-asian:jar:sources:7.2.5 (absent): Could not find artifact com.itextpdf:font-asian:jar:sources:7.2.5 in central (https://repo.maven.apache.org/maven2)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:473)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:10 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:298)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:10 INFO  Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: Could not find artifact com.itextpdf:font-asian:jar:sources:7.2.5 in central (https://repo.maven.apache.org/maven2)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.ArtifactTransportListener.transferFailed (ArtifactTransportListener.java:42)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.BasicRepositoryConnector$TaskRunner.run (BasicRepositoryConnector.java:417)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.connector.basic.BasicRepositoryConnector.get (BasicRepositoryConnector.java:260)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads (DefaultArtifactResolver.java:537)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:449)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:10 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:10 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:10 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:298)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:10 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:10 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:10 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:10 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:10 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:10 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:10 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:10 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:10 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:pdfa:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:pdfa:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:pdfa:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/pdfa/7.2.5/pdfa-7.2.5-sources.jar
+2026.04.29 13:01:10 INFO  Progress (1): 7.7/52 kB
+2026.04.29 13:01:10 INFO  Progress (1): 8.2/52 kB
+2026.04.29 13:01:10 INFO  Progress (1): 25/52 kB 
+2026.04.29 13:01:10 INFO  Progress (1): 41/52 kB
+2026.04.29 13:01:10 INFO  Progress (1): 52 kB   
+2026.04.29 13:01:10 INFO                     
+2026.04.29 13:01:10 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/pdfa/7.2.5/pdfa-7.2.5-sources.jar (52 kB at 300 kB/s)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:pdfa:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:21:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:21:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:21:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:21:compile (sources = true)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:commons:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] SUCCESS: com.itextpdf:commons:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:10 INFO  [INFO] Resolving artifact: com.itextpdf:commons:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:10 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/commons/7.2.5/commons-7.2.5-sources.jar
+2026.04.29 13:01:11 INFO  Progress (1): 7.7/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 16/111 kB 
+2026.04.29 13:01:11 INFO  Progress (1): 25/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 41/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 57/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 74/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 90/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 106/111 kB
+2026.04.29 13:01:11 INFO  Progress (1): 111 kB    
+2026.04.29 13:01:11 INFO                      
+2026.04.29 13:01:11 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/commons/7.2.5/commons-7.2.5-sources.jar (111 kB at 641 kB/s)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.itextpdf:commons:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.itextpdf:layout:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.itextpdf:layout:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.itextpdf:layout:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:11 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/layout/7.2.5/layout-7.2.5-sources.jar
+2026.04.29 13:01:11 INFO  Progress (1): 7.7/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 11/561 kB 
+2026.04.29 13:01:11 INFO  Progress (1): 28/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 44/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 61/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 77/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 93/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 110/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 115/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 131/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 139/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 156/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 172/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 180/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 188/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 197/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 205/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 213/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 221/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 238/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 246/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 254/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 270/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 279/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 295/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 311/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 328/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 344/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 360/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 377/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 385/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 401/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 418/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 434/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 451/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 467/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 483/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 500/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 516/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 532/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 549/561 kB
+2026.04.29 13:01:11 INFO  Progress (1): 561 kB    
+2026.04.29 13:01:11 INFO                      
+2026.04.29 13:01:11 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/layout/7.2.5/layout-7.2.5-sources.jar (561 kB at 3.1 MB/s)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.itextpdf:layout:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:21:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:21:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:21:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:21:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:11 INFO  Downloading from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.70/bcpkix-jdk15on-1.70-sources.jar
+2026.04.29 13:01:11 INFO  Progress (1): 7.7/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 16/603 kB 
+2026.04.29 13:01:11 INFO  Progress (1): 25/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 41/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 57/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 74/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 90/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 106/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 123/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 139/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 156/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 172/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 188/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 205/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 221/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 238/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 254/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 270/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 287/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 303/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 319/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 336/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 352/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 369/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 385/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 401/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 418/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 434/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 451/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 467/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 483/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 500/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 516/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 532/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 549/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 565/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 582/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 598/603 kB
+2026.04.29 13:01:11 INFO  Progress (1): 603 kB    
+2026.04.29 13:01:11 INFO                      
+2026.04.29 13:01:11 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.70/bcpkix-jdk15on-1.70-sources.jar (603 kB at 3.4 MB/s)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:21:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:21:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:21:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:21:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.itextpdf:kernel:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.itextpdf:kernel:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: com.itextpdf:kernel:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:11 INFO  Downloading from central: https://repo.maven.apache.org/maven2/com/itextpdf/kernel/7.2.5/kernel-7.2.5-sources.jar
+2026.04.29 13:01:11 INFO  Progress (1): 0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.4/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.5/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.6/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.7/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.8/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 0.9/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.0/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.1/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.2/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.3/1.3 MB
+2026.04.29 13:01:11 INFO  Progress (1): 1.3 MB    
+2026.04.29 13:01:11 INFO                      
+2026.04.29 13:01:11 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/com/itextpdf/kernel/7.2.5/kernel-7.2.5-sources.jar (1.3 MB at 4.0 MB/s)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: com.itextpdf:kernel:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:11 INFO  [INFO] Resolving artifact: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:11 INFO  Downloading from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcutil-jdk15on/1.70/bcutil-jdk15on-1.70-sources.jar
+2026.04.29 13:01:11 INFO  Progress (1): 7.7/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 8.2/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 25/362 kB 
+2026.04.29 13:01:11 INFO  Progress (1): 41/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 57/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 74/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 90/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 106/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 123/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 131/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 139/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 147/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 164/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 180/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 197/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 205/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 213/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 221/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 229/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 246/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 254/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 262/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 279/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 287/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 303/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 319/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 336/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 352/362 kB
+2026.04.29 13:01:11 INFO  Progress (1): 362 kB    
+2026.04.29 13:01:11 INFO                      
+2026.04.29 13:01:11 INFO  Downloaded from central: https://repo.maven.apache.org/maven2/org/bouncycastle/bcutil-jdk15on/1.70/bcutil-jdk15on-1.70-sources.jar (362 kB at 2.3 MB/s)
+2026.04.29 13:01:11 INFO  [INFO] SUCCESS: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Generated .bloop\BiyaHero.json
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:sign:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:sign:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:sign:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:sign:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:forms:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:forms:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:forms:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:forms:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcprov-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:svg:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:svg:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:svg:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:svg:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.slf4j:slf4j-api:jar:1.7.36:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:styled-xml-parser:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:hyph:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:hyph:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:hyph:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [ERROR] FAILURE com.itextpdf:hyph:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  org.eclipse.aether.resolution.ArtifactResolutionException: The following artifacts could not be resolved: com.itextpdf:hyph:jar:sources:7.2.5 (absent): com.itextpdf:hyph:jar:sources:7.2.5 was not found in https://repo.maven.apache.org/maven2 during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of central has elapsed or updates are forced
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:473)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:12 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:307)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:12 INFO  Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: com.itextpdf:hyph:jar:sources:7.2.5 was not found in https://repo.maven.apache.org/maven2 during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of central has elapsed or updates are forced
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.newException (DefaultUpdateCheckManager.java:225)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkArtifact (DefaultUpdateCheckManager.java:188)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.gatherDownloads (DefaultArtifactResolver.java:586)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads (DefaultArtifactResolver.java:525)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:449)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:12 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:307)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:barcodes:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:barcodes:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:barcodes:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:barcodes:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:io:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:io:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:io:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:io:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:win:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-fxml:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-fxml:jar:win:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:font-asian:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:font-asian:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:font-asian:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [ERROR] FAILURE com.itextpdf:font-asian:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  org.eclipse.aether.resolution.ArtifactResolutionException: The following artifacts could not be resolved: com.itextpdf:font-asian:jar:sources:7.2.5 (absent): com.itextpdf:font-asian:jar:sources:7.2.5 was not found in https://repo.maven.apache.org/maven2 during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of central has elapsed or updates are forced
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:473)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:12 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:307)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:12 INFO  Caused by: org.eclipse.aether.transfer.ArtifactNotFoundException: com.itextpdf:font-asian:jar:sources:7.2.5 was not found in https://repo.maven.apache.org/maven2 during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of central has elapsed or updates are forced
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.newException (DefaultUpdateCheckManager.java:225)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultUpdateCheckManager.checkArtifact (DefaultUpdateCheckManager.java:188)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.gatherDownloads (DefaultArtifactResolver.java:586)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.performDownloads (DefaultArtifactResolver.java:525)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolve (DefaultArtifactResolver.java:449)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifacts (DefaultArtifactResolver.java:261)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultArtifactResolver.resolveArtifact (DefaultArtifactResolver.java:243)
+2026.04.29 13:01:12 INFO      at org.eclipse.aether.internal.impl.DefaultRepositorySystem.resolveArtifact (DefaultRepositorySystem.java:278)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.bloop$integrations$maven$MojoImplementation$$resolveArtifact$1 (MojoImplementation.scala:115)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:240)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$$anonfun$2.applyOrElse (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect (StrictOptimizedIterableOps.scala:151)
+2026.04.29 13:01:12 INFO      at scala.collection.StrictOptimizedIterableOps.collect$ (StrictOptimizedIterableOps.scala:136)
+2026.04.29 13:01:12 INFO      at scala.collection.mutable.HashSet.collect (HashSet.scala:31)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeConfig$1 (MojoImplementation.scala:222)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation$.writeCompileAndTestConfiguration (MojoImplementation.scala:307)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.MojoImplementation.writeCompileAndTestConfiguration (MojoImplementation.scala)
+2026.04.29 13:01:12 INFO      at bloop.integrations.maven.BloopMojo.execute (BloopMojo.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+2026.04.29 13:01:12 INFO      at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+2026.04.29 13:01:12 INFO      at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+2026.04.29 13:01:12 INFO      at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+2026.04.29 13:01:12 INFO      at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:361)
+2026.04.29 13:01:12 INFO      at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+2026.04.29 13:01:12 INFO      at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+2026.04.29 13:01:12 INFO      at java.lang.reflect.Method.invoke (Method.java:569)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+2026.04.29 13:01:12 INFO      at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:pdfa:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:pdfa:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:pdfa:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:pdfa:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.mysql:mysql-connector-j:jar:8.3.0:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-graphics:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-graphics:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:commons:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:commons:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:commons:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:commons:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:layout:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:layout:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:layout:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:layout:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.google.protobuf:protobuf-java:jar:3.25.1:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-controls:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-controls:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcpkix-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:21:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.openjfx:javafx-base:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.openjfx:javafx-base:jar:21:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:kernel:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:kernel:jar:7.2.5:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: com.itextpdf:kernel:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: com.itextpdf:kernel:jar:7.2.5:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = false)
+2026.04.29 13:01:12 INFO  [INFO] Resolving artifact: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] SUCCESS: org.bouncycastle:bcutil-jdk15on:jar:1.70:compile (sources = true)
+2026.04.29 13:01:12 INFO  [INFO] Generated .bloop\BiyaHero-test.json
+2026.04.29 13:01:12 INFO  [INFO] ------------------------------------------------------------------------
+2026.04.29 13:01:12 INFO  [INFO] BUILD SUCCESS
+2026.04.29 13:01:12 INFO  [INFO] ------------------------------------------------------------------------
+2026.04.29 13:01:12 INFO  [INFO] Total time:  9.723 s
+2026.04.29 13:01:12 INFO  [INFO] Finished at: 2026-04-29T13:01:12+08:00
+2026.04.29 13:01:12 INFO  [INFO] ------------------------------------------------------------------------
+2026.04.29 13:01:12 INFO  time: ran 'mvn bloopInstall' in 13s
+2026.04.29 13:01:12 INFO  Disconnecting from Bloop session...
+2026.04.29 13:01:12 INFO  Shut down connection with build server.
+2026.04.29 13:01:13 INFO  Attempting to connect to the build server...
+2026.04.29 13:01:13 INFO  Found a Bloop server running
+2026.04.29 13:01:12 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\Daisha\Downloads\BIyaHero\.metals\bsp.trace.json or C:\Users\Daisha\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2026.04.29 13:01:13 INFO  time: Connected to build server in 0.25s
+2026.04.29 13:01:12 INFO  Connected to Build server: Bloop v2.0.19
+2026.04.29 13:01:13 INFO  time: Imported build in 0.13s
+2026.04.29 13:01:25 INFO  compiling biyahero (2 java sources)
+2026.04.29 13:01:26 INFO  time: indexed workspace in 13s
+2026.04.29 13:01:26 INFO  Deduplicating compilation of BiyaHero from bsp client 'Metals 1.6.7' (since 13.406s)
+2026.04.29 13:01:26 INFO  compiling biyahero (2 java sources)
+2026.04.29 13:01:30 INFO  time: compiled BiyaHero in 3.61s
+2026.04.29 13:01:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:05:10 INFO  compiling biyahero (1 java source)
+2026.04.29 13:05:14 INFO  time: compiled BiyaHero in 3.22s
+2026.04.29 13:05:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 13:09:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:09:45 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 541
+2026.04.29 13:09:49 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:09:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 553
+2026.04.29 13:09:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:09:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:08 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 618
+2026.04.29 13:10:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 653
+2026.04.29 13:10:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:16 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 661
+Apr 29, 2026 1:10:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 663
+2026.04.29 13:10:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:20 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:26 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:30 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 742
+2026.04.29 13:10:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:32 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 754
+2026.04.29 13:10:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:49 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:52 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:10:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 823
+Apr 29, 2026 1:10:54 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 825
+2026.04.29 13:10:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:10:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:07 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:07 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:11:12 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 917
+Apr 29, 2026 1:11:14 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 924
+2026.04.29 13:11:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:11:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 931
+2026.04.29 13:11:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:11:40 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 979
+2026.04.29 13:11:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:52 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:54 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:54 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:11:56 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1040
+Apr 29, 2026 1:11:56 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1043
+Apr 29, 2026 1:11:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1047
+2026.04.29 13:11:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:11:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:15 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:19 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:12:49 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1177
+Apr 29, 2026 1:12:50 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1183
+2026.04.29 13:12:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:12:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:01 INFO  compiling biyahero (1 java source)
+2026.04.29 13:13:05 INFO  time: compiled BiyaHero in 3.94s
+2026.04.29 13:13:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:38 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:13:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:14:10 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1371
+2026.04.29 13:14:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:12 INFO  compiling biyahero (1 java source)
+2026.04.29 13:14:15 INFO  time: compiled BiyaHero in 3.2s
+2026.04.29 13:14:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:14:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1392
+Apr 29, 2026 1:14:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1390
+Apr 29, 2026 1:14:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1388
+Apr 29, 2026 1:14:21 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1397
+2026.04.29 13:14:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:14:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:15:53 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:15:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1439
+Apr 29, 2026 1:15:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1440
+Apr 29, 2026 1:15:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1441
+2026.04.29 13:15:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:15:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1446
+Apr 29, 2026 1:15:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1449
+2026.04.29 13:15:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:16:11 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1505
+Apr 29, 2026 1:16:11 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1502
+Apr 29, 2026 1:16:11 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1503
+2026.04.29 13:16:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:16:45 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1529
+2026.04.29 13:16:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:16:48 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1545
+2026.04.29 13:16:49 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:52 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:16:55 INFO  compiling biyahero (1 java source)
+2026.04.29 13:16:59 WARN  javac exited with exit code 1
+2026.04.29 13:16:59 INFO  time: compiled BiyaHero in 3.22s
+2026.04.29 13:16:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:17:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1594
+2026.04.29 13:17:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:17:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1593
+Apr 29, 2026 1:17:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1598
+Apr 29, 2026 1:17:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1595
+Apr 29, 2026 1:17:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1600
+2026.04.29 13:17:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:17:06 INFO  compiling biyahero (1 java source)
+2026.04.29 13:17:10 INFO  time: compiled BiyaHero in 3.18s
+2026.04.29 13:17:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:17:55 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:06 INFO  compiling biyahero (1 java source)
+2026.04.29 13:18:09 INFO  time: compiled BiyaHero in 3.34s
+2026.04.29 13:18:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:18:14 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1651
+2026.04.29 13:18:15 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:20 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:40 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:48 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:18:52 INFO  compiling biyahero (1 java source)
+2026.04.29 13:18:55 INFO  time: compiled BiyaHero in 3.29s
+2026.04.29 13:18:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:19:04 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1788
+2026.04.29 13:19:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:19:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:19:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\BiyaHeroApp.java
+Apr 29, 2026 1:22:01 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1814
+2026.04.29 13:22:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 13:22:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:22:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:23:00 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 1892
+2026.04.29 13:23:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:23:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:23:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:23:14 INFO  compiling biyahero (1 java source)
+2026.04.29 13:23:17 INFO  time: compiled BiyaHero in 3.45s
+2026.04.29 13:23:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:23:53 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:23:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:23:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:24:31 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2021
+Apr 29, 2026 1:24:31 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2022
+2026.04.29 13:24:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:38 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:38 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:24:43 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2070
+2026.04.29 13:24:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:47 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:55 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:24:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:25:05 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2190
+2026.04.29 13:25:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:07 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:25:11 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2220
+2026.04.29 13:25:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:25:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:36 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:39 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:48 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:26:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:31 INFO  compiling biyahero (1 java source)
+2026.04.29 13:27:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:34 INFO  time: compiled BiyaHero in 3.27s
+Apr 29, 2026 1:27:35 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2488
+2026.04.29 13:27:35 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:27:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:28:00 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2520
+2026.04.29 13:28:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:00 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:28:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2578
+2026.04.29 13:28:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:26 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:27 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:28 INFO  compiling biyahero (1 java source)
+2026.04.29 13:28:31 INFO  time: compiled BiyaHero in 3.6s
+2026.04.29 13:28:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:39 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:28:55 INFO  compiling biyahero (1 java source)
+2026.04.29 13:28:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 1:28:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2643
+2026.04.29 13:28:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:28:58 INFO  time: compiled BiyaHero in 3.46s
+2026.04.29 13:28:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:29:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+Apr 29, 2026 1:30:13 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2663
+2026.04.29 13:30:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:30:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:30:15 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+2026.04.29 13:30:18 INFO  compiling biyahero (1 java source)
+2026.04.29 13:30:22 INFO  time: compiled BiyaHero in 3.31s
+2026.04.29 13:30:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\controller\ReportsController.java
+Apr 29, 2026 1:30:32 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2693
+2026.04.29 13:30:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:30:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:30:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:31:02 INFO  compiling biyahero (1 java source)
+2026.04.29 13:31:05 INFO  time: compiled BiyaHero in 3.24s
+2026.04.29 13:31:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 13:31:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 2:23:43 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2767
+Apr 29, 2026 2:25:58 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2774
+2026.04.29 14:25:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:25:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:27:35 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:28:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:29:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:29:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:31:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:31:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:31:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:31:06 INFO  compiling biyahero (1 java source)
+2026.04.29 14:31:09 INFO  time: compiled BiyaHero in 3.45s
+2026.04.29 14:31:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:33:22 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 2931
+2026.04.29 14:33:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:33:54 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:33:54 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:33:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:34:23 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3097
+2026.04.29 14:34:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:26 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:26 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:34:28 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3124
+2026.04.29 14:34:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:34:32 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3150
+2026.04.29 14:34:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:35 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:36 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:36 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:38 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:44 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:34:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:35:00 INFO  compiling biyahero (1 java source)
+2026.04.29 14:35:03 INFO  time: compiled BiyaHero in 3.27s
+2026.04.29 14:35:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:35:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:35:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:35:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:35:10 INFO  compiling biyahero (1 java source)
+2026.04.29 14:35:14 INFO  time: compiled BiyaHero in 3.11s
+2026.04.29 14:35:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:36:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:36:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:44 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:37:44 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3393
+2026.04.29 14:37:44 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:46 INFO  compiling biyahero (1 java source)
+2026.04.29 14:37:49 INFO  time: compiled BiyaHero in 3.27s
+2026.04.29 14:37:49 INFO  compiling biyahero (1 java source)
+2026.04.29 14:37:52 WARN  javac exited with exit code 1
+2026.04.29 14:37:52 INFO  time: compiled BiyaHero in 2.51s
+Apr 29, 2026 2:37:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3426
+2026.04.29 14:37:54 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:55 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:37:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:38:03 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3452
+Apr 29, 2026 2:38:04 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3461
+2026.04.29 14:38:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:07 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:41 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:41 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:44 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:38:44 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3580
+2026.04.29 14:38:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:38:45 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3588
+2026.04.29 14:38:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:47 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:48 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:38:49 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:39:50 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:39:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:40:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3718
+Apr 29, 2026 2:40:17 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3721
+2026.04.29 14:40:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:30 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:36 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:40:38 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3796
+2026.04.29 14:40:41 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:47 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:40:53 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:01 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:08 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:27 INFO  compiling biyahero (1 java source)
+2026.04.29 14:41:30 INFO  time: compiled BiyaHero in 3.27s
+2026.04.29 14:41:30 INFO  compiling biyahero (1 java source)
+2026.04.29 14:41:33 INFO  time: compiled BiyaHero in 2.66s
+2026.04.29 14:41:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:37 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:41:55 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3970
+2026.04.29 14:41:55 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:55 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:41:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:42:09 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4010
+Apr 29, 2026 2:42:12 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4018
+2026.04.29 14:42:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:17 INFO  compiling biyahero (1 java source)
+2026.04.29 14:42:19 WARN  javac exited with exit code 1
+2026.04.29 14:42:19 INFO  time: compiled BiyaHero in 2.68s
+2026.04.29 14:42:20 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:41 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:42 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:52 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:56 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:42:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:43:01 INFO  compiling biyahero (1 java source)
+2026.04.29 14:43:04 INFO  time: compiled BiyaHero in 3.27s
+2026.04.29 14:43:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:43:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:43:12 INFO  compiling biyahero (1 java source)
+2026.04.29 14:43:15 INFO  time: compiled BiyaHero in 2.8s
+2026.04.29 14:43:15 INFO  compiling biyahero (1 java source)
+2026.04.29 14:43:18 INFO  time: compiled BiyaHero in 2.44s
+2026.04.29 14:43:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:45:02 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:47:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:47:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:48:51 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:48:53 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4202
+2026.04.29 14:48:53 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:50:20 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:52:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:52:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+Apr 29, 2026 2:53:04 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4323
+2026.04.29 14:53:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:53:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:54:03 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 14:54:04 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:54:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:54:56 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4433
+2026.04.29 14:54:57 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 2:54:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4437
+Apr 29, 2026 2:54:57 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4441
+2026.04.29 14:54:58 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:54:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:54:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:54:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:09 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:27 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:27 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:31 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:34 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:36 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:45 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:46 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:48 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:49 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:55:59 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:10 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:13 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:18 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:19 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:26 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:56:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:05 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:16 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:17 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:24 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:57:28 INFO  compiling biyahero (1 java source)
+2026.04.29 14:57:32 INFO  time: compiled BiyaHero in 3.33s
+2026.04.29 14:57:32 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:58:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:58:19 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:58:38 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:58:39 INFO  compiling biyahero (1 java source)
+2026.04.29 14:58:42 INFO  time: compiled BiyaHero in 3.04s
+2026.04.29 14:58:43 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 14:58:44 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:00:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:12 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:14 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:15 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+Apr 29, 2026 3:01:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4757
+2026.04.29 15:01:15 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:17 INFO  compiling biyahero (1 java source)
+2026.04.29 15:01:20 INFO  time: compiled BiyaHero in 3.54s
+2026.04.29 15:01:21 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:25 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:28 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:01:56 INFO  compiling biyahero (1 java source)
+2026.04.29 15:02:00 INFO  time: compiled BiyaHero in 3.52s
+Apr 29, 2026 3:04:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 4809
+2026.04.29 15:04:06 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 15:04:11 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\cli\ReportMenu.java
+2026.04.29 15:04:22 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 15:04:23 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 15:14:29 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
+2026.04.29 15:14:33 WARN  Could not load snapshot text for C:\Users\Daisha\Downloads\BIyaHero\src\main\java\com\biyahero\service\FileService.java
