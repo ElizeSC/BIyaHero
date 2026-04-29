@@ -4,7 +4,8 @@
 <?import javafx.geometry.*?>
 <?import java.net.URL?>
 
-<VBox spacing="20" styleClass="main-container"
+<!-- Replaced main-container with login-card for proper dialog surface -->
+<VBox spacing="20" styleClass="login-card"
       xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.StopSelectionController"
@@ -12,37 +13,34 @@
     <stylesheets><URL value="@style.css"/></stylesheets>
     <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
 
-    <!-- Header -->
     <VBox spacing="5">
-        <Label text="Update Van Location"
-               style="-fx-font-size: 20px; -fx-font-weight: 900; -fx-text-fill: #0A0D2C;"/>
-        <Label text="Select the stop the van has just reached."
-               styleClass="sub-header"/>
+        <!-- Replaced inline font/weight/color with header-title class -->
+        <Label text="Update Van Location" styleClass="header-title"/>
+        <Label text="Select the stop the van has just reached." styleClass="sub-header"/>
     </VBox>
 
     <Separator/>
 
-    <!-- Current position info -->
     <VBox spacing="4">
-        <Label text="Current Stop" style="-fx-font-weight: bold; -fx-text-fill: #475569;"/>
-        <Label fx:id="currentStopLabel"
-               text="Departed — no stop reached yet"
-               style="-fx-text-fill: #7E869E; -fx-font-size: 13px;"/>
+        <!-- Replaced inline bold/color with input-label class -->
+        <Label text="Current Stop" styleClass="input-label"/>
+        <!-- Replaced inline color/size with sub-header class -->
+        <Label fx:id="currentStopLabel" text="Departed — no stop reached yet" styleClass="sub-header"/>
     </VBox>
 
-    <!-- Next stop picker -->
     <VBox spacing="8">
-        <Label text="Move van to:" style="-fx-font-weight: bold; -fx-text-fill: #475569;"/>
+        <Label text="Move van to:" styleClass="input-label"/>
+        <!-- Removed inline -fx-font-size:14; combo-box CSS handles font -->
         <ComboBox fx:id="stopComboBox" maxWidth="Infinity"
-                  promptText="Select next stop..."
-                  style="-fx-font-size: 14px;"/>
+                  promptText="Select next stop..." styleClass="combo-box"/>
+        <!-- Kept inline color: this is a semantic error state label -->
         <Label fx:id="noStopsLabel"
                text="⚠ Van is already at the final stop."
-               style="-fx-text-fill: #E11D48; -fx-font-size: 12px;"
+               styleClass="error-text"
                visible="false" managed="false"/>
     </VBox>
 
-    <!-- Warning when last stop is selected -->
+    <!-- Kept inline styles: amber warning banner is a unique one-off state with no CSS class -->
     <Label fx:id="finalStopWarning"
            text="⚠ Selecting this stop will mark the trip as Completed."
            style="-fx-text-fill: #D97706; -fx-font-size: 12px;
@@ -52,18 +50,11 @@
 
     <Region VBox.vgrow="ALWAYS"/>
 
-    <!-- Buttons -->
     <HBox spacing="10" alignment="CENTER_RIGHT">
-        <Button text="Cancel"
-                onAction="#handleCancel"
-                style="-fx-background-color: transparent;
-                       -fx-border-color: #CBD5E1; -fx-border-radius: 8;
-                       -fx-background-radius: 8; -fx-padding: 8 20;
-                       -fx-cursor: hand;"/>
-        <Button fx:id="confirmButton"
-                text="Confirm Update"
-                onAction="#handleConfirm"
-                styleClass="primary-button"
-                style="-fx-padding: 8 20;"/>
+        <!-- Replaced fully inline Cancel with btn-secondary class -->
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-secondary"/>
+        <!-- Removed conflicting inline -fx-padding overriding primary-button CSS -->
+        <Button fx:id="confirmButton" text="Confirm Update"
+                onAction="#handleConfirm" styleClass="primary-button"/>
     </HBox>
 </VBox>

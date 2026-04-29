@@ -3,9 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 
-<VBox spacing="20" styleClass="main-container" stylesheets="@style.css"
+<!-- Replaced main-container with login-card for proper dialog surface -->
+<VBox spacing="20" styleClass="login-card" stylesheets="@style.css"
       xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.AddBookingController"
       prefWidth="450">
@@ -15,7 +16,8 @@
     </padding>
 
     <VBox spacing="5">
-        <Label text="New Booking" styleClass="header-title" style="-fx-font-size: 24;"/>
+        <!-- Removed inline -fx-font-size:24 fighting header-title CSS -->
+        <Label text="New Booking" styleClass="header-title"/>
         <Label text="Enter passenger and trip details below." styleClass="sub-header"/>
     </VBox>
 
@@ -26,40 +28,40 @@
         </columnConstraints>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" spacing="5">
-            <Label text="Passenger Name" styleClass="sub-header"/>
-            <TextField fx:id="passengerNameField" promptText="Full Name"/>
+            <Label text="Passenger Name" styleClass="input-label"/>
+            <TextField fx:id="passengerNameField" promptText="Full Name" styleClass="text-field"/>
         </VBox>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="5">
-            <Label text="Contact Number" styleClass="sub-header"/>
-            <TextField fx:id="contactField" promptText="0917..."/>
+            <Label text="Contact Number" styleClass="input-label"/>
+            <TextField fx:id="contactField" promptText="0917..." styleClass="text-field"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" spacing="5">
-            <Label text="Address" styleClass="sub-header"/>
-            <TextField fx:id="addressField" promptText="City/Province"/>
+            <Label text="Address" styleClass="input-label"/>
+            <TextField fx:id="addressField" promptText="City/Province" styleClass="text-field"/>
         </VBox>
 
         <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="5">
-            <Label text="Seat Number (1-15)" styleClass="sub-header"/>
-            <TextField fx:id="seatNumberField" promptText="e.g. 5"/>
+            <Label text="Seat Number (1-15)" styleClass="input-label"/>
+            <TextField fx:id="seatNumberField" promptText="e.g. 5" styleClass="text-field"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
-            <Label text="Fare (PHP)" styleClass="sub-header"/>
-            <TextField fx:id="fareField" promptText="500.00"/>
+            <Label text="Fare (PHP)" styleClass="input-label"/>
+            <TextField fx:id="fareField" promptText="500.00" styleClass="text-field"/>
         </VBox>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="5">
-            <Label text="Pickup Stop" styleClass="sub-header"/>
-            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop"/>
+            <Label text="Pickup Stop" styleClass="input-label"/>
+            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="5">
-            <Label text="Dropoff Stop" styleClass="sub-header"/>
-            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop"/>
+            <Label text="Dropoff Stop" styleClass="input-label"/>
+            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box"/>
         </VBox>
     </GridPane>
 

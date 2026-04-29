@@ -6,12 +6,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" style="-fx-background-color: #f8fafc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.ReportsController">
+<!-- Removed inline style bg (#f8fafc) — scroll-pane CSS class handles transparent bg -->
+<ScrollPane fitToWidth="true" styleClass="scroll-pane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.ReportsController">
     <stylesheets>
         <URL value="@style.css" />
     </stylesheets>
     <content>
-        <VBox spacing="25.0" style="-fx-background-color: #f8fafc;">
+        <!-- Removed inline bg color; app shell (.main-layout) owns the background -->
+        <VBox spacing="25.0">
             <padding>
                 <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
             </padding>
@@ -19,10 +21,9 @@
 
                 <VBox spacing="5.0">
                     <children>
-                        <Label text="Trip Data Reports" textFill="#3498db">
-                            <font><Font name="System Bold" size="32.0" /></font>
-                        </Label>
-                        <Label text="Preview and export trip records." textFill="#64748b" />
+                        <!-- Replaced hardcoded textFill + Font with CSS classes -->
+                        <Label text="Trip Data Reports" styleClass="header-title"/>
+                        <Label text="Preview and export trip records." styleClass="sub-header"/>
                     </children>
                 </VBox>
 
@@ -33,22 +34,23 @@
                                 <HBox spacing="20.0">
                                     <children>
                                         <VBox spacing="5.0">
-                                            <Label text="Start Date" />
+                                            <Label text="Start Date" styleClass="input-label"/>
                                             <DatePicker fx:id="startDatePicker" prefHeight="35.0" />
                                         </VBox>
                                         <VBox spacing="5.0">
-                                            <Label text="End Date" />
+                                            <Label text="End Date" styleClass="input-label"/>
                                             <DatePicker fx:id="endDatePicker" prefHeight="35.0" />
                                         </VBox>
                                     </children>
                                 </HBox>
 
-                                <Label text="or:" textFill="#94a3b8" />
+                                <Label text="or:" styleClass="sub-header"/>
 
                                 <HBox spacing="10.0" alignment="CENTER_LEFT">
                                     <children>
                                         <Button onAction="#handleTripReportPopup" styleClass="btn-generate-outline" text="Generate Trip Report" />
-                                        <Label text="This will export data about specific trip including customer manifest" textFill="#94a3b8" style="-fx-font-size: 10px;" />
+                                        <!-- Kept inline font-size; no CSS class covers 10px helper text -->
+                                        <Label text="This will export data about specific trip including customer manifest" styleClass="sub-header" style="-fx-font-size: 10px;" />
                                     </children>
                                 </HBox>
                             </children>
@@ -67,16 +69,18 @@
                 <HBox spacing="20.0">
                     <children>
                         <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
-                            <Label text="Total Trips" />
+                            <Label text="Total Trips" styleClass="sub-header"/>
+                            <!-- Kept inline bold+size; stat value needs emphasis beyond sub-header -->
                             <Label fx:id="totalTripsLabel" text="0" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
                         </VBox>
                         <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
-                            <Label text="Average Occupancy" />
+                            <Label text="Average Occupancy" styleClass="sub-header"/>
                             <Label fx:id="avgOccupancyLabel" text="0%" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
                         </VBox>
                         <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
-                            <Label text="Total Revenue" />
-                            <Label fx:id="totalRevenueLabel" text="₱0.00" textFill="#27ae60" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+                            <Label text="Total Revenue" styleClass="sub-header"/>
+                            <!-- Kept green color inline since it's a one-off semantic color for revenue -->
+                            <Label fx:id="totalRevenueLabel" text="₱0.00" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #16A34A;" />
                         </VBox>
                     </children>
                 </HBox>
@@ -84,19 +88,20 @@
                 <VBox spacing="10.0">
                     <children>
                         <HBox alignment="BOTTOM_LEFT">
-                            <Label fx:id="tableRangeLabel" text="Trips from [Start Date] to [End Date]" textFill="#3498db" style="-fx-font-size: 18px;" />
+                            <!-- Replaced hardcoded textFill+size with sub-header; kept size override -->
+                            <Label fx:id="tableRangeLabel" text="Trips from [Start Date] to [End Date]" styleClass="header-title" style="-fx-font-size: 18px;" />
                             <Region HBox.hgrow="ALWAYS" />
-                            <Label text="Sort by: " />
-                            <ComboBox fx:id="sortComboBox" prefWidth="120.0" promptText="Trip ID" />
+                            <Label text="Sort by: " styleClass="sub-header"/>
+                            <ComboBox fx:id="sortComboBox" prefWidth="120.0" promptText="Trip ID" styleClass="combo-box"/>
                         </HBox>
                         <TableView fx:id="reportsTable" prefHeight="400.0" styleClass="modern-table">
                             <columns>
-                                <TableColumn fx:id="colTripId" text="Trip ID" prefWidth="80" />
-                                <TableColumn fx:id="colDriver" text="Driver" prefWidth="150" />
-                                <TableColumn fx:id="colRoute" text="Route" prefWidth="200" />
-                                <TableColumn fx:id="colDate" text="Date" prefWidth="120" />
-                                <TableColumn fx:id="colOccupancy" text="Occupancy" prefWidth="100" />
-                                <TableColumn fx:id="colRevenue" text="Revenue" prefWidth="100" />
+                                <TableColumn fx:id="colTripId"    text="Trip ID"    prefWidth="80" />
+                                <TableColumn fx:id="colDriver"    text="Driver"     prefWidth="150" />
+                                <TableColumn fx:id="colRoute"     text="Route"      prefWidth="200" />
+                                <TableColumn fx:id="colDate"      text="Date"       prefWidth="120" />
+                                <TableColumn fx:id="colOccupancy" text="Occupancy"  prefWidth="100" />
+                                <TableColumn fx:id="colRevenue"   text="Revenue"    prefWidth="100" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
