@@ -82,6 +82,10 @@ public class RouteService {
                 .collect(Collectors.toList());
     }
 
+    public Stop saveNewStop(Stop stop) {
+        return stopDAO.saveStop(stop);
+    }
+
     public List<RouteStop> getRouteStops(int routeId) {
         getRouteById(routeId);
         return routeStopDAO.getStopsForRoute(routeId);

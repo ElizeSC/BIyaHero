@@ -6,11 +6,17 @@ import com.biyahero.model.Driver;
 import com.biyahero.service.RouteService;
 import com.biyahero.service.TripService;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
@@ -29,12 +35,59 @@ public class AddTripController {
 
     @FXML
     public void initialize() {
-        // Populate data from Services
-        routeComboBox.setItems(FXCollections.observableArrayList(routeService.getAllRoutes()));
+        // 1. Get real routes
+        ObservableList<Route> routes = FXCollections.observableArrayList(routeService.getAllRoutes());
+
+        // 2. Create the "Add New" Sentinel Route
+        Route addMoreOption = new Route();
+        addMoreOption.setRouteId(-1); // Unique ID to identify the "Add" action
+        addMoreOption.setRouteName("+ Add New Route...");
+        routes.add(addMoreOption);
+
+        routeComboBox.setItems(routes);
+
+        // 3. Add the Listener to trigger the modal
+        routeComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal != null && newVal.getRouteId() == -1) {
+                handleOpenRouteBuilder();
+            }
+        });
+
         vanComboBox.setItems(FXCollections.observableArrayList(tripService.getAvailableVans()));
         driverComboBox.setItems(FXCollections.observableArrayList(tripService.getAvailableDrivers()));
 
         setupComboBoxConverters();
+    }
+
+    private void handleOpenRouteBuilder() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/route-builder.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Create New Route");
+            stage.setScene(new Scene(root));
+
+            stage.showAndWait();
+
+            javafx.application.Platform.runLater(() -> {
+                refreshRoutes();
+                routeComboBox.getSelectionModel().clearSelection();
+            });
+
+        } catch (IOException e) {
+            showError("UI Error", "Could not load Route Builder: " + e.getMessage());
+        }
+    }
+
+    private void refreshRoutes() {
+        ObservableList<Route> routes = FXCollections.observableArrayList(routeService.getAllRoutes());
+        Route addMoreOption = new Route();
+        addMoreOption.setRouteId(-1);
+        addMoreOption.setRouteName("+ Add New Route...");
+        routes.add(addMoreOption);
+        routeComboBox.setItems(routes);
     }
 
     private void setupComboBoxConverters() {
@@ -61,6 +114,10 @@ public class AddTripController {
     @FXML
     private void handleSave() {
         try {
+            Route selectedRoute = routeComboBox.getValue();
+            if (selectedRoute == null || selectedRoute.getRouteId() == -1) {
+                throw new IllegalArgumentException("Please select a valid route.");
+            }
             // Validate selections
             if (routeComboBox.getValue() == null || datePicker.getValue() == null ||
                     vanComboBox.getValue() == null || driverComboBox.getValue() == null) {

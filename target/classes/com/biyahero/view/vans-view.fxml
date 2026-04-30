@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<!-- Removed styleClass="main-container" — its -fx-padding:0 was overriding the Insets -->
+<VBox spacing="20" xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.VanDriverController"
+      style="-fx-background-color: #F5F7FF;">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding>
+        <Insets bottom="30" left="30" right="30" top="30" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT">
+        <VBox spacing="5">
+            <Label styleClass="header-title" text="Vans and Drivers" />
+            <Label styleClass="sub-header" text="Manage Van and Driver Records" />
+        </VBox>
+        <Region HBox.hgrow="ALWAYS" />
+
+        <HBox styleClass="nav-bar">
+            <Button fx:id="btnVans" styleClass="tab-button-active" text="Vans" onAction="#showVanTable" />
+            <Button fx:id="btnDrivers" styleClass="tab-button-inactive" text="Drivers" onAction="#showDriverTable" />
+        </HBox>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" styleClass="text-field" />
+        <ComboBox fx:id="infoComboBox" promptText="Display Van Information" prefWidth="200" styleClass="combo-box" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnAddEntry" styleClass="primary-button" text="+ Add Van" onAction="#handleOpenAddModal"/>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label styleClass="sub-header" text="Sort by:" />
+        <ComboBox fx:id="sortComboBox" promptText="Van ID" prefWidth="120" styleClass="combo-box" />
+    </HBox>
+
+    <StackPane VBox.vgrow="ALWAYS">
+        <TableView fx:id="vanTable">
+            <columns>
+                <TableColumn fx:id="colVanId"     text="Van ID"       prefWidth="100" />
+                <TableColumn fx:id="colPlate"     text="Plate Number" prefWidth="140" />
+                <TableColumn fx:id="colModel"     text="Model"        prefWidth="150" />
+                <TableColumn fx:id="colCapacity"  text="Capacity"     prefWidth="90"  />
+                <TableColumn fx:id="colStatus"    text="Status"       prefWidth="120" />
+                <!-- Widened so Edit + Delete buttons don't truncate -->
+                <TableColumn fx:id="colVanAction" text="Manage"       prefWidth="200" />
+            </columns>
+        </TableView>
+
+        <TableView fx:id="driverTable" visible="false" managed="false">
+            <columns>
+                <TableColumn fx:id="colDriverId"     text="Driver ID" prefWidth="100" />
+                <TableColumn fx:id="colDriverName"   text="Name"      prefWidth="200" />
+                <TableColumn fx:id="colLicense"      text="License #" prefWidth="140" />
+                <TableColumn fx:id="colContact"      text="Contact"   prefWidth="140" />
+                <TableColumn fx:id="colDriverStatus" text="Status"    prefWidth="110" />
+                <TableColumn fx:id="colDriverAction" text="Manage"    prefWidth="200" />
+            </columns>
+        </TableView>
+    </StackPane>
+</VBox>
