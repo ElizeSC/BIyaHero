@@ -1,8 +1,9 @@
--- BiyaHero Tenant Schema (Generated from biyahero_backup.sql)
+-- BiyaHero Tenant Schema - Optimized for Dynamic Routing
 
+-- 1. Core Resources
 CREATE TABLE IF NOT EXISTS `van` (
                                      `van_id` int NOT NULL AUTO_INCREMENT,
-                                     `plate_number` varchar(10) NOT NULL,
+                                     `plate_number` varchar(10) NOT NULL UNIQUE,
     `model` varchar(50) DEFAULT NULL,
     `capacity` int DEFAULT '15',
     `van_status` varchar(20) NOT NULL DEFAULT 'Available',
@@ -11,37 +12,40 @@ CREATE TABLE IF NOT EXISTS `van` (
 
 CREATE TABLE IF NOT EXISTS `driver` (
                                         `driver_id` int NOT NULL AUTO_INCREMENT,
-                                        `license_no` varchar(20) NOT NULL,
+                                        `license_no` varchar(20) NOT NULL UNIQUE,
     `name` varchar(100) NOT NULL,
     `contact_number` varchar(15) DEFAULT NULL,
     `driver_status` varchar(20) NOT NULL DEFAULT 'Available',
     PRIMARY KEY (`driver_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 2. Logistics & Routing
 CREATE TABLE IF NOT EXISTS `route` (
                                        `route_id` int NOT NULL AUTO_INCREMENT,
                                        `route_name` varchar(100) NOT NULL,
-    `base_fare` decimal(10,2) DEFAULT NULL,
+    `base_fare` decimal(10,2) NOT NULL,
     PRIMARY KEY (`route_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `stop` (
                                       `stop_id` int NOT NULL AUTO_INCREMENT,
-                                      `stop_name` varchar(100) NOT NULL,
+                                      `stop_name` varchar(100) NOT NULL UNIQUE,
     `city_province` varchar(100) DEFAULT NULL,
     PRIMARY KEY (`stop_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- The Junction: Links Routes to Stops in a specific sequence
 CREATE TABLE IF NOT EXISTS `routestop` (
                                            `route_id` int NOT NULL,
                                            `stop_id` int NOT NULL,
-                                           `stop_order` int DEFAULT NULL,
-                                           `dist_from_prev` decimal(5,2) DEFAULT NULL,
+                                           `stop_order` int NOT NULL,
+                                           `dist_from_prev` decimal(5,2) DEFAULT 0.00,
     PRIMARY KEY (`route_id`,`stop_id`),
-    CONSTRAINT `routestop_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`),
-    CONSTRAINT `routestop_ibfk_2` FOREIGN KEY (`stop_id`) REFERENCES `stop` (`stop_id`)
+    CONSTRAINT `routestop_ibfk_1` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`) ON DELETE CASCADE,
+    CONSTRAINT `routestop_ibfk_2` FOREIGN KEY (`stop_id`) REFERENCES `stop` (`stop_id`) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 3. Operations
 CREATE TABLE IF NOT EXISTS `trip` (
                                       `trip_id` int NOT NULL AUTO_INCREMENT,
                                       `van_id` int DEFAULT NULL,
@@ -52,12 +56,13 @@ CREATE TABLE IF NOT EXISTS `trip` (
     `arrival_dt` datetime DEFAULT NULL,
     `current_stop_id` int DEFAULT NULL,
     PRIMARY KEY (`trip_id`),
-    CONSTRAINT `fk_current_stop` FOREIGN KEY (`current_stop_id`) REFERENCES `stop` (`stop_id`),
-    CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`van_id`) REFERENCES `van` (`van_id`),
-    CONSTRAINT `trip_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`),
-    CONSTRAINT `trip_ibfk_3` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`)
+    CONSTRAINT `fk_current_stop` FOREIGN KEY (`current_stop_id`) REFERENCES `stop` (`stop_id`) ON DELETE SET NULL,
+    CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`van_id`) REFERENCES `van` (`van_id`) ON DELETE SET NULL,
+    CONSTRAINT `trip_ibfk_2` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`) ON DELETE SET NULL,
+    CONSTRAINT `trip_ibfk_3` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`) ON DELETE SET NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- 4. CRM & Sales
 CREATE TABLE IF NOT EXISTS `passenger` (
                                            `passenger_id` int NOT NULL AUTO_INCREMENT,
                                            `name` varchar(100) NOT NULL,
@@ -76,8 +81,8 @@ CREATE TABLE IF NOT EXISTS `booking` (
                                          `fare_paid` decimal(10,2) DEFAULT NULL,
     `booking_status` varchar(20) DEFAULT 'Reserved',
     PRIMARY KEY (`booking_id`),
-    CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`),
-    CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`),
+    CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`) ON DELETE CASCADE,
+    CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`passenger_id`) REFERENCES `passenger` (`passenger_id`) ON DELETE CASCADE,
     CONSTRAINT `booking_ibfk_3` FOREIGN KEY (`pickup_stop`) REFERENCES `stop` (`stop_id`),
     CONSTRAINT `booking_ibfk_4` FOREIGN KEY (`dropoff_stop`) REFERENCES `stop` (`stop_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
