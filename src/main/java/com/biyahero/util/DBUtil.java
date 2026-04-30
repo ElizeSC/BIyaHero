@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import java.sql.Statement;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -74,9 +75,6 @@ public class DBUtil {
         String user = config.getProperty("db.user");
         String pass = config.getProperty("db.password");
 
-        System.out.println("DEBUG: Attempting connection with User: " + user);
-        System.out.println("DEBUG: Password length: " + (pass != null ? pass.length() : "NULL"));
-
         // Build URL dynamically
         String url = "jdbc:mysql://localhost:3306/" + currentDb;
         return DriverManager.getConnection(url, user, pass);
@@ -90,5 +88,34 @@ public class DBUtil {
     // 2. Method to check which database is currently active
     public static String getCurrentDb() {
         return currentDb;
+    }
+
+    public static void initializeMasterDatabase() {
+        // Connect to MySQL server without specifying a database
+        String url = "jdbc:mysql://localhost:3306/?useSSL=false";
+        String user = config.getProperty("db.user");
+        String pass = config.getProperty("db.password");
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);
+             Statement stmt = conn.createStatement()) {
+
+            // 1. Create the Master Database
+            stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS biyahero_master");
+            stmt.executeUpdate("USE biyahero_master");
+
+            // 2. Create the 'users' table (the phonebook for your app)
+            String createUsersTable = "CREATE TABLE IF NOT EXISTS users (" +
+                    "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                    "username VARCHAR(50) UNIQUE NOT NULL, " +
+                    "password VARCHAR(255) NOT NULL, " +
+                    "db_name VARCHAR(100) NOT NULL" +
+                    ")";
+            stmt.executeUpdate(createUsersTable);
+
+            System.out.println("Master database initialized successfully!");
+
+        } catch (SQLException e) {
+            System.err.println("Initialization failed: " + e.getMessage());
+        }
     }
 }

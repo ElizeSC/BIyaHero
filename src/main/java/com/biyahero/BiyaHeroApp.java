@@ -16,7 +16,10 @@ public class BiyaHeroApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+
+        // The name must match what is in your DBUtil.java
         File configFile = new File("db_config.properties");
+
         if (!configFile.exists()) {
             boolean connected = false;
             while (!connected) {
@@ -28,28 +31,40 @@ public class BiyaHeroApp extends Application {
                 Optional<String> result = dialog.showAndWait();
                 if (result.isPresent()) {
                     String password = result.get();
-                    // 1. Check if it actually works before saving!
+
+                    // 1. Validate the password against MySQL
                     if (DBUtil.testConnection("root", password)) {
+                        // 2. Save credentials to the local root folder
                         DBUtil.saveConfig("root", password);
-                        DBUtil.loadConfig(); // 2. CRITICAL: Force DBUtil to read the new file now!
+
+                        // 3. Force DBUtil to load the newly created file into memory
+                        DBUtil.loadConfig();
+
+                        // 4. THE DREAM: Create the master database and tables automatically
+                        DBUtil.initializeMasterDatabase();
+
                         connected = true;
                     } else {
-                        // Show error alert if password is wrong
                         Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Incorrect password or MySQL is not running. Please try again.");
+                        alert.setTitle("Connection Error");
+                        alert.setHeaderText("Access Denied");
+                        alert.setContentText("Incorrect password or MySQL server is offline. Please try again.");
                         alert.showAndWait();
                     }
                 } else {
+                    // User clicked 'Cancel' or closed the dialog
                     System.exit(0);
                 }
             }
+        } else {
+            // If the file already exists, just load it into memory
+            DBUtil.loadConfig();
         }
 
+        // Launch the Login Scene
         try {
-            // This line finds the FXML file in your resources folder
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/biyahero/view/login-view.fxml"));
 
-            // Safety check: prints to console if the file path is wrong
             if (fxmlLoader.getLocation() == null) {
                 System.err.println("❌ FXML file not found! Check your resources folder path.");
                 return;
@@ -57,11 +72,15 @@ public class BiyaHeroApp extends Application {
 
             Scene scene = new Scene(fxmlLoader.load());
             stage.setTitle("BiyaHero Dispatcher System");
+            stage.setResizable(false); // Optional: keeps your layout pretty
             stage.setScene(scene);
             stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Failed to load the application UI: " + e.getMessage());
+            alert.showAndWait();
         }
     }
 
