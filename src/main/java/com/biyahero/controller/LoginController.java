@@ -1,14 +1,13 @@
 package com.biyahero.controller;
 
 import com.biyahero.service.AuthService;
+import com.biyahero.service.UserService;
+import com.biyahero.util.DBUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -21,16 +20,23 @@ public class LoginController {
 
     // Inject the service
     private final AuthService authService = new AuthService();
+    private final UserService userService = new UserService();
 
     @FXML
     private void handleLogin() {
         String user = usernameField.getText();
         String pass = passwordField.getText();
 
-        if (authService.authenticate(user, pass)) {
+        String userDb = userService.authenticate(user, pass);
+
+        if (userDb != null) {
+            // THE CLUTCH MOMENT: Switch the entire app to THEIR database
+            DBUtil.setDatabase(userDb);
+
+            showSuccess("Logged in to " + user + "'s Workspace");
             transitionToDashboard();
         } else {
-            showError("Invalid username or password.");
+            showError("Invalid credentials.");
         }
     }
 
@@ -55,5 +61,24 @@ public class LoginController {
         errorLabel.setVisible(true);
         errorLabel.setManaged(true);
         // Optional: Add a "shake" animation to the login card here later!
+    }
+
+    private void showSuccess(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    private void handleShowRegistration() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/biyahero/view/registration-view.fxml"));
+            Stage stage = (Stage) btnLogin.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
