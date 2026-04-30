@@ -1,0 +1,737 @@
+/* ============================================================
+   BiyaHero — Design System v2
+   Navy-first palette, card-based layouts, clean typography
+   ============================================================ */
+
+/* ── 1. Global Reset & Variables ── */
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Display", "Helvetica Neue", sans-serif;
+
+    /* Core palette */
+    -bh-navy:        #0A0D2C;
+    -bh-blue:        #3E49BB;
+    -bh-blue-light:  #EEF2FF;
+    -bh-bg:          #F5F7FF;
+    -bh-surface:     #FFFFFF;
+    -bh-border:      #E2E8F0;
+    -bh-muted:       #7E869E;
+    -bh-text:        #1A1A2E;
+
+    /* Accents */
+    -bh-green:       #16A34A;
+    -bh-red:         #E11D48;
+    -bh-amber:       #D97706;
+}
+
+.page-content {
+    -fx-padding: 40; /* Give it plenty of room */
+    -fx-background-color: transparent;
+}
+
+/* Force consistent spacing between the header, toolbar, and table */
+.page-content > VBox {
+    -fx-spacing: 30;
+}
+
+/* ── 2. App Shell ── */
+.main-layout {
+    -fx-background-color: #F5F7FF;
+}
+
+.main-container {
+    -fx-background-color: #F5F7FF;
+    -fx-padding: 0;
+}
+
+/* ── 3. Top Navbar ── */
+.top-navbar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 12 40;
+    -fx-effect: dropshadow(gaussian, rgba(10,13,44,0.06), 12, 0, 0, 2);
+}
+
+.logo-text {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3E49BB;
+}
+
+/* ── 4. Navigation Pill ── */
+.nav-pill {
+    -fx-background-color: #F0F2FF;
+    -fx-background-radius: 40;
+    -fx-padding: 4;
+    -fx-effect: none;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #7E869E;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-background-radius: 30;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(62,73,187,0.08);
+    -fx-text-fill: #3E49BB;
+}
+
+.nav-button-active {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.35), 10, 0, 0, 3);
+}
+
+/* ── 5. Page Headers ── */
+.header-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0A0D2C;
+}
+
+.sub-header {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7E869E;
+}
+
+/* ── 6. Buttons ── */
+.primary-button {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 10;
+    -fx-padding: 10 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.28), 8, 0, 0, 3);
+}
+
+.primary-button:hover {
+    -fx-background-color: #4C59D8;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.45), 12, 0, 0, 4);
+    -fx-translate-y: -1;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #1A1A2E;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 9 22;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #F5F7FF;
+    -fx-border-color: #3E49BB;
+}
+
+/* Row action buttons (Edit / Delete in tables) */
+.btn-manage {
+    -fx-background-color: transparent;
+    -fx-background-radius: 7;
+    -fx-border-radius: 7;
+    -fx-border-width: 1;
+    -fx-padding: 4 12;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-edit-row {
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #C7D2FE;
+}
+
+.btn-edit-row:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+.btn-delete-row {
+    -fx-text-fill: #E11D48;
+    -fx-border-color: #FECDD3;
+}
+
+.btn-delete-row:hover {
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
+}
+
+/* Table inline buttons (Depart / Cancel / Book) */
+.btn-table-edit {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #C7D2FE;
+    -fx-border-radius: 7;
+    -fx-background-radius: 7;
+    -fx-padding: 5 12;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-table-edit:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+.btn-table-delete {
+    -fx-background-color: #FFF1F2;
+    -fx-text-fill: #E11D48;
+    -fx-border-color: #FECDD3;
+    -fx-border-radius: 7;
+    -fx-background-radius: 7;
+    -fx-padding: 5 12;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-table-delete:hover {
+    -fx-background-color: #E11D48;
+    -fx-text-fill: white;
+}
+
+/* Reports export buttons */
+.btn-action {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #C7D2FE;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-padding: 10 16;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.btn-action:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+.btn-action-alt {
+    -fx-background-color: white;
+    -fx-text-fill: #475569;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-padding: 10 16;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.btn-action-alt:hover {
+    -fx-background-color: #F5F7FF;
+    -fx-border-color: #3E49BB;
+}
+
+.btn-generate-outline {
+    -fx-background-color: white;
+    -fx-border-color: #22C55E;
+    -fx-text-fill: #16A34A;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-padding: 9 20;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-generate-outline:hover {
+    -fx-background-color: #F0FDF4;
+}
+
+/* Trip-card action buttons */
+.trip-action-btn {
+    -fx-pref-width: 148;
+    -fx-pref-height: 36;
+    -fx-background-radius: 9;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.btn-location {
+    -fx-background-color: #EEF2FF;
+    -fx-text-fill: #3E49BB;
+    -fx-border-color: #C7D2FE;
+    -fx-border-radius: 9;
+}
+
+.btn-location:hover {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+}
+
+.btn-occupancy {
+    -fx-background-color: #F8FAFC;
+    -fx-text-fill: #64748B;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 9;
+}
+
+.btn-occupancy:hover {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #1E293B;
+    -fx-border-color: #CBD5E1;
+}
+
+/* Tab toggle buttons (Vans / Drivers) */
+.tab-button-active {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+    -fx-padding: 8 22;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.tab-button-inactive {
+    -fx-background-color: transparent;
+    -fx-text-fill: #7E869E;
+    -fx-background-radius: 20;
+    -fx-padding: 8 22;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.tab-button-inactive:hover {
+    -fx-background-color: #F0F2FF;
+    -fx-text-fill: #3E49BB;
+}
+
+/* ── 7. Text Inputs & Combo Boxes ── */
+.text-field {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-padding: 9 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1A1A2E;
+}
+
+.text-field:focused {
+    -fx-border-color: #3E49BB;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.12), 6, 0, 0, 0);
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-padding: 4 14;
+    -fx-font-size: 13px;
+    -fx-background-insets: 0;
+    -fx-cursor: hand;
+}
+
+.combo-box:hover,
+.combo-box:focused {
+    -fx-border-color: #3E49BB;
+}
+
+.combo-box .cell {
+    -fx-text-fill: #1A1A2E;
+}
+
+.combo-box > .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box > .arrow-button > .arrow {
+    -fx-background-color: #7E869E;
+}
+
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 12, 0, 0, 5);
+}
+
+/* ── 8. TableView — Card-Row Style ── */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.table-view .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-opacity: 0;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 44;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-transform: uppercase;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-background-insets: 0 0 10 0;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1;
+    -fx-border-insets: 0 0 10 0;
+    -fx-padding: 8 14;
+    -fx-effect: dropshadow(gaussian, rgba(10,13,44,0.04), 8, 0, 0, 2);
+}
+
+.table-row-cell:filled:hover {
+    -fx-border-color: #C7D2FE;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.10), 10, 0, 0, 3);
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #EEF2FF;
+    -fx-border-color: #3E49BB;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: none;
+}
+
+.table-row-cell .text {
+    -fx-fill: #1A1A2E;
+}
+
+.table-row-cell .label {
+    -fx-text-fill: #1A1A2E;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-style: italic;
+    -fx-font-size: 14px;
+}
+
+/* Modern table variant (used by reports) */
+.modern-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.modern-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.modern-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 44;
+}
+
+.modern-table .column-header .label {
+    -fx-text-fill: #7E869E;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.modern-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-background-insets: 0 0 8 0;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-insets: 0 0 8 0;
+    -fx-padding: 6 12;
+    -fx-cell-size: 42;
+    -fx-text-fill: #1A1A2E;
+}
+
+.modern-table .table-row-cell:filled:hover {
+    -fx-border-color: #C7D2FE;
+}
+
+.modern-table .table-row-cell:filled:selected {
+    -fx-background-color: #EEF2FF;
+    -fx-border-color: #3E49BB;
+}
+
+.modern-table .table-row-cell:empty {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.modern-table .table-row-cell .text {
+    -fx-fill: #1A1A2E;
+}
+
+/* ── 9. Dashboard — Trip Cards ── */
+.table-row-cell.trip-card-row {
+    -fx-padding: 18 22;
+    -fx-effect: dropshadow(gaussian, rgba(10,13,44,0.06), 12, 0, 0, 3);
+}
+
+/* Trip ID label inside the card */
+.trip-id {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0A0D2C;
+}
+
+/* ── 10. Progress Stepper (trip cards) ── */
+.progress-dot {
+    -fx-min-width: 22px;
+    -fx-max-width: 22px;
+    -fx-min-height: 22px;
+    -fx-max-height: 22px;
+    -fx-background-radius: 50;
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+.progress-dot-active {
+    -fx-min-width: 22px;
+    -fx-max-width: 22px;
+    -fx-min-height: 22px;
+    -fx-max-height: 22px;
+    -fx-background-radius: 50;
+    -fx-background-color: #0A0D2C;
+    -fx-border-color: #0A0D2C;
+    -fx-border-width: 2;
+    -fx-border-radius: 50;
+}
+
+.progress-line {
+    -fx-min-height: 3px;
+    -fx-max-height: 3px;
+    -fx-background-color: #E2E8F0;
+    -fx-translate-y: -10;
+}
+
+.progress-line-active {
+    -fx-min-height: 3px;
+    -fx-max-height: 3px;
+    -fx-background-color: #0A0D2C;
+    -fx-translate-y: -10;
+}
+
+/* ── 11. Reports Page ── */
+/* Explicit white + transparent overrides so ScrollPane never shows grey */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+/* Filter + stat cards */
+.filter-card {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(10,13,44,0.05), 10, 0, 0, 3);
+}
+
+.filter-card .label {
+    -fx-text-fill: #475569;
+    -fx-font-weight: bold;
+}
+
+.stat-card {
+    -fx-background-color: white;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 20 24;
+    -fx-effect: dropshadow(gaussian, rgba(10,13,44,0.04), 8, 0, 0, 2);
+}
+
+.stat-card .label {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 12px;
+}
+
+/* ── 12. Seat Plan Dialog ── */
+.seat-button-available {
+    -fx-background-color: #22C55E;
+    -fx-background-radius: 9;
+    -fx-cursor: hand;
+}
+
+.seat-button-available:hover {
+    -fx-background-color: #16A34A;
+    -fx-scale-x: 1.06;
+    -fx-scale-y: 1.06;
+}
+
+.seat-button-occupied {
+    -fx-background-color: #FACC15;
+    -fx-background-radius: 9;
+}
+
+/* ── 13. Login Screen ── */
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #1E1B4B, #3730A3);
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 30, 0, 0, 10);
+}
+
+.login-logo-icon {
+    -fx-font-size: 36;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #3E49BB;
+    -fx-background-radius: 12;
+    -fx-padding: 2 16;
+}
+
+.login-header-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0A0D2C;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #7E869E;
+}
+
+.login-input {
+    -fx-background-color: #F5F7FF;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-padding: 11 14;
+    -fx-font-size: 13px;
+}
+
+.login-input:focused {
+    -fx-border-color: #3E49BB;
+    -fx-background-color: white;
+}
+
+.login-button {
+    -fx-background-color: #3E49BB;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 12;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.4), 10, 0, 0, 4);
+}
+
+.login-button:hover {
+    -fx-background-color: #4C59D8;
+}
+
+.error-text {
+    -fx-text-fill: #E11D48;
+    -fx-font-size: 12px;
+}
+
+.input-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+    -fx-font-size: 13px;
+}
+
+/* ── 14. Form Dialog Cards ── */
+.form-section-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #475569;
+    -fx-font-size: 13px;
+}
+
+/* station label used in trip dialog */
+.station-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #7E869E;
+}
+
+/* ── 15. Misc ── */
+.nav-bar {
+    -fx-background-color: #F0F2FF;
+    -fx-background-radius: 30;
+    -fx-padding: 4;
+}
+
+/* Target the dialog container */
+.custom-dialog {
+    -fx-background-color: #2b2b2b;
+}
+
+/* Style the header text */
+.custom-dialog .header-panel {
+    -fx-background-color: #3c3f41;
+}
+.custom-dialog .header-panel .label {
+    -fx-text-fill: #00ffcc; /* Neon hero green! */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Style the input field */
+.custom-dialog .text-field {
+    -fx-background-color: #4c5052;
+    -fx-text-fill: white;
+    -fx-border-color: #00ffcc;
+    -fx-border-radius: 5;
+}
+
+/* Style the buttons */
+.custom-dialog .button {
+    -fx-background-color: #00ffcc;
+    -fx-text-fill: #2b2b2b;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}

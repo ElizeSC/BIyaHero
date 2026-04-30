@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.shape.Circle?>
+<BorderPane prefHeight="700.0" prefWidth="1200.0" styleClass="main-layout" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biyahero.controller.MainController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20" styleClass="top-navbar">
+            <padding>
+                <Insets left="40" right="40" top="15" bottom="15"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <ImageView fitHeight="50.0" preserveRatio="true" smooth="true">
+                    <image>
+                        <Image url="@../assets/biyahero_03.png" />
+                    </image>
+                </ImageView>
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <HBox styleClass="nav-pill">
+                <Button fx:id="btnDashboard" onAction="#showDashboard" text="Dashboard" styleClass="nav-button, nav-button-active" />
+                <Button fx:id="btnVans" onAction="#showVans" text="Vans &amp; Drivers" styleClass="nav-button" />
+                <Button fx:id="btnScheduled" onAction="#showScheduledTrips" text="Scheduled" styleClass="nav-button" />
+                <Button fx:id="btnReports" onAction="#showReportsView"  text="Reports" styleClass="nav-button" />
+            </HBox>
+
+            <Region HBox.hgrow="ALWAYS" />
+
+            <StackPane fx:id="profileContainer" onMouseClicked="#handleProfileClick" styleClass="profile-circle-container">
+                <Circle radius="20" fill="#3E49BB" />
+                <Label text="A" textFill="white" />
+            </StackPane>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox fx:id="mainContentArea" styleClass="main-container" />
+    </center>
+</BorderPane>

@@ -54,4 +54,22 @@ public class StopDAOImpl implements StopDAO {
             rs.getString("city_province")
         );
     }
+
+    @Override
+    public Stop saveStop(Stop stop) {
+        String sql = "INSERT INTO stop (stop_name) VALUES (?)";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            ps.setString(1, stop.getStopName());
+            ps.executeUpdate();
+
+            // This part is CRITICAL: Get the ID MySQL just made
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    stop.setStopId(generatedKeys.getInt(1));
+                }
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+        return stop; // Now the stop has its database ID!
+    }
 }

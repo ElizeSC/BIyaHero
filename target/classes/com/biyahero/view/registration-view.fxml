@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.biyahero.controller.RegistrationController"
+      style="-fx-background-color: #F8FAFC;"> <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+
+    <Label text="Create Dispatcher Account" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #1E3A8A;"/>
+
+    <VBox spacing="10">
+        <Label text="Full Name" style="-fx-text-fill: #64748B;"/>
+        <TextField fx:id="nameField" promptText="Enter your full name" styleClass="login-input"/>
+
+        <Label text="Username" style="-fx-text-fill: #64748B;"/>
+        <TextField fx:id="usernameField" promptText="Choose a username" styleClass="login-input"/>
+
+        <Label text="Password" style="-fx-text-fill: #64748B;"/>
+        <PasswordField fx:id="passwordField" promptText="Create a password" styleClass="login-input"/>
+    </VBox>
+
+    <Button text="Sign Up" onAction="#handleRegister" maxWidth="Infinity"
+            style="-fx-background-color: linear-gradient(to right, #3E49BB, #6B21A8); -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12; -fx-background-radius: 8;"/>
+
+    <Button text="← Back to Login" onAction="#handleBackToLogin"
+            style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-cursor: hand;"/>
+
+</VBox>

@@ -2,6 +2,7 @@ package com.biyahero.dao.impl;
 
 import com.biyahero.dao.RouteDAO;
 import com.biyahero.model.Route;
+import com.biyahero.model.RouteStop;
 import com.biyahero.util.DBUtil;
 
 import java.sql.*;
@@ -15,13 +16,9 @@ public class RouteDAOImpl implements RouteDAO {
         String sql = "SELECT * FROM route WHERE route_id = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                return mapRow(rs);
-            }
-
+            if (rs.next()) return mapRow(rs);
         } catch (SQLException e) {
             System.err.println("Error fetching route by ID: " + e.getMessage());
         }
@@ -34,12 +31,8 @@ public class RouteDAOImpl implements RouteDAO {
         List<Route> routes = new ArrayList<>();
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                routes.add(mapRow(rs));
-            }
-
+            while (rs.next()) routes.add(mapRow(rs));
         } catch (SQLException e) {
             System.err.println("Error fetching all routes: " + e.getMessage());
         }
@@ -51,22 +44,78 @@ public class RouteDAOImpl implements RouteDAO {
         String sql = "UPDATE route SET base_fare = ? WHERE route_id = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setDouble(1, newFare);
             stmt.setInt(2, id);
             stmt.executeUpdate();
-
         } catch (SQLException e) {
             System.err.println("Error updating base fare: " + e.getMessage());
         }
     }
 
-    // converts a raw DB row from ResultSet into a usable Route object
+    /**
+     * Saves a new Route and its ordered RouteStop entries in a single transaction.
+     * @return the generated route_id, or -1 on failure.
+     */
+    @Override
+    public int saveRouteWithStops(Route route, List<RouteStop> stops) {
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            conn.setAutoCommit(false);   // BEGIN TRANSACTION
+
+            // 1. Insert Route
+            String insertRoute = "INSERT INTO route (route_name, base_fare) VALUES (?, ?)";
+            int generatedRouteId = -1;
+            try (PreparedStatement ps = conn.prepareStatement(insertRoute, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, route.getRouteName());
+                ps.setDouble(2, route.getBaseFare());
+                ps.executeUpdate();
+                ResultSet keys = ps.getGeneratedKeys();
+                if (keys.next()) {
+                    generatedRouteId = keys.getInt(1);
+                } else {
+                    throw new SQLException("Failed to obtain generated route_id.");
+                }
+            }
+
+            // 2. Insert RouteStop entries
+            String insertRouteStop =
+                    "INSERT INTO routestop (route_id, stop_id, stop_order, dist_from_prev) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement ps = conn.prepareStatement(insertRouteStop)) {
+                for (RouteStop rs : stops) {
+                    ps.setInt(1, generatedRouteId);
+                    ps.setInt(2, rs.getStopId());
+                    ps.setInt(3, rs.getStopOrder());
+                    ps.setDouble(4, rs.getDistanceFromPrev());
+                    ps.addBatch();
+                }
+                ps.executeBatch();
+            }
+
+            conn.commit();   // COMMIT
+            return generatedRouteId;
+
+        } catch (SQLException e) {
+            System.err.println("Transaction failed, rolling back: " + e.getMessage());
+            if (conn != null) {
+                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
+            }
+            return -1;
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.setAutoCommit(true);
+                    conn.close();
+                } catch (SQLException e) { e.printStackTrace(); }
+            }
+        }
+    }
+
     private Route mapRow(ResultSet rs) throws SQLException {
         return new Route(
-            rs.getInt("route_id"),
-            rs.getString("route_name"),
-            rs.getDouble("base_fare")
+                rs.getInt("route_id"),
+                rs.getString("route_name"),
+                rs.getDouble("base_fare")
         );
     }
 }
