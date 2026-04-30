@@ -4,6 +4,7 @@ import com.biyahero.util.DBUtil;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -28,6 +29,7 @@ public class MainController {
     @FXML private Button btnDashboard, btnVans, btnScheduled, btnReports;
     @FXML private VBox mainContentArea;
     @FXML private StackPane profileContainer;
+    private ContextMenu profileMenu;
 
     public void initialize() {
         Platform.runLater(this::showDashboard);
@@ -81,13 +83,28 @@ public class MainController {
 
     @FXML
     private void handleProfileClick(MouseEvent event) {
-        ContextMenu contextMenu = new ContextMenu();
+        // Only build the menu once!
+        if (profileMenu == null) {
+            profileMenu = new ContextMenu();
+            profileMenu.getStyleClass().add("profile-menu"); // We will style this in CSS!
 
-        MenuItem logoutItem = new MenuItem("Logout");
-        logoutItem.setOnAction(e -> handleLogout());
+            // 1. The Import Option
+            MenuItem importItem = new MenuItem("Import Data");
+            importItem.setOnAction(e -> {
+                System.out.println("Import clicked!");
+                // TODO: Call your import method here!
+            });
 
-        contextMenu.getItems().add(logoutItem);
-        contextMenu.show(profileContainer, event.getScreenX(), event.getScreenY());
+            // 2. The Logout Option
+            MenuItem logoutItem = new MenuItem("Logout");
+            logoutItem.getStyleClass().add("menu-item-danger");
+            logoutItem.setOnAction(e -> handleLogout());
+            profileMenu.getItems().addAll(importItem, logoutItem);
+        }
+
+
+        Node source = (Node) event.getSource();
+        profileMenu.show(source, Side.BOTTOM, -30, 5);
     }
 
     private void handleLogout() {

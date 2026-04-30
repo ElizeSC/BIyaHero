@@ -705,33 +705,160 @@
     -fx-padding: 4;
 }
 
-/* Target the dialog container */
-.custom-dialog {
-    -fx-background-color: #2b2b2b;
+/* ── 16. Standard Dialogs (Alerts & Prompts) ── */
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
 }
 
-/* Style the header text */
-.custom-dialog .header-panel {
-    -fx-background-color: #3c3f41;
+/* Base text inside the dialog */
+.dialog-pane > .content.label {
+    -fx-text-fill: #475569;
+    -fx-font-size: 13px;
 }
-.custom-dialog .header-panel .label {
-    -fx-text-fill: #00ffcc; /* Neon hero green! */
+
+/* The header area of the dialog */
+.dialog-pane .header-panel {
+    -fx-background-color: #F5F7FF;
+    -fx-border-color: transparent transparent #E2E8F0 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* The header text */
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #0A0D2C;
+    -fx-font-weight: bold;
     -fx-font-size: 16px;
-    -fx-font-weight: bold;
 }
 
-/* Style the input field */
-.custom-dialog .text-field {
-    -fx-background-color: #4c5052;
+/* Action Buttons (OK, Cancel) matching your .primary-button */
+.dialog-pane .button {
+    -fx-background-color: #3E49BB;
     -fx-text-fill: white;
-    -fx-border-color: #00ffcc;
-    -fx-border-radius: 5;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-background-radius: 10;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
 }
 
-/* Style the buttons */
-.custom-dialog .button {
-    -fx-background-color: #00ffcc;
-    -fx-text-fill: #2b2b2b;
-    -fx-font-weight: bold;
+.dialog-pane .button:hover {
+    -fx-background-color: #4C59D8;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.25), 8, 0, 0, 2);
+}
+
+/* Input Fields matching your .text-field */
+.dialog-pane .text-field, .dialog-pane .password-field {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #E2E8F0;
+    -fx-border-radius: 10;
+    -fx-padding: 9 14;
+    -fx-font-size: 13px;
+    -fx-text-fill: #1A1A2E;
+}
+
+.dialog-pane .text-field:focused, .dialog-pane .password-field:focused {
+    -fx-border-color: #3E49BB;
+    -fx-effect: dropshadow(gaussian, rgba(62,73,187,0.12), 6, 0, 0, 0);
+}
+
+/* ── 17. Profile Dropdown Menu ── */
+
+/* The main floating box */
+.profile-menu {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #E2E8F0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 8);
+    -fx-padding: 8;
+}
+
+/* Hide the weird default left margin/checkbox area in JavaFX menus */
+.profile-menu .context-menu {
+    -fx-skin: "javafx.scene.control.skin.ContextMenuSkin";
+}
+.profile-menu .menu-item > .left-container {
+    -fx-pref-width: 0;
+    -fx-padding: 0;
+}
+
+/* Individual buttons in the dropdown */
+.profile-menu .menu-item {
+    -fx-padding: 10 30 10 15; /* Top Right Bottom Left */
+    -fx-background-radius: 8;
     -fx-cursor: hand;
+}
+
+/* Hover effect */
+.profile-menu .menu-item:focused {
+    -fx-background-color: #F5F7FF;
+}
+
+/* Normal Text Styling */
+.profile-menu .menu-item .label {
+    -fx-text-fill: #1A1A2E;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Special Danger Class for Logout */
+.profile-menu .menu-item-danger:focused {
+    -fx-background-color: #FFF1F2; /* Very faint red background on hover */
+}
+.profile-menu .menu-item-danger .label {
+    -fx-text-fill: #E11D48; /* Your BiyaHero Red */
+}
+
+/* ── 18. Modern Scrollbars (NUCLEAR OPTION) ── */
+
+/* 1. Make the main scrollbar background completely invisible */
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+/* 2. Hide the track (the groove the thumb slides in) */
+.scroll-bar:vertical .track,
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track-background,
+.scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+/* 3. Style the actual dragger (thumb) */
+.scroll-bar:vertical .thumb,
+.scroll-bar:horizontal .thumb {
+    -fx-background-color: #CBD5E1;
+    -fx-background-radius: 10px; /* Super rounded */
+}
+
+/* 4. Thumb hover effect */
+.scroll-bar:vertical .thumb:hover,
+.scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #94A3B8;
+}
+
+/* 5. AGGRESSIVELY nuke the up/down and left/right arrows */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    /* Force their size to literally zero */
+    -fx-min-width: 0;
+    -fx-min-height: 0;
+    -fx-max-width: 0;
+    -fx-max-height: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: null;
+    -fx-padding: 0;
+}
+
+/* 6. Hide the ugly empty gray square in the bottom right where the two scrollbars meet */
+.table-view .corner {
+    -fx-background-color: transparent;
 }
