@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class AuthMenu {
     private final Scanner scanner;
+    AuthService authService = new AuthService();
 
     public AuthMenu(Scanner scanner) {
         this.scanner = scanner;
@@ -32,8 +33,17 @@ public class AuthMenu {
                 System.out.print("Password (not masked - run from terminal for masking): ");
                 password = scanner.nextLine().trim();
             }
+// 1. Create an instance of the service
+            AuthService authService = new AuthService();
 
-            if (AuthService.authenticate(username, password)) {
+// 2. Call the method and store the result
+            String dbName = authService.authenticate(username, password);
+
+// 3. Check if the result is NOT null (meaning login was successful)
+            if (dbName != null) {
+                // Switch the DB context so the CLI works with that user's data!
+                com.biyahero.util.DBUtil.setDatabase(dbName);
+
                 System.out.println("\nLogin successful. Welcome, " + username + "!");
                 return true;
             } else {
