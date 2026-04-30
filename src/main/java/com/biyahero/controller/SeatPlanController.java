@@ -29,9 +29,31 @@ public class SeatPlanController {
         seatGrid.getChildren().clear();
         List<Integer> occupied = bookingService.getOccupiedSeats(currentTrip.getTripId());
 
+        // 1. Create the Driver Block (Top Left)
+        Button driverBlock = new Button("Driver");
+        driverBlock.setDisable(true);
+        driverBlock.setStyle("-fx-background-color: #475569; -fx-text-fill: white; -fx-font-weight: bold; -fx-opacity: 1; -fx-background-radius: 8;");
+        driverBlock.setPrefSize(50, 50);
+        seatGrid.add(driverBlock, 0, 0);
+
+        // 2. Create the Door Block (Right side, behind front row)
+        Button doorBlock = new Button("Door");
+        doorBlock.setDisable(true);
+        doorBlock.setStyle("-fx-background-color: transparent; -fx-border-color: #94A3B8; -fx-border-width: 2; -fx-border-style: dashed; -fx-border-radius: 8; -fx-text-fill: #94A3B8; -fx-font-weight: bold; -fx-opacity: 1;");
+        doorBlock.setPrefSize(50, 50);
+        seatGrid.add(doorBlock, 2, 1);
+
+        // 3. Generate the Passenger Seats
         int seatNum = 1;
-        for (int row = 0; row < 5; row++) {
+        // 6 rows needed to fit 15 seats when 2 spots are taken by Driver & Door
+        for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 3; col++) {
+
+                // Skip the grid coordinates where the Driver and Door are located
+                if ((row == 0 && col == 0) || (row == 1 && col == 2)) {
+                    continue;
+                }
+
                 if (seatNum > 15) break;
 
                 Button btn = new Button(String.valueOf(seatNum));
@@ -57,6 +79,7 @@ public class SeatPlanController {
                     btn.setOnAction(e -> openBookingForm(seat));
                 }
 
+                // Add the actual seat to the grid
                 seatGrid.add(btn, col, row);
                 seatNum++;
             }
@@ -65,8 +88,8 @@ public class SeatPlanController {
 
     /**
      * Routes to the appropriate form based on trip status:
-     *   En Route  → simplified walk-in dialog (no personal info needed)
-     *   Scheduled → full booking form
+     * En Route  → simplified walk-in dialog (no personal info needed)
+     * Scheduled → full booking form
      */
     private void openBookingForm(int seat) {
         if ("En Route".equals(currentTrip.getTripStatus())) {
