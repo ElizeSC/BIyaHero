@@ -1,8 +1,15 @@
 package com.biyahero.service;
 
 import com.biyahero.util.DBUtil;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserService {
 
@@ -33,27 +40,38 @@ public class UserService {
     }
 
     private void initializeNewDatabase(String dbName) throws SQLException {
-        // Temporarily switch to the new DB to run setup
         String previousDb = DBUtil.getCurrentDb();
         DBUtil.setDatabase(dbName);
 
+        // Path must match your resources exactly: /com/biyahero/sql/schema.sql
         try (Connection conn = DBUtil.getConnection();
-             Statement stmt = conn.createStatement()) {
+             Statement stmt = conn.createStatement();
+             InputStream is = getClass().getResourceAsStream("/com/biyahero/sql/schema.sql")) {
 
-            // Add ALL your CREATE TABLE scripts here
-            String[] schema = {
-                    "CREATE TABLE van (van_id INT AUTO_INCREMENT PRIMARY KEY, plate_number VARCHAR(20), model VARCHAR(50), capacity INT)",
-                    "CREATE TABLE driver (driver_id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(100), license_no VARCHAR(50))",
-                    "CREATE TABLE route (route_id INT AUTO_INCREMENT PRIMARY KEY, origin VARCHAR(100), destination VARCHAR(100), base_fare DOUBLE)",
-                    "CREATE TABLE trip (trip_id INT AUTO_INCREMENT PRIMARY KEY, van_id INT, driver_id INT, route_id INT, departure_dt DATETIME, trip_status VARCHAR(20))"
-                    // Add booking, passenger, etc. as needed
-            };
-
-            for (String sql : schema) {
-                stmt.executeUpdate(sql);
+            if (is == null) {
+                throw new SQLException("SQL Schema file not found in resources!");
             }
+
+            // Convert InputStream to String
+            String script = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))
+                    .lines().collect(Collectors.joining("\n"));
+
+            // Split by semicolon to execute each command separately
+            String[] commands = script.split(";");
+
+            for (String command : commands) {
+                String trimmedCommand = command.trim();
+                if (!trimmedCommand.isEmpty()) {
+                    stmt.executeUpdate(trimmedCommand);
+                }
+            }
+
+            System.out.println("Successfully provisioned " + dbName + " using schema.sql");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         } finally {
-            DBUtil.setDatabase(previousDb); // Switch back
+            DBUtil.setDatabase(previousDb);
         }
     }
 
