@@ -15,14 +15,14 @@ import java.io.File;
 public class DBUtil {
     private static String currentDb = "biyahero_master";
     private static Properties config = new Properties();
-    private static final String CONFIG_FILE = "config.properties";
+    private static final String CONFIG_FILE = "db_config.properties";
 
     static {
         loadConfig();
     }
 
     public static void loadConfig() {
-        String CONFIG_FILE = "config.properties";
+        String CONFIG_FILE = "db_config.properties";
         File externalFile = new File(CONFIG_FILE);
 
         try {
