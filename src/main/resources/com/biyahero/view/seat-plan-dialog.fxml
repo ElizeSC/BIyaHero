@@ -5,40 +5,41 @@
 <?import javafx.geometry.Insets?>
 <?import java.net.URL?>
 
-<!-- Replaced main-container with login-card for proper dialog surface -->
 <VBox spacing="20" styleClass="login-card" stylesheets="@style.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.SeatPlanController"
-      prefWidth="350">
-
-    <padding>
-        <Insets top="30" right="30" bottom="30" left="30"/>
-    </padding>
+      prefWidth="450"> <padding>
+    <Insets top="30" right="30" bottom="30" left="30"/>
+</padding>
 
     <VBox spacing="5" alignment="CENTER">
-        <!-- Removed inline -fx-font-size:22 fighting header-title CSS -->
         <Label text="Select a Seat" styleClass="header-title"/>
-        <Label text="Choose an available seat (Green) to book." styleClass="sub-header"/>
+        <Label text="Select route segment, then choose an available seat." styleClass="sub-header"/>
     </VBox>
 
-    <!-- Kept inline styles here: this is a one-off container with no matching CSS class -->
+    <HBox spacing="15" alignment="CENTER">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Pick-up Stop" style="-fx-font-size: 12px; -fx-text-fill: #64748B; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="cbPickupStop" promptText="Select Origin" maxWidth="Infinity"/>
+        </VBox>
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Drop-off Stop" style="-fx-font-size: 12px; -fx-text-fill: #64748B; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="cbDropoffStop" promptText="Select Destination" maxWidth="Infinity"/>
+        </VBox>
+    </HBox>
+
     <StackPane style="-fx-background-color: #F4F7FA; -fx-background-radius: 15; -fx-padding: 20;">
         <GridPane fx:id="seatGrid" hgap="15" vgap="15" alignment="CENTER"/>
     </StackPane>
 
-    <!-- Legend — kept inline color swatches since these are purely decorative indicators -->
     <HBox spacing="20" alignment="CENTER">
         <HBox spacing="5" alignment="CENTER">
             <Region style="-fx-background-color: #22C55E; -fx-pref-width: 15; -fx-pref-height: 15; -fx-background-radius: 3;"/>
             <Label text="Available" styleClass="sub-header"/>
         </HBox>
         <HBox spacing="5" alignment="CENTER">
-            <Region style="-fx-background-color: #FACC15; -fx-pref-width: 15; -fx-pref-height: 15; -fx-background-radius: 3;"/>
-            <Label text="Booked" styleClass="sub-header"/>
+            <Region style="-fx-background-color: #F1C40F; -fx-pref-width: 15; -fx-pref-height: 15; -fx-background-radius: 3;"/>
+            <Label text="Occupied" styleClass="sub-header"/>
         </HBox>
-    </HBox>
-
-    <HBox alignment="CENTER">
-        <Button text="Close" onAction="#handleClose" styleClass="btn-secondary" prefWidth="100"/>
     </HBox>
 </VBox>
