@@ -81,7 +81,8 @@ public class BookingService {
 
     // NEW: Intelligent segment check for seat availability
     public boolean isSeatTaken(int tripId, int seatNumber, int pickupStopId, int dropoffStopId) {
-        return bookingDAO.getOccupiedSeats(tripId, pickupStopId, dropoffStopId).contains(seatNumber);
+        // We use 'this.' to call the pure Java Overlap formula right below this method!
+        return this.getOccupiedSeats(tripId, pickupStopId, dropoffStopId).contains(seatNumber);
     }
 
     public List<Integer> getOccupiedSeats(int tripId) {

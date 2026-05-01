@@ -165,7 +165,7 @@ public class TripController {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Select Seat - Trip #" + trip.getTripId());
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root, 800, 600));
             stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();

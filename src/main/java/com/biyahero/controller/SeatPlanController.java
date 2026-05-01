@@ -126,12 +126,7 @@ public class SeatPlanController {
 
                 if (occupied.contains(seat)) {
                     btn.setStyle("-fx-background-color: #F1C40F; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8;");
-                    btn.setOnAction(e -> {
-                        Alert a = new Alert(Alert.AlertType.WARNING);
-                        a.setHeaderText(null);
-                        a.setContentText("Seat " + seat + " is already booked for this segment.");
-                        a.showAndWait();
-                    });
+                    btn.setOnAction(e -> showSeatDetails(seat));
                 } else {
                     btn.setStyle("-fx-background-color: #2ECC71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;");
                     btn.setOnAction(e -> openBookingForm(seat));
@@ -226,5 +221,56 @@ public class SeatPlanController {
     @FXML
     private void handleClose() {
         ((Stage) seatGrid.getScene().getWindow()).close();
+    }
+
+    private void showSeatDetails(int seat) {
+        // 1. Get all bookings for this trip
+        List<com.biyahero.model.Booking> allBookings = bookingService.getBookingsByTrip(currentTrip.getTripId());
+
+        // 2. Filter for only active bookings on THIS specific seat
+        List<com.biyahero.model.Booking> seatBookings = allBookings.stream()
+                .filter(b -> b.getSeatNumber() == seat)
+                .filter(b -> !"Cancelled".equals(b.getBookingStatus()) &&
+                        !"Completed".equals(b.getBookingStatus()) &&
+                        !"Vacated".equals(b.getBookingStatus()))
+                .collect(java.util.stream.Collectors.toList());
+
+        // 3. Build a nice text summary
+        StringBuilder details = new StringBuilder();
+        details.append("Active Bookings for Seat ").append(seat).append(":\n\n");
+
+        for (com.biyahero.model.Booking b : seatBookings) {
+            try {
+                // Grab the passenger info
+                var passenger = bookingService.getPassengerByBooking(b.getBookingId());
+                String pName = (passenger != null) ? passenger.getName() : "Walk-in";
+
+                // Grab the route names
+                var pickup = routeService.getStopById(b.getPickupStopId());
+                var dropoff = routeService.getStopById(b.getDropoffStopId());
+                String pickupName = (pickup != null) ? pickup.getStopName() : "Stop " + b.getPickupStopId();
+                String dropoffName = (dropoff != null) ? dropoff.getStopName() : "Stop " + b.getDropoffStopId();
+
+                // Format the text
+                details.append("👤 Passenger: ").append(pName).append("\n");
+                details.append("📍 Route: ").append(pickupName).append(" ➔ ").append(dropoffName).append("\n");
+                details.append("💵 Fare: ₱").append(b.getFarePaid()).append("\n");
+                details.append("------------------------------------\n");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        if (seatBookings.isEmpty()) {
+            details.append("No active booking details found (seat might be blocked manually).");
+        }
+
+        // 4. Show the Information Alert
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Seat " + seat + " Details");
+        alert.setHeaderText("Itinerary for Seat " + seat);
+        alert.setContentText(details.toString());
+        alert.showAndWait();
     }
 }
