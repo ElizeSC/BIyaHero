@@ -34,8 +34,6 @@ public class ReportMenu {
             System.out.println("[7] Export to PDF");
             System.out.println("--- IMPORT ---");
             System.out.println("[8] Import SQL Backup");
-            System.out.println("[9] Import from CSV");
-            System.out.println("[10] Import from JSON");
             System.out.println("[0] Back");
             System.out.print("Select: ");
 
@@ -48,8 +46,6 @@ public class ReportMenu {
                 case "6" -> exportSQL(scanner);
                 case "7" -> exportPDF(scanner);
                 case "8" -> importSQL(scanner);
-                case "9" -> importCSV(scanner);
-                case "10" -> importJSON(scanner);
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option.");
             }
@@ -196,38 +192,6 @@ public class ReportMenu {
 
         System.out.println("Importing...");
         ImportResult result = importService.importFromSQL(path);
-        System.out.println(result);
-    }
-
-    private static void importCSV(Scanner scanner) {
-        System.out.println("\n  [i] Imports trip records from a BiyaHero CSV export.");
-        System.out.println("      Trips that already exist in the database will be skipped.");
-
-        System.out.print("CSV file path (e.g. trip_report.csv): ");
-        String path = scanner.nextLine().trim();
-        if (path.isEmpty()) {
-            System.out.println("No file path provided. Import cancelled.");
-            return;
-        }
-
-        System.out.println("Importing...");
-        ImportResult result = importService.importFromCSV(path);
-        System.out.println(result);
-    }
-
-    private static void importJSON(Scanner scanner) {
-        System.out.println("\n  [i] Imports trip records from a BiyaHero JSON export.");
-        System.out.println("      Trips that already exist in the database will be skipped.");
-
-        System.out.print("JSON file path (e.g. trip_report.json): ");
-        String path = scanner.nextLine().trim();
-        if (path.isEmpty()) {
-            System.out.println("No file path provided. Import cancelled.");
-            return;
-        }
-
-        System.out.println("Importing...");
-        ImportResult result = importService.importFromJSON(path);
         System.out.println(result);
     }
 
