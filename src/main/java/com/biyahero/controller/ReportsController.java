@@ -10,7 +10,6 @@ import javafx.stage.FileChooser;
 import com.biyahero.service.FileService;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -38,14 +37,13 @@ public class ReportsController {
     @FXML private TextField        tripIdSearchField;
 
     private final ReportService reportService = new ReportService();
-    private final FileService fileService = new FileService();
+    private final FileService   fileService   = new FileService();
     private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd, yyyy");
 
     @FXML
     public void initialize() {
         setupColumns();
         setupSort();
-        // Auto-filter when dates change
         startDatePicker.valueProperty().addListener((o, a, b) -> handleFilter());
         endDatePicker  .valueProperty().addListener((o, a, b) -> handleFilter());
         loadAll();
@@ -121,7 +119,7 @@ public class ReportsController {
         reportsTable.setItems(FXCollections.observableArrayList(reports));
         if (tableRangeLabel != null) tableRangeLabel.setText(rangeText);
         updateSummary(reports);
-        sortCurrentList(); // respect current sort
+        sortCurrentList();
     }
 
     private void updateSummary(List<TripReport> reports) {
@@ -137,14 +135,13 @@ public class ReportsController {
         avgOccupancyLabel.setText(reports.isEmpty() ? "N/A" : String.format("%.1f%%", avg));
     }
 
-    // ── export stubs ─────────────────────────────────────────────────────────
+    // ── export ────────────────────────────────────────────────────────────────
 
     @FXML
     private void exportToCSV() {
         File file = getSaveTarget("CSV File", "*.csv", "BiyaHero_Report.csv");
         if (file != null) {
             try {
-                // Note: Her method name is exportTripReportsToCSV
                 fileService.exportTripReportsToCSV(reportsTable.getItems(), file.getAbsolutePath());
                 showSuccess("Report exported to CSV successfully!");
             } catch (IOException e) {
@@ -158,8 +155,6 @@ public class ReportsController {
         File file = getSaveTarget("PDF Document", "*.pdf", "BiyaHero_Report.pdf");
         if (file != null) {
             try {
-                // Note: Her method name is exportTripReportsToPDF
-                // We pass tableRangeLabel.getText() to fill her 'rangeLabel' parameter
                 fileService.exportTripReportsToPDF(
                         reportsTable.getItems(),
                         file.getAbsolutePath(),
@@ -177,7 +172,6 @@ public class ReportsController {
         File file = getSaveTarget("JSON File", "*.json", "BiyaHero_Report.json");
         if (file != null) {
             try {
-                // Note: Her method name is exportTripReportsToJSON
                 fileService.exportTripReportsToJSON(reportsTable.getItems(), file.getAbsolutePath());
                 showSuccess("Report exported to JSON successfully!");
             } catch (IOException e) {
@@ -191,7 +185,6 @@ public class ReportsController {
         File file = getSaveTarget("SQL Backup", "*.sql", "BiyaHero_Backup.sql");
         if (file != null) {
             try {
-                // Note: Her method name is exportFullDatabaseToSQL
                 fileService.exportFullDatabaseToSQL(file.getAbsolutePath());
                 showSuccess("SQL Backup generated!");
             } catch (IOException e) {
@@ -200,6 +193,76 @@ public class ReportsController {
         }
     }
 
+    // ── manifest ──────────────────────────────────────────────────────────────
+
+    @FXML
+    private void handleGenerateManifest() {
+        // 1. Validate trip ID input
+        String input = tripIdSearchField.getText().trim();
+        if (input.isEmpty()) {
+            showError("Please enter a Trip ID to generate a manifest.");
+            return;
+        }
+
+        TripReport targetReport = reportsTable.getItems().stream()
+                .filter(r -> r.getFormattedTripId().equalsIgnoreCase(input) ||
+                             String.valueOf(r.getTripId()).equals(input))
+                .findFirst()
+                .orElse(null);
+
+        if (targetReport == null) {
+            showError("Trip ID \"" + input + "\" not found in the current list.");
+            return;
+        }
+
+        // 2. Ask which format
+        ButtonType pdfChoice  = new ButtonType("PDF");
+        ButtonType csvChoice  = new ButtonType("CSV");
+        ButtonType jsonChoice = new ButtonType("JSON");
+        ButtonType cancel     = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        Alert formatDialog = new Alert(Alert.AlertType.NONE);
+        formatDialog.setTitle("Generate Trip Report");
+        formatDialog.setHeaderText("Export format for " + targetReport.getFormattedTripId() + "?");
+        formatDialog.setContentText(
+                "The report will include trip details and the full passenger manifest.");
+        formatDialog.getButtonTypes().setAll(pdfChoice, csvChoice, jsonChoice, cancel);
+        formatDialog.getDialogPane().setMinWidth(400);
+
+        ButtonType chosen = formatDialog.showAndWait().orElse(cancel);
+        if (chosen == cancel) return;
+
+        // 3. Open file picker for chosen format
+        String tripId = targetReport.getFormattedTripId();
+        File file;
+        if (chosen == pdfChoice) {
+            file = getSaveTarget("PDF Manifest", "*.pdf", "Manifest_" + tripId + ".pdf");
+        } else if (chosen == csvChoice) {
+            file = getSaveTarget("CSV Manifest", "*.csv", "Manifest_" + tripId + ".csv");
+        } else {
+            file = getSaveTarget("JSON Manifest", "*.json", "Manifest_" + tripId + ".json");
+        }
+        if (file == null) return;
+
+        // 4. Export
+        try {
+            if (chosen == pdfChoice) {
+                fileService.exportManifestToPDF(targetReport, file.getAbsolutePath());
+            } else if (chosen == csvChoice) {
+                fileService.exportManifestToCSV(targetReport, file.getAbsolutePath());
+            } else {
+                fileService.exportManifestToJSON(targetReport, file.getAbsolutePath());
+            }
+            showSuccess("Manifest for " + tripId + " exported successfully!");
+        } catch (Exception e) {
+            showError("Failed to generate manifest: " + e.getMessage());
+        }
+    }
+
+    @FXML private void handleTripReportPopup() { System.out.println("Opening manifest popup…"); }
+
+    // ── helpers ───────────────────────────────────────────────────────────────
+
     private File getSaveTarget(String desc, String ext, String defaultName) {
         FileChooser fc = new FileChooser();
         fc.setTitle("Export Data");
@@ -207,47 +270,6 @@ public class ReportsController {
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter(desc, ext));
         return fc.showSaveDialog(reportsTable.getScene().getWindow());
     }
-
-    @FXML
-    private void handleGenerateManifest() {
-        String input = tripIdSearchField.getText().trim();
-        if (input.isEmpty()) {
-            showError("Please enter a Trip ID to generate a manifest.");
-            return;
-        }
-
-        try {
-            // 1. Search for the specific report in your current table data
-            TripReport targetReport = reportsTable.getItems().stream()
-                    .filter(r -> r.getFormattedTripId().equalsIgnoreCase(input) ||
-                            String.valueOf(r.getTripId()).equals(input))
-                    .findFirst()
-                    .orElse(null);
-
-            if (targetReport == null) {
-                showError("Trip ID " + input + " not found in the current list.");
-                return;
-            }
-
-            // 2. Open FileChooser for the specific manifest
-            File file = getSaveTarget("PDF Manifest", "*.pdf", "Manifest_" + targetReport.getFormattedTripId() + ".pdf");
-
-            if (file != null) {
-                // 3. Reuse the PDF logic from FileService
-                // Since a manifest is just a report for ONE trip, we pass a List with one item
-                fileService.exportTripReportsToPDF(
-                        List.of(targetReport),
-                        file.getAbsolutePath(),
-                        "PASSENGER MANIFEST - " + targetReport.getFormattedTripId()
-                );
-
-                showSuccess("Manifest generated for " + targetReport.getFormattedTripId());
-            }
-        } catch (Exception e) {
-            showError("Failed to generate manifest: " + e.getMessage());
-        }
-    }
-    @FXML private void handleTripReportPopup() { System.out.println("Opening manifest popup…"); }
 
     private void showAlert(String title, String msg) {
         Alert a = new Alert(Alert.AlertType.WARNING);
@@ -270,6 +292,4 @@ public class ReportsController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
 }
