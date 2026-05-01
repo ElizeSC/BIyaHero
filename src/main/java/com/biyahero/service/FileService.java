@@ -17,11 +17,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FileService {
@@ -30,6 +32,61 @@ public class FileService {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static final DateTimeFormatter DISPLAY_FMT =
             DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm");
+
+    // ── Manifest row POJO ─────────────────────────────────────────────────────
+
+    public static class ManifestRow {
+        public final String passengerName;
+        public final int    seatNumber;
+        public final String pickupStop;
+        public final String dropoffStop;
+        public final double farePaid;
+        public final String bookingStatus;
+
+        public ManifestRow(String passengerName, int seatNumber,
+                           String pickupStop, String dropoffStop,
+                           double farePaid, String bookingStatus) {
+            this.passengerName = passengerName;
+            this.seatNumber    = seatNumber;
+            this.pickupStop    = pickupStop;
+            this.dropoffStop   = dropoffStop;
+            this.farePaid      = farePaid;
+            this.bookingStatus = bookingStatus;
+        }
+    }
+
+    // Queries booking + passenger + stop for a given trip_id.
+    private List<ManifestRow> fetchManifest(int tripId) throws Exception {
+        List<ManifestRow> rows = new ArrayList<>();
+        String sql =
+            "SELECT p.name, b.seat_number, " +
+            "       ps.stop_name AS pickup, ds.stop_name AS dropoff, " +
+            "       b.fare_paid, b.booking_status " +
+            "FROM booking b " +
+            "JOIN passenger p ON b.passenger_id = p.passenger_id " +
+            "JOIN stop ps     ON b.pickup_stop  = ps.stop_id " +
+            "JOIN stop ds     ON b.dropoff_stop = ds.stop_id " +
+            "WHERE b.trip_id = ? " +
+            "ORDER BY b.seat_number";
+
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, tripId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    rows.add(new ManifestRow(
+                            rs.getString("name"),
+                            rs.getInt("seat_number"),
+                            rs.getString("pickup"),
+                            rs.getString("dropoff"),
+                            rs.getDouble("fare_paid"),
+                            rs.getString("booking_status")
+                    ));
+                }
+            }
+        }
+        return rows;
+    }
 
     // ── CSV ───────────────────────────────────────────────────────────────────
 
@@ -57,6 +114,43 @@ public class FileService {
                                 ? (r.getBookedSeats() * 100.0 / r.getTotalCapacity()) : 0.0,
                         r.getTotalRevenue()
                 );
+            }
+        }
+    }
+
+    // ── CSV Manifest ──────────────────────────────────────────────────────────
+
+    public void exportManifestToCSV(TripReport trip, String filePath) throws Exception {
+        List<ManifestRow> manifest = fetchManifest(trip.getTripId());
+
+        try (PrintWriter pw = new PrintWriter(
+                new FileWriter(filePath, java.nio.charset.StandardCharsets.UTF_8))) {
+
+            // Trip header info
+            pw.println("PASSENGER MANIFEST");
+            pw.println("Trip ID," + escapeCsv(trip.getFormattedTripId()));
+            pw.println("Driver,"  + escapeCsv(trip.getDriverName()));
+            pw.println("Route,"   + escapeCsv(trip.getRouteName()));
+            pw.println("Departure," + (trip.getDepartureTime() != null
+                    ? trip.getDepartureTime().format(DT_FMT) : ""));
+            pw.println("Total Passengers," + manifest.size());
+            pw.println();
+
+            // Passenger list
+            pw.println("Seat No.,Passenger Name,Pickup,Dropoff,Fare Paid (PHP),Status");
+            for (ManifestRow row : manifest) {
+                pw.printf("%d,%s,%s,%s,%.2f,%s%n",
+                        row.seatNumber,
+                        escapeCsv(row.passengerName),
+                        escapeCsv(row.pickupStop),
+                        escapeCsv(row.dropoffStop),
+                        row.farePaid,
+                        escapeCsv(row.bookingStatus)
+                );
+            }
+
+            if (manifest.isEmpty()) {
+                pw.println("(No passengers booked for this trip)");
             }
         }
     }
@@ -107,6 +201,43 @@ public class FileService {
         }
     }
 
+    // ── JSON Manifest ─────────────────────────────────────────────────────────
+
+    public void exportManifestToJSON(TripReport trip, String filePath) throws Exception {
+        List<ManifestRow> manifest = fetchManifest(trip.getTripId());
+
+        try (PrintWriter pw = new PrintWriter(
+                new FileWriter(filePath, java.nio.charset.StandardCharsets.UTF_8))) {
+
+            pw.println("{");
+            pw.println("  \"manifest\": {");
+            pw.println("    \"tripId\": \""    + esc(trip.getFormattedTripId()) + "\",");
+            pw.println("    \"driver\": \""    + esc(trip.getDriverName())      + "\",");
+            pw.println("    \"route\": \""     + esc(trip.getRouteName())       + "\",");
+            pw.println("    \"departure\": \"" + (trip.getDepartureTime() != null
+                    ? trip.getDepartureTime().format(DT_FMT) : "") + "\",");
+            pw.println("    \"totalPassengers\": " + manifest.size());
+            pw.println("  },");
+            pw.println("  \"passengers\": [");
+
+            for (int i = 0; i < manifest.size(); i++) {
+                ManifestRow row = manifest.get(i);
+                pw.println("    {");
+                pw.println("      \"seatNumber\": "      + row.seatNumber                      + ",");
+                pw.println("      \"name\": \""          + esc(row.passengerName)              + "\",");
+                pw.println("      \"pickup\": \""        + esc(row.pickupStop)                 + "\",");
+                pw.println("      \"dropoff\": \""       + esc(row.dropoffStop)                + "\",");
+                pw.printf ("      \"farePaidPHP\": %.2f,%n", row.farePaid);
+                pw.println("      \"status\": \""        + esc(row.bookingStatus)              + "\"");
+                pw.print  ("    }");
+                pw.println(i < manifest.size() - 1 ? "," : "");
+            }
+
+            pw.println("  ]");
+            pw.println("}");
+        }
+    }
+
     private String esc(String value) {
         if (value == null) return "";
         return value.replace("\\", "\\\\").replace("\"", "\\\"");
@@ -114,12 +245,8 @@ public class FileService {
 
     // ── SQL Full Database Backup ───────────────────────────────────────────────
 
-    // Exports all 8 tables as INSERT statements in FK-safe order:
-    //   stop → route → van → driver → passenger → trip → routestop → booking
-    // The output is a complete backup that ImportService can fully restore.
     public void exportFullDatabaseToSQL(String filePath) throws IOException {
 
-        // Tables in insertion order — parents before children
         String[] tables = {
             "stop", "route", "van", "driver", "passenger", "trip", "routestop", "booking"
         };
@@ -144,7 +271,6 @@ public class FileService {
                     ResultSetMetaData meta = rs.getMetaData();
                     int colCount = meta.getColumnCount();
 
-                    // Build column list once
                     StringBuilder colList = new StringBuilder("(");
                     for (int c = 1; c <= colCount; c++) {
                         colList.append("`").append(meta.getColumnName(c)).append("`");
@@ -160,7 +286,6 @@ public class FileService {
                             if (val == null) {
                                 values.append("NULL");
                             } else {
-                                // Escape single quotes inside values
                                 values.append("'").append(val.replace("'", "\\'")).append("'");
                             }
                             if (c < colCount) values.append(", ");
@@ -172,9 +297,8 @@ public class FileService {
                         rowCount++;
                     }
 
-                    if (rowCount == 0) {
-                        pw.println("-- (no rows)");
-                    }
+                    if (rowCount == 0) pw.println("-- (no rows)");
+
                 } catch (Exception e) {
                     pw.println("-- ERROR reading table " + table + ": " + e.getMessage());
                 }
@@ -277,6 +401,89 @@ public class FileService {
                     .setTextAlignment(TextAlignment.CENTER).setMarginTop(20));
         }
     }
+
+    // ── PDF Manifest ──────────────────────────────────────────────────────────
+
+    public void exportManifestToPDF(TripReport trip, String filePath) throws Exception {
+        List<ManifestRow> manifest = fetchManifest(trip.getTripId());
+
+        try (PdfWriter writer = new PdfWriter(filePath);
+             PdfDocument pdf  = new PdfDocument(writer);
+             Document doc     = new Document(pdf)) {
+
+            doc.setMargins(36, 36, 36, 36);
+
+            // Title
+            doc.add(new Paragraph("BiyaHero: Passenger Manifest")
+                    .setFontSize(18).setBold()
+                    .setFontColor(new DeviceRgb(0x2B, 0x4E, 0xC8)));
+
+            // Trip info block
+            doc.add(new Paragraph(
+                    "Trip: " + trip.getFormattedTripId() +
+                    "   |   Driver: " + trip.getDriverName() +
+                    "   |   Route: " + trip.getRouteName())
+                    .setFontSize(10).setFontColor(ColorConstants.GRAY).setMarginBottom(2));
+
+            doc.add(new Paragraph(
+                    "Departure: " + (trip.getDepartureTime() != null
+                            ? trip.getDepartureTime().format(DISPLAY_FMT) : "—") +
+                    "   |   Total Passengers: " + manifest.size())
+                    .setFontSize(10).setFontColor(ColorConstants.GRAY).setMarginBottom(2));
+
+            doc.add(new Paragraph("Exported: " + LocalDateTime.now().format(DISPLAY_FMT))
+                    .setFontSize(9).setFontColor(ColorConstants.GRAY).setMarginBottom(16));
+
+            if (manifest.isEmpty()) {
+                doc.add(new Paragraph("No passengers booked for this trip.")
+                        .setFontSize(10).setFontColor(ColorConstants.GRAY));
+            } else {
+                // Passenger table: Seat | Name | Pickup | Dropoff | Fare | Status
+                float[] colWidths = {0.6f, 2.5f, 2f, 2f, 1.2f, 1.2f};
+                Table table = new Table(UnitValue.createPercentArray(colWidths))
+                        .useAllAvailableWidth();
+
+                addHeaderCell(table, "Seat");
+                addHeaderCell(table, "Passenger Name");
+                addHeaderCell(table, "Pickup");
+                addHeaderCell(table, "Dropoff");
+                addHeaderCell(table, "Fare (PHP)");
+                addHeaderCell(table, "Status");
+
+                double totalFare = 0;
+                for (int i = 0; i < manifest.size(); i++) {
+                    ManifestRow row = manifest.get(i);
+                    boolean alt = (i % 2 == 1);
+
+                    addDataCell(table, String.valueOf(row.seatNumber), alt, TextAlignment.CENTER);
+                    addDataCell(table, row.passengerName,              alt, TextAlignment.LEFT);
+                    addDataCell(table, row.pickupStop,                 alt, TextAlignment.LEFT);
+                    addDataCell(table, row.dropoffStop,                alt, TextAlignment.LEFT);
+                    addDataCell(table, String.format("%.2f", row.farePaid), alt, TextAlignment.RIGHT);
+                    addDataCell(table, row.bookingStatus,              alt, TextAlignment.CENTER);
+
+                    totalFare += row.farePaid;
+                }
+
+                doc.add(table);
+
+                // Summary footer
+                doc.add(new Paragraph().setMarginTop(8));
+                Table summary = new Table(UnitValue.createPercentArray(new float[]{1f, 1f}))
+                        .useAllAvailableWidth();
+                addSummaryCell(summary, "Total Passengers", String.valueOf(manifest.size()));
+                addSummaryCell(summary, "Total Fare Collected", String.format("PHP %.2f", totalFare));
+                doc.add(summary);
+            }
+
+            doc.add(new Paragraph(
+                    "Generated by BiyaHero Dispatcher System  •  Confidential")
+                    .setFontSize(8).setFontColor(ColorConstants.GRAY)
+                    .setTextAlignment(TextAlignment.CENTER).setMarginTop(20));
+        }
+    }
+
+    // ── PDF cell helpers ──────────────────────────────────────────────────────
 
     private void addHeaderCell(Table table, String text) {
         table.addHeaderCell(
