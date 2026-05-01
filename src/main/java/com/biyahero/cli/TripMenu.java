@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class TripMenu {
     private static final TripService tripService = new TripService();
-    private static final RouteService routeService = new RouteService();
+    public static final RouteService routeService = new RouteService();
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public static void show(Scanner scanner) {

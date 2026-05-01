@@ -13,7 +13,7 @@ public class BookingDAOImpl implements BookingDAO {
     @Override
     public void createBooking(Booking booking) {
         String sql = "INSERT INTO booking (trip_id, passenger_id, seat_number, pickup_stop, dropoff_stop, fare_paid, booking_status) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -87,25 +87,61 @@ public class BookingDAOImpl implements BookingDAO {
         }
     }
 
-    // seat availability
+    // --- SEAT AVAILABILITY LOGIC ---
+
+    // 1. Overall trip occupied seats (used for overall capacity)
     @Override
     public List<Integer> getOccupiedSeats(int tripId) {
-        String sql = "SELECT seat_number FROM booking " +
-                     "WHERE trip_id = ? AND booking_status IN ('Reserved', 'Boarded')";
-        List<Integer> occupied = new ArrayList<>();
+        List<Integer> occupiedSeats = new ArrayList<>();
+        String sql = "SELECT seat_number FROM booking WHERE trip_id = ? AND booking_status != 'Completed' AND booking_status != 'Cancelled' AND booking_status != 'Vacated'";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, tripId);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                occupied.add(rs.getInt("seat_number"));
+                occupiedSeats.add(rs.getInt("seat_number"));
             }
-
         } catch (SQLException e) {
-            System.err.println("Error fetching occupied seats: " + e.getMessage());
+            System.err.println("Error fetching overall occupied seats: " + e.getMessage());
         }
-        return occupied;
+        return occupiedSeats;
+    }
+
+    // 2. NEW Segment Overlap Logic
+    @Override
+    public List<Integer> getOccupiedSeats(int tripId, int newPickupStopId, int newDropoffStopId) {
+        List<Integer> occupiedSeats = new ArrayList<>();
+        String query =
+                "SELECT b.seat_number " +
+                        "FROM booking b " +
+                        "JOIN route_stop rs_pickup ON b.pickup_stop = rs_pickup.stop_id " +
+                        "JOIN route_stop rs_dropoff ON b.dropoff_stop = rs_dropoff.stop_id " +
+                        "JOIN trip t ON b.trip_id = t.trip_id " +
+                        "JOIN route_stop new_rs_pickup ON new_rs_pickup.stop_id = ? AND new_rs_pickup.route_id = t.route_id " +
+                        "JOIN route_stop new_rs_dropoff ON new_rs_dropoff.stop_id = ? AND new_rs_dropoff.route_id = t.route_id " +
+                        "WHERE b.trip_id = ? " +
+                        "AND b.booking_status != 'Completed' " +
+                        "AND b.booking_status != 'Cancelled' " +
+                        "AND b.booking_status != 'Vacated' " +
+                        "AND rs_pickup.stop_order < new_rs_dropoff.stop_order " +
+                        "AND rs_dropoff.stop_order > new_rs_pickup.stop_order";
+
+        try (Connection conn = DBUtil.getConnection(); // Fixed typo here!
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, newPickupStopId);
+            pstmt.setInt(2, newDropoffStopId);
+            pstmt.setInt(3, tripId);
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                occupiedSeats.add(rs.getInt("seat_number"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return occupiedSeats;
     }
 
     @Override
@@ -149,17 +185,16 @@ public class BookingDAOImpl implements BookingDAO {
         }
     }
 
-    // converts a raw DB row from ResultSet into a usable Booking object
     private Booking mapRow(ResultSet rs) throws SQLException {
         return new Booking(
-            rs.getInt("booking_id"),
-            rs.getInt("trip_id"),
-            rs.getInt("passenger_id"),
-            rs.getInt("seat_number"),
-            rs.getInt("pickup_stop"),
-            rs.getInt("dropoff_stop"),
-            rs.getDouble("fare_paid"),
-            rs.getString("booking_status")
+                rs.getInt("booking_id"),
+                rs.getInt("trip_id"),
+                rs.getInt("passenger_id"),
+                rs.getInt("seat_number"),
+                rs.getInt("pickup_stop"),
+                rs.getInt("dropoff_stop"),
+                rs.getDouble("fare_paid"),
+                rs.getString("booking_status")
         );
     }
 }

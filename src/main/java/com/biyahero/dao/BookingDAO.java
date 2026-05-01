@@ -8,6 +8,7 @@ public interface BookingDAO {
     List<Booking> getBookingsByTrip(int tripId);
     void cancelBooking(int id);
     List<Integer> getOccupiedSeats(int tripId);
+    List<Integer> getOccupiedSeats(int tripId, int pickupStopId, int dropoffStopId);
     List<Integer> getAvailableSeats(int tripId);
     void updateBookingStatus(int bookingId, String status);
 }

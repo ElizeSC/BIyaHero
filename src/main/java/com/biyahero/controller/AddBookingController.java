@@ -1,6 +1,5 @@
 package com.biyahero.controller;
 
-import com.biyahero.model.Booking;
 import com.biyahero.model.RouteStop;
 import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
@@ -29,8 +28,6 @@ public class AddBookingController {
     private final BookingService bookingService = new BookingService();
     private final RouteService routeService = new RouteService();
     private Trip selectedTrip;
-
-    // Change this to RouteStop to match what your service returns
     private List<RouteStop> routeStops;
 
     public void setTripData(Trip trip) {
@@ -39,34 +36,26 @@ public class AddBookingController {
 
         try {
             // 1. Get the RouteStops
-            List<com.biyahero.model.RouteStop> routeStopLinks = routeService.getRouteStops(trip.getRouteId());
+            List<RouteStop> routeStopLinks = routeService.getRouteStops(trip.getRouteId());
 
             if (routeStopLinks == null || routeStopLinks.isEmpty()) {
                 System.out.println("DEBUG ERROR: No RouteStops found for Route ID " + trip.getRouteId());
                 return;
             }
 
-            System.out.println("DEBUG: Found " + routeStopLinks.size() + " route stops.");
-
-            // 2. Fetch the actual names
+            // 2. Fetch the actual names as Strings
             List<String> stopNames = routeStopLinks.stream()
                     .map(rs -> {
                         var stop = routeService.getStopById(rs.getStopId());
-                        if (stop == null) {
-                            System.out.println("DEBUG WARNING: Stop not found for ID " + rs.getStopId());
-                            return "Unknown ID: " + rs.getStopId();
-                        }
-                        return stop.getStopName();
+                        return stop != null ? stop.getStopName() : "Unknown ID: " + rs.getStopId();
                     })
                     .collect(Collectors.toList());
 
-            // 3. Set the items
+            // 3. Set the items in the dropdowns
             pickupStopCombo.setItems(FXCollections.observableArrayList(stopNames));
             dropoffStopCombo.setItems(FXCollections.observableArrayList(stopNames));
 
             this.routeStops = routeStopLinks;
-
-            System.out.println("DEBUG: ComboBoxes populated with: " + stopNames);
 
         } catch (Exception e) {
             System.err.println("DEBUG EXCEPTION: " + e.getMessage());
@@ -81,12 +70,26 @@ public class AddBookingController {
         }
     }
 
+    // THE FIX IS HERE! Extract the Stop Name and add the styling lock!
+    public void setRouteSegments(Stop pickup, Stop dropoff) {
+        if (pickup != null) {
+            pickupStopCombo.setValue(pickup.getStopName()); // Correct extraction!
+            pickupStopCombo.setDisable(true);
+            pickupStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
+        }
+
+        if (dropoff != null) {
+            dropoffStopCombo.setValue(dropoff.getStopName()); // Correct extraction!
+            dropoffStopCombo.setDisable(true);
+            dropoffStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
+        }
+    }
+
     @FXML
     private void handleSaveBooking() {
         String name = passengerNameField.getText();
 
         try {
-            // 3. Get the selected stop names
             String pName = pickupStopCombo.getValue();
             String dName = dropoffStopCombo.getValue();
 
@@ -95,7 +98,7 @@ public class AddBookingController {
                 return;
             }
 
-            // 4. Map names back to IDs using the routeService
+            // Map string names back to IDs using the routeService
             int pickupId = routeStops.stream()
                     .map(rs -> routeService.getStopById(rs.getStopId()))
                     .filter(s -> s != null && s.getStopName().equals(pName))
@@ -108,7 +111,7 @@ public class AddBookingController {
                     .findFirst()
                     .get().getStopId();
 
-            // 5. Call Service (If DB fails, DAO must throw exception to trigger catch)
+            // Call Service
             bookingService.createBooking(
                     selectedTrip.getTripId(),
                     Integer.parseInt(seatNumberField.getText()),
@@ -120,12 +123,11 @@ public class AddBookingController {
                     addressField.getText()
             );
 
-            // 6. Success!
+            // Success!
             showInfo("Booking Successful", "Passenger " + name + " has been booked.");
             closeWindow();
 
         } catch (Exception e) {
-            // This catches NumberFormatErrors or the RuntimeException from your DAO
             showError("Booking Failed: " + e.getMessage());
         }
     }

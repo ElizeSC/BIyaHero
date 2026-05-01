@@ -28,27 +28,41 @@ public class WalkInBookingController {
     private int             seatNumber;
     private List<RouteStop> routeStops;
 
-    public void setData(Trip trip, int seat) {
+    public void setData(Trip trip, int seat, Stop pickup, Stop dropoff) {
         this.selectedTrip = trip;
         this.seatNumber   = seat;
         seatNumberLabel.setText(String.valueOf(seat));
 
         try {
+            // 1. Populate the dropdowns with text strings FIRST
             routeStops = routeService.getRouteStops(trip.getRouteId());
-
             List<String> names = routeStops.stream()
                     .map(rs -> safeStopName(rs.getStopId()))
                     .collect(Collectors.toList());
 
-            pickupStopCombo .setItems(FXCollections.observableArrayList(names));
+            pickupStopCombo.setItems(FXCollections.observableArrayList(names));
             dropoffStopCombo.setItems(FXCollections.observableArrayList(names));
 
-            // Smart defaults:
-            // Pickup  → current van stop (where the walk-in boarded)
-            // Dropoff → last stop on the route
-            int defaultPickup = indexOfStop(trip.getCurrentStopId());
-            pickupStopCombo .getSelectionModel().select(Math.max(defaultPickup, 0));
-            dropoffStopCombo.getSelectionModel().selectLast();
+            // 2. Lock in the Pick-up stop passed from SeatPlanController
+            if (pickup != null) {
+                pickupStopCombo.setValue(pickup.getStopName()); // Extract the String name!
+                pickupStopCombo.setDisable(true);
+                pickupStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
+            } else {
+                // Fallback default if nothing was passed
+                int defaultPickup = indexOfStop(trip.getCurrentStopId());
+                pickupStopCombo.getSelectionModel().select(Math.max(defaultPickup, 0));
+            }
+
+            // 3. Lock in the Drop-off stop passed from SeatPlanController
+            if (dropoff != null) {
+                dropoffStopCombo.setValue(dropoff.getStopName()); // Extract the String name!
+                dropoffStopCombo.setDisable(true);
+                dropoffStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
+            } else {
+                // Fallback default
+                dropoffStopCombo.getSelectionModel().selectLast();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
