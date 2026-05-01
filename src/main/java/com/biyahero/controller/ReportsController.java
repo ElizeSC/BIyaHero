@@ -191,8 +191,8 @@ public class ReportsController {
         File file = getSaveTarget("SQL Backup", "*.sql", "BiyaHero_Backup.sql");
         if (file != null) {
             try {
-                // Note: Her method name is exportTripReportsToSQL
-                fileService.exportTripReportsToSQL(reportsTable.getItems(), file.getAbsolutePath());
+                // Note: Her method name is exportFullDatabaseToSQL
+                fileService.exportFullDatabaseToSQL(file.getAbsolutePath());
                 showSuccess("SQL Backup generated!");
             } catch (IOException e) {
                 showError("SQL Export failed!");
