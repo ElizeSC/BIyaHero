@@ -344,7 +344,7 @@ public class FileService {
             doc.add(new Paragraph("Exported: " + LocalDateTime.now().format(DISPLAY_FMT))
                     .setFontSize(9).setFontColor(ColorConstants.GRAY).setMarginBottom(16));
 
-            float[] colWidths = {1f, 2f, 2.5f, 2f, 1.8f, 1.8f};
+            float[] colWidths = {1f, 2f, 2.5f, 2f, 2f, 1.8f, 1.8f};
             Table table = new Table(UnitValue.createPercentArray(colWidths))
                     .useAllAvailableWidth();
 
@@ -352,6 +352,7 @@ public class FileService {
             addHeaderCell(table, "Driver");
             addHeaderCell(table, "Route");
             addHeaderCell(table, "Departure");
+            addHeaderCell(table, "Arrival");
             addHeaderCell(table, "Occupancy");
             addHeaderCell(table, "Revenue (PHP)");
 
@@ -369,6 +370,10 @@ public class FileService {
                 addDataCell(table,
                         r.getDepartureTime() != null
                                 ? r.getDepartureTime().format(DISPLAY_FMT) : "—",
+                        altRow, TextAlignment.LEFT);
+                addDataCell(table,
+                        r.getArrivalDt() != null
+                                ? r.getArrivalDt().format(DISPLAY_FMT) : "—",
                         altRow, TextAlignment.LEFT);
                 addDataCell(table, r.getOccupancyRate(),   altRow, TextAlignment.CENTER);
                 addDataCell(table,
@@ -427,7 +432,9 @@ public class FileService {
 
             doc.add(new Paragraph(
                     "Departure: " + (trip.getDepartureTime() != null
-                            ? trip.getDepartureTime().format(DISPLAY_FMT) : "—") +
+                        ? trip.getDepartureTime().format(DISPLAY_FMT) : "—") +
+                    "   |   Arrival: " + (trip.getArrivalDt() != null    
+                        ? trip.getArrivalDt().format(DISPLAY_FMT) : "—") +
                     "   |   Total Passengers: " + manifest.size())
                     .setFontSize(10).setFontColor(ColorConstants.GRAY).setMarginBottom(2));
 
