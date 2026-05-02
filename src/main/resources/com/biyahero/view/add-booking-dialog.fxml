@@ -51,17 +51,17 @@
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
             <Label text="Fare (PHP)" styleClass="input-label"/>
-            <TextField fx:id="fareField" promptText="500.00" styleClass="text-field"/>
+            <TextField fx:id="fareField" promptText="₱0.00" editable="false" styleClass="text-field" style="-fx-background-color: #E5E7EB; -fx-text-fill: #10B981; -fx-font-weight: bold;"/>
         </VBox>
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="5">
             <Label text="Pickup Stop" styleClass="input-label"/>
-            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box"/>
+            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box" onAction="#updateDisplayedFare"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="5">
             <Label text="Dropoff Stop" styleClass="input-label"/>
-            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box"/>
+            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box" onAction="#updateDisplayedFare"/>
         </VBox>
     </GridPane>
 

@@ -30,35 +30,16 @@ public class RouteService {
         return route;
     }
 
-    public void updateBaseFare(int routeId, double newFare) {
-        if (newFare < 0) throw new IllegalArgumentException("Base fare cannot be negative.");
-        getRouteById(routeId);
-        routeDAO.updateBaseFare(routeId, newFare);
+    public void updateRouteFares(int routeId, double newBaseFare, double newPerStopFare) {
+        routeDAO.updateRouteFares(routeId, newBaseFare, newPerStopFare);
     }
 
-    /**
-     * Creates a brand-new Route with its ordered stops in a single transaction.
-     *
-     * @param routeName  the display name for the route
-     * @param baseFare   the base fare (>= 0)
-     * @param orderedStops the stops in sequence, already carrying stop_order values
-     * @return the newly created Route (with its generated ID)
-     */
-    public Route createRoute(String routeName, double baseFare, List<RouteStop> orderedStops) {
-        if (routeName == null || routeName.trim().isEmpty())
-            throw new IllegalArgumentException("Route name cannot be empty.");
-        if (baseFare < 0)
-            throw new IllegalArgumentException("Base fare cannot be negative.");
-        if (orderedStops == null || orderedStops.size() < 2)
-            throw new IllegalArgumentException("A route must have at least 2 stops.");
+    public void createRoute(String name, double baseFare, double perStopFare, List<RouteStop> stops) {
 
-        Route newRoute = new Route(routeName.trim(), baseFare);
-        int generatedId = routeDAO.saveRouteWithStops(newRoute, orderedStops);
-        if (generatedId == -1)
-            throw new IllegalStateException("Failed to save the route. Check logs for details.");
+        // Pass it into our new 4-parameter constructor
+        Route route = new Route(0, name, baseFare, perStopFare);
 
-        newRoute.setRouteId(generatedId);
-        return newRoute;
+        routeDAO.saveRouteWithStops(route, stops);
     }
 
     // ── Stop ────────────────────────────────────────────────────────────────

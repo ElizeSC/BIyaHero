@@ -14,6 +14,7 @@ import java.util.List;
 public class RouteBuilderController {
     @FXML private TextField txtRouteName, txtBaseFare;
     @FXML private ListView<Stop> lvAvailableStops, lvRouteSequence;
+    @FXML private TextField perStopFareField;
 
     private final RouteService routeService = new RouteService();
     private final ObservableList<Stop> availableStops = FXCollections.observableArrayList();
@@ -56,6 +57,11 @@ public class RouteBuilderController {
         try {
             String name = txtRouteName.getText();
             double fare = Double.parseDouble(txtBaseFare.getText());
+            double perStopFare = 15.00;
+
+            if (!perStopFareField.getText().isEmpty()) {
+                perStopFare = Double.parseDouble(perStopFareField.getText());
+            }
 
             // Map the UI sequence to RouteStop models
             List<RouteStop> orderedStops = new ArrayList<>();
@@ -68,7 +74,7 @@ public class RouteBuilderController {
             }
 
             // Save via the transactional service
-            routeService.createRoute(name, fare, orderedStops);
+            routeService.createRoute(name, fare, perStopFare, orderedStops);
             closeWindow();
         } catch (Exception e) {
             // Show error dialog logic here
@@ -106,6 +112,37 @@ public class RouteBuilderController {
                 availableStops.add(savedStop);
             }
         });
+    }
+
+    @FXML
+    private void handleImportStopsCSV() {
+        javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        fileChooser.setTitle("Select Import File");
+        fileChooser.getExtensionFilters().addAll(
+                new javafx.stage.FileChooser.ExtensionFilter("All Supported Files", "*.csv", "*.json"),
+                new javafx.stage.FileChooser.ExtensionFilter("CSV Files", "*.csv"),
+                new javafx.stage.FileChooser.ExtensionFilter("JSON Files", "*.json")
+        );
+
+        java.io.File file = fileChooser.showOpenDialog(lvAvailableStops.getScene().getWindow());
+
+        if (file != null) {
+            com.biyahero.service.DataImportService importService = new com.biyahero.service.DataImportService();
+            com.biyahero.service.DataImportService.ImportResult result = importService.importData(file.getAbsolutePath(), "STOPS");
+
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                    result.success ? javafx.scene.control.Alert.AlertType.INFORMATION : javafx.scene.control.Alert.AlertType.ERROR
+            );
+            alert.setTitle("Data Import");
+            alert.setHeaderText("Importing STOPS");
+            alert.setContentText(result.message);
+            alert.showAndWait();
+
+            if (result.success) {
+                availableStops.clear();
+                availableStops.addAll(routeService.getAllStops());
+            }
+        }
     }
 
     @FXML private void handleCancel() { closeWindow(); }

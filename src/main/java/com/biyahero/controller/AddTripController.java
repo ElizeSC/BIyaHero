@@ -29,27 +29,31 @@ public class AddTripController {
     @FXML private TextField timeField;
     @FXML private ComboBox<Van> vanComboBox;
     @FXML private ComboBox<Driver> driverComboBox;
+    @FXML private Button btnManageRoute;
 
     private final RouteService routeService = new RouteService();
     private final TripService tripService = new TripService();
 
     @FXML
     public void initialize() {
-        // 1. Get real routes
         ObservableList<Route> routes = FXCollections.observableArrayList(routeService.getAllRoutes());
 
-        // 2. Create the "Add New" Sentinel Route
         Route addMoreOption = new Route();
-        addMoreOption.setRouteId(-1); // Unique ID to identify the "Add" action
+        addMoreOption.setRouteId(-1);
         addMoreOption.setRouteName("+ Add New Route...");
         routes.add(addMoreOption);
 
         routeComboBox.setItems(routes);
 
-        // 3. Add the Listener to trigger the modal
+        // 🔥 FIX: Properly handle the "Add New Route" option!
         routeComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null && newVal.getRouteId() == -1) {
+                // They selected "Add New Route" -> Disable manage button and open the builder!
+                btnManageRoute.setDisable(true);
                 handleOpenRouteBuilder();
+            } else {
+                // They selected a real route -> Enable the manage button!
+                btnManageRoute.setDisable(newVal == null);
             }
         });
 
@@ -57,6 +61,32 @@ public class AddTripController {
         driverComboBox.setItems(FXCollections.observableArrayList(tripService.getAvailableDrivers()));
 
         setupComboBoxConverters();
+    }
+
+    @FXML
+    private void openManageRouteDialog() {
+        Route selectedRoute = routeComboBox.getValue();
+        if (selectedRoute == null || selectedRoute.getRouteId() == -1) return;
+
+        try {
+            // 🔥 FIX: Put the correct folder path to your FXML!
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/edit-route-fare.fxml"));
+            Parent root = loader.load();
+
+            EditRouteFareController controller = loader.getController();
+            controller.setRouteData(selectedRoute);
+
+            Stage stage = new Stage();
+            stage.setTitle("Manage Route Fares");
+            stage.setScene(new Scene(root));
+            stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+
+        } catch (Exception e) {
+            // Changed to print out the actual error popup so you know if it fails!
+            showError("UI Error", "Could not load Edit Fare dialog: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void handleOpenRouteBuilder() {

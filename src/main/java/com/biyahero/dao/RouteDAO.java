@@ -7,7 +7,7 @@ import java.util.List;
 public interface RouteDAO {
     Route getRouteById(int id);
     List<Route> getAllRoutes();
-    void updateBaseFare(int id, double newFare);
+    void updateRouteFares(int routeId, double newBaseFare, double newPerStopFare);
 
     int saveRouteWithStops(Route route, List<RouteStop> stops);
 }

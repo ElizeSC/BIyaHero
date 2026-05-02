@@ -20,10 +20,15 @@
     <!-- Replaced inline font/weight with header-title class -->
     <Label text="Schedule New Trip" styleClass="header-title"/>
 
-    <VBox spacing="5">
-        <Label text="Select Route" styleClass="input-label"/>
-        <ComboBox fx:id="routeComboBox" maxWidth="Infinity" promptText="Choose Route..." styleClass="combo-box"/>
-    </VBox>
+    <HBox spacing="10" alignment="BOTTOM_LEFT">
+        <VBox spacing="5" HBox.hgrow="ALWAYS">
+            <Label text="Select Route" styleClass="input-label"/>
+            <ComboBox fx:id="routeComboBox" maxWidth="Infinity" styleClass="combo-box"/>
+        </VBox>
+
+        <Button fx:id="btnManageRoute" text="⚙ Edit Fares" onAction="#openManageRouteDialog"
+                disable="true" styleClass="btn-secondary" prefHeight="35"/>
+    </HBox>
 
     <HBox spacing="10">
         <VBox HBox.hgrow="ALWAYS" spacing="5">

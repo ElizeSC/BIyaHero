@@ -47,10 +47,6 @@ public class Stop {
 
     @Override
     public String toString() {
-        return "Stop{" +
-                "stopId=" + stopId +
-                ", stopName='" + stopName + '\'' +
-                ", cityProvince='" + cityProvince + '\'' +
-                '}';
+        return this.stopName;
     }
 }
