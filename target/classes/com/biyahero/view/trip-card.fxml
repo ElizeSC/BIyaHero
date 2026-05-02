@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import java.net.URL?>
+
+<VBox styleClass="table-row-cell" spacing="15"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.TripCardController">
+    <stylesheets><URL value="@style.css"/></stylesheets>
+    <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+
+    <HBox alignment="CENTER_LEFT">
+        <VBox spacing="3">
+            <Label fx:id="tripIdLabel" text="TRP000"
+                   style="-fx-font-size: 18px; -fx-font-weight: 900; -fx-text-fill: #0A0D2C;"/>
+            <Label fx:id="driverInfoLabel" text="Van: - • Driver: -" styleClass="sub-header"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <VBox alignment="TOP_RIGHT" spacing="3">
+            <Label fx:id="routeLabel" text="Origin ➔ Destination"
+                   style="-fx-font-weight: 700; -fx-text-fill: #0A0D2C;"/>
+            <Label fx:id="occupancyLabel" text="Passengers: -" styleClass="sub-header"/>
+        </VBox>
+    </HBox>
+
+    <HBox fx:id="progressHBox" alignment="CENTER" spacing="0" minHeight="50"/>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Update Location"
+                onAction="#handleUpdateLocation"
+                styleClass="trip-action-btn, btn-location"/>
+        <Button text="Update Occupancy"
+                onAction="#handleUpdateOccupancy"
+                styleClass="trip-action-btn, btn-occupancy"/>
+    </HBox>
+</VBox>

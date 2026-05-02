@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import java.sql.Statement;
+import java.util.HexFormat;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,6 +13,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 import java.io.File;
+import java.security.MessageDigest;
+
 public class DBUtil {
     private static String currentDb = "biyahero_master";
     private static Properties config = new Properties();
@@ -75,8 +78,9 @@ public class DBUtil {
         String user = config.getProperty("db.user");
         String pass = config.getProperty("db.password");
 
-        // Build URL dynamically
-        String url = "jdbc:mysql://localhost:3306/" + currentDb;
+        String url = "jdbc:mysql://localhost:3306/" + currentDb
+                + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8";
+
         return DriverManager.getConnection(url, user, pass);
     }
 
@@ -117,7 +121,7 @@ public class DBUtil {
             var rs = stmt.executeQuery(checkAdmin);
             if (rs.next() && rs.getInt(1) == 0) {
                 stmt.executeUpdate("INSERT INTO accounts (username, password, db_name) " +
-                        "VALUES ('biyahero_admin', 'biyahero123', 'biyahero_db')");
+                "VALUES ('biyahero_admin', '" + hashPassword("biyahero123") + "', 'biyahero_db')");
                 System.out.println("✅ Default admin 'biyahero_admin' created.");
             }
 
@@ -125,6 +129,16 @@ public class DBUtil {
 
         } catch (SQLException e) {
             System.err.println("❌ Critical Error during Master DB Setup: " + e.getMessage());
+        }
+    }
+
+    public static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            return HexFormat.of().formatHex(hash);
+        } catch (Exception e) {
+            throw new RuntimeException("Hashing failed", e);
         }
     }
 }

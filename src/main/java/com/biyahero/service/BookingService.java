@@ -10,12 +10,11 @@ import com.biyahero.model.Passenger;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.biyahero.cli.TripMenu.routeService;
-
 public class BookingService {
     private final BookingDAO bookingDAO = new BookingDAOImpl();
     private final PassengerDAO passengerDAO = new PassengerDAOImpl();
     private final TripService tripService = new TripService();
+    private final RouteService routeService = new RouteService();
 
     // booking management and passenger records
     public Booking createBooking(int tripId, int seatNumber, int pickupStopId, int dropoffStopId,

@@ -127,6 +127,9 @@ public class TripService {
 
         // get ordered stops for this trip's route
         List<RouteStop> routeStops = routeService.getRouteStops(trip.getRouteId());
+        if (routeStops.isEmpty()) {
+            throw new IllegalStateException("Route has no stops defined. Cannot update checkpoint.");
+        }
         int lastStopId = routeStops.get(routeStops.size() - 1).getStopId();
 
         trip.setCurrentStopId(stopId);

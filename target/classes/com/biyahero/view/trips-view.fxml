@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<!-- Removed styleClass="main-container" — its -fx-padding:0 was overriding the Insets -->
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.TripController"
+      style="-fx-background-color: #F5F7FF;">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <VBox HBox.hgrow="ALWAYS" spacing="5">
+            <Label styleClass="header-title" text="Trip Management"/>
+            <Label styleClass="sub-header" text="Manage schedules and dispatch drivers." />
+        </VBox>
+
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <TextField fx:id="searchField" prefWidth="250.0" promptText="Search by Trip ID or Status..." styleClass="text-field" />
+            <Button onAction="#handleAddTrip" styleClass="primary-button" text="+ Schedule Trip"/>
+        </HBox>
+    </HBox>
+
+    <TableView fx:id="tripTable" VBox.vgrow="ALWAYS" styleClass="modern-table">
+        <columns>
+            <TableColumn fx:id="colTripId"     text="TRIP ID"    prefWidth="80"/>
+            <TableColumn fx:id="colRoute"      text="ROUTE"      prefWidth="180"/>
+            <TableColumn fx:id="colDeparture"  text="DEPARTURE"  prefWidth="150"/>
+            <TableColumn fx:id="colAssignment" text="ASSIGNMENT" prefWidth="180"/>
+            <!-- Widened: 3 buttons (Book/Depart/Cancel) need at least 260px to show full text -->
+            <TableColumn fx:id="colActions"    text="ACTIONS"    prefWidth="280"/>
+        </columns>
+    </TableView>
+
+</VBox>

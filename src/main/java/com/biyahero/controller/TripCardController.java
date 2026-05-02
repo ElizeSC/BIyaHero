@@ -43,8 +43,19 @@ public class TripCardController {
         }
 
         tripIdLabel.setText(trip.getFormattedId());
-        String vanModel = vanService.getVanById(trip.getVanId()).getModel();
-        String driverName = driverService.getDriverById(trip.getDriverId()).getName();
+        String vanModel;
+        try { 
+            vanModel = vanService.getVanById(trip.getVanId()).getModel(); 
+        } catch (IllegalArgumentException e) { 
+            vanModel = "Unknown Van"; 
+        }
+        
+        String driverName;
+        try { 
+            driverName = driverService.getDriverById(trip.getDriverId()).getName(); 
+        } catch (IllegalArgumentException e) { 
+            driverName = "Unknown Driver"; 
+        }
 
         driverInfoLabel.setText("Van: " + vanModel + " • Driver: " + driverName);
 

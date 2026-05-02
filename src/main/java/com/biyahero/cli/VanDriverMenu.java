@@ -132,7 +132,7 @@ public class VanDriverMenu {
         System.out.print("Enter Van ID to edit: ");
         int vanId = parseId(scanner.nextLine().trim(), "VAE");
         try {
-            vanId = Integer.parseInt(scanner.nextLine().trim());
+            vanId = parseId(scanner.nextLine().trim(), "VAN");
         } catch (NumberFormatException e) {
             System.out.println("Invalid ID.");
             return;

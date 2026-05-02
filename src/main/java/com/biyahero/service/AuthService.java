@@ -20,7 +20,7 @@ public class AuthService {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(2, DBUtil.hashPassword(password));
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {

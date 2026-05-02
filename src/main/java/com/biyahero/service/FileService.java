@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class FileService {
 
@@ -243,18 +244,16 @@ public class FileService {
         return value.replace("\\", "\\\\").replace("\"", "\\\"");
     }
 
-    // ── SQL Full Database Backup ───────────────────────────────────────────────
+    private static final Set<String> ALLOWED_TABLES = Set.of(
+        "stop", "route", "van", "driver", "passenger", "trip", "routestop", "booking"
+    );
 
     public void exportFullDatabaseToSQL(String filePath) throws IOException {
 
-        String[] tables = {
-            "stop", "route", "van", "driver", "passenger", "trip", "routestop", "booking"
-        };
-
         try (PrintWriter pw = new PrintWriter(
                 new FileWriter(filePath, java.nio.charset.StandardCharsets.UTF_8));
-             Connection conn = DBUtil.getConnection();
-             Statement  stmt = conn.createStatement()) {
+            Connection conn = DBUtil.getConnection();
+            Statement  stmt = conn.createStatement()) {
 
             pw.println("-- BiyaHero DB — Full Database Backup");
             pw.println("-- Generated: " + LocalDateTime.now().format(DT_FMT));
@@ -264,7 +263,10 @@ public class FileService {
             pw.println("SET FOREIGN_KEY_CHECKS = 0;");
             pw.println();
 
-            for (String table : tables) {
+            for (String table : ALLOWED_TABLES) {
+                if (!ALLOWED_TABLES.contains(table))
+                    throw new IllegalArgumentException("Invalid table: " + table);
+
                 pw.println("-- Table: " + table);
 
                 try (ResultSet rs = stmt.executeQuery("SELECT * FROM " + table)) {

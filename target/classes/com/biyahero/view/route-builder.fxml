@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<VBox spacing="20" style="-fx-background-color: #FFFFFF;" xmlns:fx="http://javafx.com/fxml" fx:controller="com.biyahero.controller.RouteBuilderController">
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+
+    <Label text="Route Builder" style="-fx-font-size: 22px; -fx-text-fill: #0A0D2C; -fx-font-weight: bold;"/>
+
+    <HBox spacing="15">
+        <TextField fx:id="txtRouteName" promptText="Route Name (e.g., Tacloban - Catbalogan)" HBox.hgrow="ALWAYS"
+                   style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 14px;"/>
+        <TextField fx:id="txtBaseFare" promptText="Base Fare" prefWidth="140"
+                   style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 14px;"/>
+        <VBox spacing="5">
+            <Label text="Per-Stop Fare (PHP)" styleClass="input-label"/>
+            <TextField fx:id="perStopFareField" promptText="15.00" styleClass="text-field"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Available Stops" style="-fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-size: 14px;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="+" onAction="#handleAddNewStop"
+                        style="-fx-background-color: #EEF2FF; -fx-text-fill: #3E49BB; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand;"
+                        prefWidth="30" prefHeight="30">
+                    <tooltip><Tooltip text="Add New Stop"/></tooltip>
+                </Button>
+                <Button text="📥 Import Stops" onAction="#handleImportStopsCSV" style="-fx-background-color: #3E49BB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15; -fx-cursor: hand;" />
+            </HBox>
+            <ListView fx:id="lvAvailableStops" VBox.vgrow="ALWAYS"
+                      style="-fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: transparent;"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="15">
+            <Button text="Add ➔" onAction="#handleAddStop"
+                    style="-fx-background-color: #3E49BB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 10 15;"
+                    prefWidth="100"/>
+            <Button text="⬅ Remove" onAction="#handleRemoveStop"
+                    style="-fx-background-color: white; -fx-text-fill: #E11D48; -fx-border-color: #E11D48; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 10 15;"
+                    prefWidth="100"/>
+        </VBox>
+
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label text="Route Sequence (Order Matters)" style="-fx-font-weight: bold; -fx-text-fill: #3E49BB; -fx-font-size: 14px;"/>
+            <ListView fx:id="lvRouteSequence" VBox.vgrow="ALWAYS"
+                      style="-fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: transparent;"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="↑ Move Up" onAction="#handleMoveUp"
+                        style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-text-fill: #475569; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 12;"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="↓ Move Down" onAction="#handleMoveDown"
+                        style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-text-fill: #475569; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 12;"
+                        HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="15" alignment="CENTER_RIGHT" style="-fx-padding: 10 0 0 0;">
+        <Button text="Cancel" onAction="#handleCancel"
+                style="-fx-background-color: white; -fx-text-fill: #64748B; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 10 24;"/>
+        <Button text="Save Route" onAction="#handleSave"
+                style="-fx-background-color: #16A34A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand; -fx-padding: 10 24;"/>
+    </HBox>
+
+</VBox>

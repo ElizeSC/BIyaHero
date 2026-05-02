@@ -8,28 +8,28 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.*;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserService {
 
     public boolean registerUser(String fullName, String username, String password) {
-        String dbName = "biyahero_" + username.toLowerCase().replaceAll("\\s+", "_");
+        if (!username.matches("^[a-zA-Z0-9_]{3,50}$")) {
+            throw new IllegalArgumentException("Username must be 3-50 alphanumeric characters.");
+        }
+
+        String dbName = "biyahero_" + username.toLowerCase();
 
         try (Connection masterConn = DBUtil.getConnection()) {
-            // 1. Create the physical database
             masterConn.createStatement().executeUpdate("CREATE DATABASE " + dbName);
 
-            // 2. Add entry to master accounts table
             String sql = "INSERT INTO biyahero_master.accounts (username, password, db_name) VALUES (?, ?, ?)";
             try (PreparedStatement pstmt = masterConn.prepareStatement(sql)) {
                 pstmt.setString(1, username);
-                pstmt.setString(2, password);
+                pstmt.setString(2, DBUtil.hashPassword(password));
                 pstmt.setString(3, dbName);
                 pstmt.executeUpdate();
             }
 
-            // 3. Setup the tables in the new DB
             initializeNewDatabase(dbName);
             return true;
 
@@ -81,7 +81,7 @@ public class UserService {
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(2, DBUtil.hashPassword(password));
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
