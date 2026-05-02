@@ -64,14 +64,12 @@ public class RouteDAOImpl implements RouteDAO {
      */
     @Override
     public int saveRouteWithStops(Route route, List<RouteStop> stops) {
-        Connection conn = null;
-        try {
-            conn = DBUtil.getConnection();
-            conn.setAutoCommit(false);   // BEGIN TRANSACTION
+        try (Connection conn = DBUtil.getConnection()) {
+            conn.setAutoCommit(false);
 
             // 1. Insert Route
+            int generatedRouteId;
             String insertRoute = "INSERT INTO route (route_name, base_fare, per_stop_fare) VALUES (?, ?, ?)";
-            int generatedRouteId = -1;
             try (PreparedStatement ps = conn.prepareStatement(insertRoute, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, route.getRouteName());
                 ps.setDouble(2, route.getBaseFare());
@@ -99,22 +97,12 @@ public class RouteDAOImpl implements RouteDAO {
                 ps.executeBatch();
             }
 
-            conn.commit();   // COMMIT
+            conn.commit();
             return generatedRouteId;
 
         } catch (SQLException e) {
             System.err.println("Transaction failed, rolling back: " + e.getMessage());
-            if (conn != null) {
-                try { conn.rollback(); } catch (SQLException ex) { ex.printStackTrace(); }
-            }
             return -1;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.setAutoCommit(true);
-                    conn.close();
-                } catch (SQLException e) { e.printStackTrace(); }
-            }
         }
     }
 

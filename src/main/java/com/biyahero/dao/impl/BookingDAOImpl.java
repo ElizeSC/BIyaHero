@@ -112,19 +112,19 @@ public class BookingDAOImpl implements BookingDAO {
     public List<Integer> getOccupiedSeats(int tripId, int newPickupStopId, int newDropoffStopId) {
         List<Integer> occupiedSeats = new ArrayList<>();
         String query =
-                "SELECT b.seat_number " +
-                        "FROM booking b " +
-                        "JOIN route_stop rs_pickup ON b.pickup_stop = rs_pickup.stop_id " +
-                        "JOIN route_stop rs_dropoff ON b.dropoff_stop = rs_dropoff.stop_id " +
-                        "JOIN trip t ON b.trip_id = t.trip_id " +
-                        "JOIN route_stop new_rs_pickup ON new_rs_pickup.stop_id = ? AND new_rs_pickup.route_id = t.route_id " +
-                        "JOIN route_stop new_rs_dropoff ON new_rs_dropoff.stop_id = ? AND new_rs_dropoff.route_id = t.route_id " +
-                        "WHERE b.trip_id = ? " +
-                        "AND b.booking_status != 'Completed' " +
-                        "AND b.booking_status != 'Cancelled' " +
-                        "AND b.booking_status != 'Vacated' " +
-                        "AND rs_pickup.stop_order < new_rs_dropoff.stop_order " +
-                        "AND rs_dropoff.stop_order > new_rs_pickup.stop_order";
+            "SELECT b.seat_number " +
+            "FROM booking b " +
+            "JOIN routestop rs_pickup  ON b.pickup_stop  = rs_pickup.stop_id " +
+            "JOIN routestop rs_dropoff ON b.dropoff_stop = rs_dropoff.stop_id " +
+            "JOIN trip t ON b.trip_id = t.trip_id " +
+            "JOIN routestop new_rs_pickup  ON new_rs_pickup.stop_id  = ? AND new_rs_pickup.route_id  = t.route_id " +
+            "JOIN routestop new_rs_dropoff ON new_rs_dropoff.stop_id = ? AND new_rs_dropoff.route_id = t.route_id " +
+            "WHERE b.trip_id = ? " +
+            "AND rs_pickup.route_id  = t.route_id " +
+            "AND rs_dropoff.route_id = t.route_id " +
+            "AND b.booking_status NOT IN ('Completed', 'Cancelled', 'Vacated') " +
+            "AND rs_pickup.stop_order  < new_rs_dropoff.stop_order " +
+            "AND rs_dropoff.stop_order > new_rs_pickup.stop_order";
 
         try (Connection conn = DBUtil.getConnection(); // Fixed typo here!
              PreparedStatement pstmt = conn.prepareStatement(query)) {

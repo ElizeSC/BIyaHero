@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="15" styleClass="login-card" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.EditRouteFareController" prefWidth="300">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+
+    <Label text="Edit Route Fares" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+    <Label fx:id="routeNameLabel" text="Route Name" style="-fx-text-fill: gray;"/>
+
+    <VBox spacing="5">
+        <Label text="Base Fare (PHP)"/>
+        <TextField fx:id="baseFareField" promptText="0.00"/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Per-Stop Fare (PHP)"/>
+        <TextField fx:id="perStopFareField" promptText="0.00"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+    <Button text="Cancel" onAction="#handleCancel"/>
+    <Button text="Save Changes" onAction="#handleSave" style="-fx-background-color: #10B981; -fx-text-fill: white;"/>
+</HBox>
+        </VBox>

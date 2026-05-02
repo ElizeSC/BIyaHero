@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+
+<!-- Replaced main-container with login-card for proper dialog surface -->
+<VBox spacing="20" styleClass="login-card" stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biyahero.controller.AddBookingController"
+      prefWidth="450">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="5">
+        <!-- Removed inline -fx-font-size:24 fighting header-title CSS -->
+        <Label text="New Booking" styleClass="header-title"/>
+        <Label text="Enter passenger and trip details below." styleClass="sub-header"/>
+    </VBox>
+
+    <GridPane hgap="15" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="50"/>
+            <ColumnConstraints percentWidth="50"/>
+        </columnConstraints>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" spacing="5">
+            <Label text="Passenger Name" styleClass="input-label"/>
+            <TextField fx:id="passengerNameField" promptText="Full Name" styleClass="text-field"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="5">
+            <Label text="Contact Number" styleClass="input-label"/>
+            <TextField fx:id="contactField" promptText="0917..." styleClass="text-field"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="1" spacing="5">
+            <Label text="Address" styleClass="input-label"/>
+            <TextField fx:id="addressField" promptText="City/Province" styleClass="text-field"/>
+        </VBox>
+
+        <Separator GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="5">
+            <Label text="Seat Number (1-15)" styleClass="input-label"/>
+            <TextField fx:id="seatNumberField" promptText="e.g. 5" styleClass="text-field"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="3" spacing="5">
+            <Label text="Fare (PHP)" styleClass="input-label"/>
+            <TextField fx:id="fareField" promptText="₱0.00" editable="false" styleClass="text-field" style="-fx-background-color: #E5E7EB; -fx-text-fill: #10B981; -fx-font-weight: bold;"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="5">
+            <Label text="Pickup Stop" styleClass="input-label"/>
+            <ComboBox fx:id="pickupStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box" onAction="#updateDisplayedFare"/>
+        </VBox>
+
+        <VBox GridPane.columnIndex="1" GridPane.rowIndex="4" spacing="5">
+            <Label text="Dropoff Stop" styleClass="input-label"/>
+            <ComboBox fx:id="dropoffStopCombo" prefWidth="200" promptText="Select Stop" styleClass="combo-box" onAction="#updateDisplayedFare"/>
+        </VBox>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" styleClass="btn-secondary"/>
+        <Button text="Confirm Booking" onAction="#handleSaveBooking" styleClass="primary-button"/>
+    </HBox>
+
+</VBox>

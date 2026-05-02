@@ -2,6 +2,7 @@ package com.biyahero.controller;
 
 import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
+import com.biyahero.service.BookingService;
 import com.biyahero.service.FareService;
 import com.biyahero.service.RouteService;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ public class AddBookingController {
     // 2. Services
     private final FareService fareService = new FareService();
     private final RouteService routeService = new RouteService();
+    private final BookingService bookingService = new BookingService();
 
     private Trip currentTrip;
     private double currentRouteBaseFare = 0.00;
@@ -153,9 +155,44 @@ public class AddBookingController {
 
     @FXML
     private void handleSaveBooking() {
-        // TODO: Call your BookingService to save the new booking to the database
-        System.out.println("Booking saved for: " + passengerNameField.getText());
-        handleCancel(); // Close window after saving
+        String name    = passengerNameField.getText().trim();
+        String contact = contactField.getText().trim();
+        String address = addressField.getText().trim();
+        Stop pickup    = pickupStopCombo.getValue();
+        Stop dropoff   = dropoffStopCombo.getValue();
+
+        if (name.isEmpty() || pickup == null || dropoff == null || fareField.getText().isEmpty()) {
+            showError("Please fill in all required fields.");
+            return;
+        }
+
+        try {
+            int    seat = Integer.parseInt(seatNumberField.getText().trim());
+            double fare = Double.parseDouble(fareField.getText().trim());
+
+            bookingService.createBooking(
+                currentTrip.getTripId(), seat,
+                pickup.getStopId(), dropoff.getStopId(),
+                fare, name,
+                contact.isEmpty() ? null : contact,
+                address.isEmpty() ? null : address
+            );
+            handleCancel();
+
+        } catch (NumberFormatException e) {
+            showError("Invalid seat or fare value.");
+        } catch (IllegalStateException | IllegalArgumentException e) {
+            showError(e.getMessage());
+        }
+    }
+
+    private void showError(String message) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                javafx.scene.control.Alert.AlertType.ERROR);
+        alert.setTitle("Booking Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

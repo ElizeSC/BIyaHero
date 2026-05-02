@@ -5,6 +5,7 @@ import com.biyahero.model.Trip;
 import com.biyahero.util.DBUtil;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +123,10 @@ public class TripDAOImpl implements TripDAO {
     // converts a raw DB row from ResultSet into a usable Trip object
     private Trip mapRow(ResultSet rs) throws SQLException {
         Timestamp arrivalTs = rs.getTimestamp("arrival_dt");
-        int currentStopId = rs.getInt("current_stop_id");
+        LocalDateTime arrivalDt = arrivalTs != null ? arrivalTs.toLocalDateTime() : null;
+
+        int currentStopRaw = rs.getInt("current_stop_id");
+        Integer currentStopId = rs.wasNull() ? null : currentStopRaw;
 
         return new Trip(
             rs.getInt("trip_id"),
@@ -131,8 +135,8 @@ public class TripDAOImpl implements TripDAO {
             rs.getInt("driver_id"),
             rs.getTimestamp("departure_dt").toLocalDateTime(),
             rs.getString("trip_status"),
-            arrivalTs != null ? arrivalTs.toLocalDateTime() : null,
-            rs.wasNull() ? null : currentStopId
+            arrivalDt,
+            currentStopId
         );
     }
 }
