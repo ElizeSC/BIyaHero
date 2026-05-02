@@ -7,4 +7,6 @@ public interface StopDAO {
     Stop getStopById(int id);
     List<Stop> getAllStops();
     Stop saveStop(Stop stop);
+
+
 }

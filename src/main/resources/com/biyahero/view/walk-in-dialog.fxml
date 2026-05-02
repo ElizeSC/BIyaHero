@@ -41,18 +41,18 @@
 
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" spacing="5">
             <Label text="Pickup Stop" styleClass="input-label"/>
-            <ComboBox fx:id="pickupStopCombo" maxWidth="Infinity" promptText="Boarded at..." styleClass="combo-box"/>
+            <ComboBox fx:id="pickupStopCombo" maxWidth="Infinity" promptText="Boarded at..." styleClass="combo-box" onAction="#updateDisplayedFare"/>
         </VBox>
 
         <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" spacing="5">
             <Label text="Dropoff Stop" styleClass="input-label"/>
-            <ComboBox fx:id="dropoffStopCombo" maxWidth="Infinity" promptText="Getting off at..." styleClass="combo-box"/>
+            <ComboBox fx:id="dropoffStopCombo" maxWidth="Infinity" promptText="Getting off at..." styleClass="combo-box" onAction="#updateDisplayedFare"/>
         </VBox>
     </GridPane>
 
     <VBox spacing="5">
         <Label text="Fare Paid (PHP)" styleClass="input-label"/>
-        <TextField fx:id="fareField" promptText="e.g. 250.00" styleClass="text-field"/>
+        <TextField fx:id="fareField" promptText="0.00" editable="false" styleClass="text-field" style="-fx-background-color: #E5E7EB; -fx-text-fill: #10B981; -fx-font-weight: bold;"/>
     </VBox>
 
     <!-- Kept inline color: error/warning labels are dynamic semantic states, not layout -->

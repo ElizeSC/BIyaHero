@@ -4,6 +4,7 @@ public class Route {
     private int routeId;
     private String routeName;
     private double baseFare;
+    private double perStopFare;
 
     public Route() {}
 
@@ -11,6 +12,16 @@ public class Route {
         this.routeId = routeId;
         this.routeName = routeName;
         this.baseFare = baseFare;
+        this.perStopFare = 15.00; // Default fallback for old code
+    }
+
+
+
+    public Route(int routeId, String routeName, double baseFare, double perStopFare) {
+        this.routeId = routeId;
+        this.routeName = routeName;
+        this.baseFare = baseFare;
+        this.perStopFare = perStopFare;
     }
 
     // For INSERT (no routeId yet, auto-incremented by DB)
@@ -44,6 +55,8 @@ public class Route {
     public String getFormattedId() { 
         return String.format("RTE%03d", routeId); 
     }
+    public double getPerStopFare() { return perStopFare; }
+    public void setPerStopFare(double perStopFare) { this.perStopFare = perStopFare; }
 
     @Override
     public String toString() {

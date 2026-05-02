@@ -4,6 +4,7 @@ import com.biyahero.model.RouteStop;
 import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
 import com.biyahero.service.BookingService;
+import com.biyahero.service.FareService;
 import com.biyahero.service.RouteService;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -23,10 +24,13 @@ public class WalkInBookingController {
 
     private final BookingService bookingService = new BookingService();
     private final RouteService   routeService   = new RouteService();
+    private final FareService    fareService    = new FareService();
 
     private Trip            selectedTrip;
     private int             seatNumber;
     private List<RouteStop> routeStops;
+    private double          currentRouteBaseFare = 0.00;
+    private double currentPerStopRate = 15.00;
 
     public void setData(Trip trip, int seat, Stop pickup, Stop dropoff) {
         this.selectedTrip = trip;
@@ -34,7 +38,13 @@ public class WalkInBookingController {
         seatNumberLabel.setText(String.valueOf(seat));
 
         try {
-            // 1. Populate the dropdowns with text strings FIRST
+            // 🔥 Fetch the base fare dynamically for the calculator
+            var route = routeService.getRouteById(trip.getRouteId());
+            if (route != null) {
+                this.currentRouteBaseFare = route.getBaseFare();
+            }
+
+            // 1. Populate the dropdowns with text strings
             routeStops = routeService.getRouteStops(trip.getRouteId());
             List<String> names = routeStops.stream()
                     .map(rs -> safeStopName(rs.getStopId()))
@@ -45,27 +55,60 @@ public class WalkInBookingController {
 
             // 2. Lock in the Pick-up stop passed from SeatPlanController
             if (pickup != null) {
-                pickupStopCombo.setValue(pickup.getStopName()); // Extract the String name!
+                pickupStopCombo.setValue(pickup.getStopName());
                 pickupStopCombo.setDisable(true);
                 pickupStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
             } else {
-                // Fallback default if nothing was passed
                 int defaultPickup = indexOfStop(trip.getCurrentStopId());
                 pickupStopCombo.getSelectionModel().select(Math.max(defaultPickup, 0));
             }
 
             // 3. Lock in the Drop-off stop passed from SeatPlanController
             if (dropoff != null) {
-                dropoffStopCombo.setValue(dropoff.getStopName()); // Extract the String name!
+                dropoffStopCombo.setValue(dropoff.getStopName());
                 dropoffStopCombo.setDisable(true);
                 dropoffStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
             } else {
-                // Fallback default
                 dropoffStopCombo.getSelectionModel().selectLast();
             }
 
+            // 🔥 Instantly calculate the fare once data is loaded!
+            updateDisplayedFare();
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 🔥 NEW: Calculates and displays the fare for Walk-ins
+     */
+    @FXML
+    private void updateDisplayedFare() {
+        try {
+            int pickupIdx = pickupStopCombo.getSelectionModel().getSelectedIndex();
+            int dropoffIdx = dropoffStopCombo.getSelectionModel().getSelectedIndex();
+
+            if (pickupIdx < 0 || dropoffIdx < 0) {
+                fareField.setText("");
+                return;
+            }
+
+            // Prevent negative distance calculations if they pick a bad dropoff
+            if (pickupIdx >= dropoffIdx) {
+                fareField.setText("0.00");
+                return;
+            }
+
+            // Simple index math since lists match perfectly
+            int stops = dropoffIdx - pickupIdx;
+            double finalPrice = fareService.calculateFare(currentRouteBaseFare, currentPerStopRate, stops, "Regular");
+
+            // Format to 2 decimal places (without the ₱ sign so parseDouble() doesn't crash on save)
+            fareField.setText(String.format("%.2f", finalPrice));
+
+        } catch (Exception e) {
+            fareField.setText("");
         }
     }
 
@@ -73,8 +116,7 @@ public class WalkInBookingController {
     private void handleSave() {
         hideWarning();
 
-        // ── validation ──────────────────────────────────────────────────────
-        int pickupIdx  = pickupStopCombo .getSelectionModel().getSelectedIndex();
+        int pickupIdx  = pickupStopCombo.getSelectionModel().getSelectedIndex();
         int dropoffIdx = dropoffStopCombo.getSelectionModel().getSelectedIndex();
 
         if (pickupIdx < 0 || dropoffIdx < 0) {
@@ -99,9 +141,8 @@ public class WalkInBookingController {
             return;
         }
 
-        // ── save ─────────────────────────────────────────────────────────────
         try {
-            int pickupId  = routeStops.get(pickupIdx) .getStopId();
+            int pickupId  = routeStops.get(pickupIdx).getStopId();
             int dropoffId = routeStops.get(dropoffIdx).getStopId();
 
             bookingService.createWalkInBooking(
@@ -116,8 +157,6 @@ public class WalkInBookingController {
 
     @FXML
     private void handleCancel() { closeWindow(); }
-
-    // ── helpers ──────────────────────────────────────────────────────────────
 
     private int indexOfStop(Integer stopId) {
         if (stopId == null) return -1;

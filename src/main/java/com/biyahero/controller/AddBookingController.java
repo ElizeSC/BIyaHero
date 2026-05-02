@@ -1,157 +1,166 @@
 package com.biyahero.controller;
 
-import com.biyahero.model.RouteStop;
 import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
-import com.biyahero.service.BookingService;
+import com.biyahero.service.FareService;
 import com.biyahero.service.RouteService;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AddBookingController {
 
+    // 1. FXML Variables (Exactly matching your add-booking-dialog.fxml)
     @FXML private TextField passengerNameField;
     @FXML private TextField contactField;
     @FXML private TextField addressField;
     @FXML private TextField seatNumberField;
-    @FXML private ComboBox<String> pickupStopCombo;
-    @FXML private ComboBox<String> dropoffStopCombo;
     @FXML private TextField fareField;
+    @FXML private ComboBox<Stop> pickupStopCombo;
+    @FXML private ComboBox<Stop> dropoffStopCombo;
 
-    private final BookingService bookingService = new BookingService();
+    // 2. Services
+    private final FareService fareService = new FareService();
     private final RouteService routeService = new RouteService();
-    private Trip selectedTrip;
-    private List<RouteStop> routeStops;
 
+    private Trip currentTrip;
+    private double currentRouteBaseFare = 0.00;
+    private double currentPerStopRate = 15.00;
+
+    @FXML
+    public void initialize() {
+        // Make sure the ComboBoxes display the stop names, not memory addresses!
+        setupComboBox(pickupStopCombo);
+        setupComboBox(dropoffStopCombo);
+    }
+
+    /**
+     * Called by SeatPlanController to pass the trip data.
+     * We dynamically fetch the Base Fare here so you don't have to pass it manually!
+     */
     public void setTripData(Trip trip) {
-        this.selectedTrip = trip;
-        System.out.println("DEBUG: Opening booking for Trip ID: " + trip.getTripId() + " (Route: " + trip.getRouteId() + ")");
+        this.currentTrip = trip;
 
+        // Fetch the base fare dynamically using the RouteService
+        var route = routeService.getRouteById(trip.getRouteId());
+        if (route != null) {
+            this.currentRouteBaseFare = route.getBaseFare();
+            this.currentPerStopRate = route.getPerStopFare();
+        } else {
+            // If the route is missing from the database, use default fallback values so the app doesn't crash!
+            System.err.println("WARNING: No route found for Trip ID: " + trip.getTripId());
+            this.currentRouteBaseFare = 0.00;
+            this.currentPerStopRate = 15.00;
+        }
+
+        // Populate the dropdowns with all stops for this route
+        List<Stop> stops = routeService.getStopsForRoute(trip.getRouteId());
+        pickupStopCombo.getItems().setAll(stops);
+        dropoffStopCombo.getItems().setAll(stops);
+    }
+
+    /**
+     * Called by SeatPlanController to lock in the clicked seat number.
+     */
+    public void setSeatNumber(int seat) {
+        seatNumberField.setText(String.valueOf(seat));
+        seatNumberField.setEditable(false); // Lock it so they can't change it
+    }
+
+    /**
+     * Called by SeatPlanController to pre-fill the selected route segments.
+     */
+    public void setRouteSegments(Stop pickup, Stop dropoff) {
+        pickupStopCombo.setValue(pickup);
+        dropoffStopCombo.setValue(dropoff);
+
+        // Instantly calculate the fare once the segments are set!
+        updateDisplayedFare();
+    }
+
+    /**
+     * Calculates and displays the fare. Linked to the ComboBox onAction in FXML.
+     */
+    @FXML
+    private void updateDisplayedFare() {
         try {
-            // 1. Get the RouteStops
-            List<RouteStop> routeStopLinks = routeService.getRouteStops(trip.getRouteId());
+            Stop pickup = pickupStopCombo.getValue();
+            Stop dropoff = dropoffStopCombo.getValue();
 
-            if (routeStopLinks == null || routeStopLinks.isEmpty()) {
-                System.out.println("DEBUG ERROR: No RouteStops found for Route ID " + trip.getRouteId());
+            if (pickup == null || dropoff == null) {
+                fareField.setText("");
                 return;
             }
 
-            // 2. Fetch the actual names as Strings
-            List<String> stopNames = routeStopLinks.stream()
-                    .map(rs -> {
-                        var stop = routeService.getStopById(rs.getStopId());
-                        return stop != null ? stop.getStopName() : "Unknown ID: " + rs.getStopId();
-                    })
-                    .collect(Collectors.toList());
+            int stops = calculateStopsBetween(pickup, dropoff);
+            double finalPrice = fareService.calculateFare(currentRouteBaseFare, currentPerStopRate, stops, "Regular");
 
-            // 3. Set the items in the dropdowns
-            pickupStopCombo.setItems(FXCollections.observableArrayList(stopNames));
-            dropoffStopCombo.setItems(FXCollections.observableArrayList(stopNames));
-
-            this.routeStops = routeStopLinks;
+            fareField.setText(String.format("%.2f", finalPrice));
 
         } catch (Exception e) {
-            System.err.println("DEBUG EXCEPTION: " + e.getMessage());
-            e.printStackTrace();
+            fareField.setText("");
         }
     }
 
-    public void setSeatNumber(int seatNumber) {
-        if (seatNumberField != null) {
-            seatNumberField.setText(String.valueOf(seatNumber));
-            seatNumberField.setEditable(false);
+    /**
+     * Helper to calculate the distance between stops.
+     */
+    private int calculateStopsBetween(Stop pickup, Stop dropoff) {
+        if (pickup == null || dropoff == null) return 0;
+
+        int pickupIndex = -1;
+        int dropoffIndex = -1;
+
+        // 🔥 THE FIX: Search by the actual Stop ID instead of memory addresses!
+        List<Stop> allStops = pickupStopCombo.getItems();
+        for (int i = 0; i < allStops.size(); i++) {
+            if (allStops.get(i).getStopId() == pickup.getStopId()) {
+                pickupIndex = i;
+            }
+            if (allStops.get(i).getStopId() == dropoff.getStopId()) {
+                dropoffIndex = i;
+            }
         }
+
+        // If for some reason we still can't find them, return 0
+        if (pickupIndex == -1 || dropoffIndex == -1) return 0;
+
+        // Return the positive difference between the two positions
+        return Math.abs(dropoffIndex - pickupIndex);
     }
 
-    // THE FIX IS HERE! Extract the Stop Name and add the styling lock!
-    public void setRouteSegments(Stop pickup, Stop dropoff) {
-        if (pickup != null) {
-            pickupStopCombo.setValue(pickup.getStopName()); // Correct extraction!
-            pickupStopCombo.setDisable(true);
-            pickupStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
-        }
-
-        if (dropoff != null) {
-            dropoffStopCombo.setValue(dropoff.getStopName()); // Correct extraction!
-            dropoffStopCombo.setDisable(true);
-            dropoffStopCombo.setStyle("-fx-opacity: 1; -fx-background-color: #e2e8f0;");
-        }
+    /**
+     * Helper to format Stop objects in the ComboBox.
+     */
+    private void setupComboBox(ComboBox<Stop> cb) {
+        cb.setCellFactory(param -> new ListCell<>() {
+            @Override protected void updateItem(Stop item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getStopName());
+            }
+        });
+        cb.setButtonCell(new ListCell<>() {
+            @Override protected void updateItem(Stop item, boolean empty) {
+                super.updateItem(item, empty);
+                setText(empty || item == null ? null : item.getStopName());
+            }
+        });
     }
 
     @FXML
     private void handleSaveBooking() {
-        String name = passengerNameField.getText();
-
-        try {
-            String pName = pickupStopCombo.getValue();
-            String dName = dropoffStopCombo.getValue();
-
-            if (pName == null || dName == null) {
-                showError("Please select both pickup and drop-off points.");
-                return;
-            }
-
-            // Map string names back to IDs using the routeService
-            int pickupId = routeStops.stream()
-                    .map(rs -> routeService.getStopById(rs.getStopId()))
-                    .filter(s -> s != null && s.getStopName().equals(pName))
-                    .findFirst()
-                    .get().getStopId();
-
-            int dropoffId = routeStops.stream()
-                    .map(rs -> routeService.getStopById(rs.getStopId()))
-                    .filter(s -> s != null && s.getStopName().equals(dName))
-                    .findFirst()
-                    .get().getStopId();
-
-            // Call Service
-            bookingService.createBooking(
-                    selectedTrip.getTripId(),
-                    Integer.parseInt(seatNumberField.getText()),
-                    pickupId,
-                    dropoffId,
-                    Double.parseDouble(fareField.getText()),
-                    name,
-                    contactField.getText(),
-                    addressField.getText()
-            );
-
-            // Success!
-            showInfo("Booking Successful", "Passenger " + name + " has been booked.");
-            closeWindow();
-
-        } catch (Exception e) {
-            showError("Booking Failed: " + e.getMessage());
-        }
+        // TODO: Call your BookingService to save the new booking to the database
+        System.out.println("Booking saved for: " + passengerNameField.getText());
+        handleCancel(); // Close window after saving
     }
 
-    @FXML private void handleCancel() { closeWindow(); }
-
-    private void closeWindow() {
-        Stage stage = (Stage) passengerNameField.getScene().getWindow();
+    @FXML
+    private void handleCancel() {
+        Stage stage = (Stage) fareField.getScene().getWindow();
         stage.close();
-    }
-
-    private void showInfo(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
-
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Booking Error");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

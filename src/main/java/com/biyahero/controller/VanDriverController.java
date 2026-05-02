@@ -32,7 +32,9 @@ public class VanDriverController {
     @FXML private TableColumn<Driver, Void>   colDriverAction;
 
     @FXML private TextField          searchField;
-    @FXML private Button             btnVans, btnDrivers, btnAddEntry;
+
+    // 🔥 Fixed: Renamed btnTestCsv back to btnImportData!
+    @FXML private Button             btnVans, btnDrivers, btnAddEntry, btnImportData;
     @FXML private ComboBox<String>   infoComboBox, sortComboBox;
 
     private final VanService    vanService    = new VanService();
@@ -206,6 +208,11 @@ public class VanDriverController {
         searchField.setPromptText(vanView ? "Search Van..." : "Search Driver...");
         btnAddEntry.setText(vanView ? "+ Add Van" : "+ Add Driver");
 
+        // 🔥 This automatically changes the Import button text!
+        if (btnImportData != null) {
+            btnImportData.setText(vanView ? "Import Van Data" : "Import Driver Data");
+        }
+
         // Swap filter/sort options to match the active tab
         if (vanView) {
             infoComboBox.getItems().setAll("All", "Available", "On Trip", "Maintenance");
@@ -220,5 +227,40 @@ public class VanDriverController {
         vanTable.setVisible(vanView);    vanTable.setManaged(vanView);
         driverTable.setVisible(!vanView); driverTable.setManaged(!vanView);
         loadData();
+    }
+
+    // 🔥 This is the master DataImportService method we built earlier!
+    @FXML
+    private void handleImportData() {
+        javafx.stage.FileChooser fileChooser = new javafx.stage.FileChooser();
+        fileChooser.setTitle("Select Import File");
+
+        // Allow JSON and CSV
+        fileChooser.getExtensionFilters().addAll(
+                new javafx.stage.FileChooser.ExtensionFilter("All Supported Files", "*.csv", "*.json"),
+                new javafx.stage.FileChooser.ExtensionFilter("CSV Files", "*.csv"),
+                new javafx.stage.FileChooser.ExtensionFilter("JSON Files", "*.json")
+        );
+
+        java.io.File file = fileChooser.showOpenDialog(btnImportData.getScene().getWindow());
+
+        if (file != null) {
+            com.biyahero.service.DataImportService importService = new com.biyahero.service.DataImportService();
+
+            // Uses isVanView to perfectly route the data
+            String entityType = isVanView ? "VANS" : "DRIVERS";
+            com.biyahero.service.DataImportService.ImportResult result = importService.importData(file.getAbsolutePath(), entityType);
+
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
+                    result.success ? javafx.scene.control.Alert.AlertType.INFORMATION : javafx.scene.control.Alert.AlertType.ERROR
+            );
+            alert.setTitle("Data Import");
+            alert.setHeaderText("Importing " + entityType);
+            alert.setContentText(result.message);
+            alert.showAndWait();
+
+            // Refresh tables after import!
+            loadData();
+        }
     }
 }

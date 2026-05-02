@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `route` (
                                        `route_id` int NOT NULL AUTO_INCREMENT,
                                        `route_name` varchar(100) NOT NULL,
     `base_fare` decimal(10,2) NOT NULL,
+    `per_stop_fare` DECIMAL(10,2) DEFAULT 15.00,
     PRIMARY KEY (`route_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -40,15 +40,21 @@ public class RouteDAOImpl implements RouteDAO {
     }
 
     @Override
-    public void updateBaseFare(int id, double newFare) {
-        String sql = "UPDATE route SET base_fare = ? WHERE route_id = ?";
+    public void updateRouteFares(int id, double newBaseFare, double newPerStopFare) {
+        // 🔥 Now it updates both columns at the same time!
+        String sql = "UPDATE route SET base_fare = ?, per_stop_fare = ? WHERE route_id = ?";
         try (Connection conn = DBUtil.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setDouble(1, newFare);
-            stmt.setInt(2, id);
+
+            stmt.setDouble(1, newBaseFare);
+            stmt.setDouble(2, newPerStopFare);
+            stmt.setInt(3, id);
+
             stmt.executeUpdate();
+            System.out.println("Successfully updated fares for Route ID: " + id);
+
         } catch (SQLException e) {
-            System.err.println("Error updating base fare: " + e.getMessage());
+            System.err.println("Error updating route fares: " + e.getMessage());
         }
     }
 
@@ -64,11 +70,12 @@ public class RouteDAOImpl implements RouteDAO {
             conn.setAutoCommit(false);   // BEGIN TRANSACTION
 
             // 1. Insert Route
-            String insertRoute = "INSERT INTO route (route_name, base_fare) VALUES (?, ?)";
+            String insertRoute = "INSERT INTO route (route_name, base_fare, per_stop_fare) VALUES (?, ?, ?)";
             int generatedRouteId = -1;
             try (PreparedStatement ps = conn.prepareStatement(insertRoute, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setString(1, route.getRouteName());
                 ps.setDouble(2, route.getBaseFare());
+                ps.setDouble(3, route.getPerStopFare());
                 ps.executeUpdate();
                 ResultSet keys = ps.getGeneratedKeys();
                 if (keys.next()) {
@@ -115,7 +122,8 @@ public class RouteDAOImpl implements RouteDAO {
         return new Route(
                 rs.getInt("route_id"),
                 rs.getString("route_name"),
-                rs.getDouble("base_fare")
+                rs.getDouble("base_fare"),
+                rs.getDouble("per_stop_fare") // 🔥 Make sure it reads it back out of the database!
         );
     }
 }

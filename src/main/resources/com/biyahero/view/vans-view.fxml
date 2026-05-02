@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 
-<!-- Removed styleClass="main-container" — its -fx-padding:0 was overriding the Insets -->
 <VBox spacing="20" xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.VanDriverController"
@@ -36,6 +35,9 @@
         <TextField fx:id="searchField" promptText="Search Van..." prefWidth="250" styleClass="text-field" />
         <ComboBox fx:id="infoComboBox" promptText="Display Van Information" prefWidth="200" styleClass="combo-box" />
         <Region HBox.hgrow="ALWAYS" />
+
+        <Button fx:id="btnImportData" text="Import Van Data" onAction="#handleImportData" style="-fx-background-color: #3E49BB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15; -fx-cursor: hand;" />
+
         <Button fx:id="btnAddEntry" styleClass="primary-button" text="+ Add Van" onAction="#handleOpenAddModal"/>
     </HBox>
 
@@ -52,7 +54,6 @@
                 <TableColumn fx:id="colModel"     text="Model"        prefWidth="150" />
                 <TableColumn fx:id="colCapacity"  text="Capacity"     prefWidth="90"  />
                 <TableColumn fx:id="colStatus"    text="Status"       prefWidth="120" />
-                <!-- Widened so Edit + Delete buttons don't truncate -->
                 <TableColumn fx:id="colVanAction" text="Manage"       prefWidth="200" />
             </columns>
         </TableView>

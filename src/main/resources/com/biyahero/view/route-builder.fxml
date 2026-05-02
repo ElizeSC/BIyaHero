@@ -19,6 +19,10 @@
                    style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 14px;"/>
         <TextField fx:id="txtBaseFare" promptText="Base Fare" prefWidth="140"
                    style="-fx-background-color: #F8FAFC; -fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10; -fx-font-size: 14px;"/>
+        <VBox spacing="5">
+            <Label text="Per-Stop Fare (PHP)" styleClass="input-label"/>
+            <TextField fx:id="perStopFareField" promptText="15.00" styleClass="text-field"/>
+        </VBox>
     </HBox>
 
     <HBox spacing="20" VBox.vgrow="ALWAYS">
@@ -32,6 +36,7 @@
                         prefWidth="30" prefHeight="30">
                     <tooltip><Tooltip text="Add New Stop"/></tooltip>
                 </Button>
+                <Button text="📥 Import Stops" onAction="#handleImportStopsCSV" style="-fx-background-color: #3E49BB; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-padding: 8 15; -fx-cursor: hand;" />
             </HBox>
             <ListView fx:id="lvAvailableStops" VBox.vgrow="ALWAYS"
                       style="-fx-border-color: #E2E8F0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-background-color: transparent;"/>
