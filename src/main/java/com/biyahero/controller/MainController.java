@@ -3,6 +3,7 @@ package com.biyahero.controller;
 import com.biyahero.service.ImportService;
 import com.biyahero.service.ImportService.ImportResult;
 import com.biyahero.util.DBUtil;
+import com.biyahero.util.UIUtil;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -134,6 +135,7 @@ public class MainController {
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 
@@ -142,6 +144,7 @@ public class MainController {
         alert.setTitle("Import Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 }

@@ -153,7 +153,6 @@ public class TripController {
         openDialog("/com/biyahero/view/add-trip-dialog.fxml", "Schedule New Trip", null);
     }
 
-    // Inside TripController.java
     private void handleBooking(Trip trip) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/seat-plan-dialog.fxml"));
@@ -163,6 +162,7 @@ public class TripController {
             controller.setTripData(trip);
 
             Stage stage = new Stage();
+            stage.sizeToScene();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Select Seat - Trip #" + trip.getTripId());
             stage.setScene(new Scene(root, 800, 600));

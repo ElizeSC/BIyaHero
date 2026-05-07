@@ -4,6 +4,7 @@ import com.biyahero.model.Stop;
 import com.biyahero.model.Trip;
 import com.biyahero.service.BookingService;
 import com.biyahero.service.RouteService;
+import com.biyahero.util.UIUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -271,6 +272,7 @@ public class SeatPlanController {
         alert.setTitle("Seat " + seat + " Details");
         alert.setHeaderText("Itinerary for Seat " + seat);
         alert.setContentText(details.toString());
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 }

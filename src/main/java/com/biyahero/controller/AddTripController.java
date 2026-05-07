@@ -45,7 +45,6 @@ public class AddTripController {
 
         routeComboBox.setItems(routes);
 
-        // 🔥 FIX: Properly handle the "Add New Route" option!
         routeComboBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null && newVal.getRouteId() == -1) {
                 // They selected "Add New Route" -> Disable manage button and open the builder!
@@ -54,6 +53,13 @@ public class AddTripController {
             } else {
                 // They selected a real route -> Enable the manage button!
                 btnManageRoute.setDisable(newVal == null);
+            }
+        });
+
+        datePicker.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && newValue.isBefore(java.time.LocalDate.now())) {
+                showError("Invalid Date", "You cannot schedule a trip in the past. Please select today or a future date.");
+                datePicker.setValue(null); // Clear the invalid selection
             }
         });
 
@@ -69,7 +75,6 @@ public class AddTripController {
         if (selectedRoute == null || selectedRoute.getRouteId() == -1) return;
 
         try {
-            // 🔥 FIX: Put the correct folder path to your FXML!
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/biyahero/view/edit-route-fare.fxml"));
             Parent root = loader.load();
 
@@ -164,6 +169,11 @@ public class AddTripController {
 
             LocalDateTime departureTime = LocalDateTime.of(datePicker.getValue(), time);
 
+            if (departureTime.isBefore(LocalDateTime.now())) {
+                showError("Invalid Date", "You cannot schedule a trip in the past! Please select a future date and time.");
+                return;
+            }
+
             // Execute the creation logic from TripService
             tripService.createTrip(
                     routeComboBox.getValue().getRouteId(),
@@ -195,4 +205,6 @@ public class AddTripController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+
 }

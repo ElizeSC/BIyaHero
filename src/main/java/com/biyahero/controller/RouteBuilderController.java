@@ -3,6 +3,7 @@ package com.biyahero.controller;
 import com.biyahero.model.RouteStop;
 import com.biyahero.model.Stop;
 import com.biyahero.service.RouteService;
+import com.biyahero.util.UIUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -136,6 +137,7 @@ public class RouteBuilderController {
             alert.setTitle("Data Import");
             alert.setHeaderText("Importing STOPS");
             alert.setContentText(result.message);
+            UIUtil.applyTheme(alert);
             alert.showAndWait();
 
             if (result.success) {

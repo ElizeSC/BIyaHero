@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class UserService {
 
-    public boolean registerUser(String fullName, String username, String password) {
+    public boolean registerUser(String fullName, String username, String password) throws Exception {
         if (!username.matches("^[a-zA-Z0-9_]{3,50}$")) {
             throw new IllegalArgumentException("Username must be 3-50 alphanumeric characters.");
         }
@@ -34,9 +34,12 @@ public class UserService {
             return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            if (e.getErrorCode() == 1007) { // MySQL code for "Database exists"
+                throw new Exception("Username '" + username + "' is already taken.");
+            }
+            throw new Exception("Database error: " + e.getMessage());
         }
+
     }
 
     private void initializeNewDatabase(String dbName) throws SQLException {

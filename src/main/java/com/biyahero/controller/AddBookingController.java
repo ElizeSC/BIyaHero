@@ -5,6 +5,7 @@ import com.biyahero.model.Trip;
 import com.biyahero.service.BookingService;
 import com.biyahero.service.FareService;
 import com.biyahero.service.RouteService;
+import com.biyahero.util.UIUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
@@ -192,6 +193,7 @@ public class AddBookingController {
         alert.setTitle("Booking Error");
         alert.setHeaderText(null);
         alert.setContentText(message);
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 

@@ -5,10 +5,16 @@
 <?import javafx.geometry.Insets?>
 <?import java.net.URL?>
 
-<VBox spacing="20" styleClass="login-card" stylesheets="@style.css"
-      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+<VBox spacing="20"
+      alignment="TOP_CENTER"
+      fillWidth="true"
+      styleClass="login-card"
+      stylesheets="@style.css"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.biyahero.controller.SeatPlanController"
-      prefWidth="450"> <padding>
+      prefWidth="450"
+      prefHeight="620"> <padding>
     <Insets top="30" right="30" bottom="30" left="30"/>
 </padding>
 
@@ -28,7 +34,9 @@
         </VBox>
     </HBox>
 
-    <StackPane style="-fx-background-color: #F4F7FA; -fx-background-radius: 15; -fx-padding: 20;">
+    <StackPane VBox.vgrow="ALWAYS"
+               alignment="CENTER"
+               style="-fx-background-color: #F4F7FA; -fx-background-radius: 15; -fx-padding: 20;">
         <GridPane fx:id="seatGrid" hgap="15" vgap="15" alignment="CENTER"/>
     </StackPane>
 

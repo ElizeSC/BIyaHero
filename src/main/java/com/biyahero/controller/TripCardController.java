@@ -42,6 +42,8 @@ public class TripCardController {
             routeLabel.setText("Route stops not defined");
         }
 
+
+
         tripIdLabel.setText(trip.getFormattedId());
         String vanModel;
         try { 
@@ -133,15 +135,30 @@ public class TripCardController {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/biyahero/view/seat-plan-dialog.fxml"));
+
             Parent root = loader.load();
+
             SeatPlanController ctrl = loader.getController();
             ctrl.setTripData(currentTrip);
+
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Manage Seats — " + currentTrip.getFormattedId());
-            stage.setScene(new Scene(root));
+
+            Scene scene = new Scene(root);
+
+            stage.setScene(scene);
+            stage.setResizable(false);
+
+            stage.sizeToScene();
+            stage.centerOnScreen();
+
             stage.showAndWait();
-            parentController.refreshDashboard(); // refresh occupancy count
-        } catch (Exception e) { e.printStackTrace(); }
+
+            parentController.refreshDashboard();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

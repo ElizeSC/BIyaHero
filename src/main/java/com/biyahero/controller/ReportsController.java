@@ -2,6 +2,7 @@ package com.biyahero.controller;
 
 import com.biyahero.model.TripReport;
 import com.biyahero.service.ReportService;
+import com.biyahero.util.UIUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import com.biyahero.util.UIUtil;
 
 public class ReportsController {
 
@@ -36,6 +38,8 @@ public class ReportsController {
     @FXML private ComboBox<String> sortComboBox;
     @FXML private TextField        tripIdSearchField;
 
+
+    private final UIUtil uiUtil = new UIUtil();
     private final ReportService reportService = new ReportService();
     private final FileService   fileService   = new FileService();
     private final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("MMM dd, yyyy");
@@ -274,6 +278,7 @@ public class ReportsController {
     private void showAlert(String title, String msg) {
         Alert a = new Alert(Alert.AlertType.WARNING);
         a.setTitle(title); a.setHeaderText(null); a.setContentText(msg);
+        UIUtil.applyTheme(a);
         a.showAndWait();
     }
 
@@ -282,6 +287,7 @@ public class ReportsController {
         alert.setTitle("Success");
         alert.setHeaderText(null);
         alert.setContentText(message);
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 
@@ -290,6 +296,7 @@ public class ReportsController {
         alert.setTitle("Error");
         alert.setHeaderText("Action Failed");
         alert.setContentText(message);
+        UIUtil.applyTheme(alert);
         alert.showAndWait();
     }
 }
