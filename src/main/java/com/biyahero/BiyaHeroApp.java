@@ -28,6 +28,7 @@ public class BiyaHeroApp extends Application {
                 dialog.setHeaderText("BiyaHero: Database Configuration");
                 dialog.setContentText("Please enter your MySQL root password:");
 
+
                 // 👉 ATTACH YOUR CSS HERE
                 applyTheme(dialog);
 
