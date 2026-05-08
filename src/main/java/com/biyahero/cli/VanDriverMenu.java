@@ -130,9 +130,9 @@ public class VanDriverMenu {
 
     private static void editVan(Scanner scanner) {
         System.out.print("Enter Van ID to edit: ");
-        int vanId = parseId(scanner.nextLine().trim(), "VAE");
+        int vanId;
         try {
-            vanId = parseId(scanner.nextLine().trim(), "VAN");
+            vanId = parseId(scanner.nextLine().trim(), "VAN"); // FIX: single read, correct prefix
         } catch (NumberFormatException e) {
             System.out.println("Invalid ID.");
             return;
@@ -168,10 +168,10 @@ public class VanDriverMenu {
         }
     }
 
-    private static void deleteVan(Scanner scanner) throws NumberFormatException {
+    private static void deleteVan(Scanner scanner) {
         System.out.print("Enter Van ID to delete: ");
         try {
-            int vanId = parseId(scanner.nextLine().trim(), "VAE");
+            int vanId = parseId(scanner.nextLine().trim(), "VAN"); // FIX: correct prefix
             vanService.getVanById(vanId); // throws if not found
             System.out.print("Are you sure? (y/n): ");
             if ("y".equalsIgnoreCase(scanner.nextLine().trim())) {
@@ -180,6 +180,8 @@ public class VanDriverMenu {
             } else {
                 System.out.println("Cancelled.");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -265,7 +267,7 @@ public class VanDriverMenu {
         }
     }
 
-    private static void editDriver(Scanner scanner) throws NumberFormatException {
+    private static void editDriver(Scanner scanner) {
         System.out.print("Enter Driver ID to edit: ");
         try {
             int driverId = parseId(scanner.nextLine().trim(), "DRV");
@@ -288,12 +290,14 @@ public class VanDriverMenu {
                 contact.isEmpty() ? null : contact
             );
             System.out.println("Driver updated successfully.");
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
-    private static void deleteDriver(Scanner scanner) throws NumberFormatException {
+    private static void deleteDriver(Scanner scanner) {
         System.out.print("Enter Driver ID to delete: ");
         try {
             int driverId = parseId(scanner.nextLine().trim(), "DRV");
@@ -305,6 +309,8 @@ public class VanDriverMenu {
             } else {
                 System.out.println("Cancelled.");
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }

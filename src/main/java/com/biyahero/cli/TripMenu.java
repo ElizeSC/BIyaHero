@@ -143,7 +143,6 @@ public class TripMenu {
         try {
             int tripId = parseId(scanner.nextLine().trim(), "TRP");
 
-            // show stops for this trip's route
             List<Stop> stops = tripService.getStopsForTrip(tripId);
             if (stops.isEmpty()) {
                 System.out.println("No stops found for this trip's route.");
@@ -166,7 +165,6 @@ public class TripMenu {
             int stopId = stops.get(choice).getStopId();
             tripService.updateCurrentStop(tripId, stopId);
 
-            // check if trip was auto-completed
             Trip updated = tripService.getTripById(tripId);
             if ("Completed".equals(updated.getTripStatus())) {
                 System.out.println("Last stop reached. Trip automatically marked as Completed.");
@@ -203,7 +201,6 @@ public class TripMenu {
     private static void createTrip(Scanner scanner) {
         System.out.println("\n--- Create Trip ---");
 
-        // show available routes
         List<Route> routes = routeService.getAllRoutes();
         if (routes.isEmpty()) {
             System.out.println("No routes available.");
@@ -228,7 +225,6 @@ public class TripMenu {
         }
         int routeId = routes.get(routeChoice).getRouteId();
 
-        // show available vans
         List<Van> vans = tripService.getAvailableVans();
         if (vans.isEmpty()) {
             System.out.println("No available vans.");
@@ -253,7 +249,6 @@ public class TripMenu {
         }
         int vanId = vans.get(vanChoice).getVanId();
 
-        // show available drivers
         List<Driver> drivers = tripService.getAvailableDrivers();
         if (drivers.isEmpty()) {
             System.out.println("No available drivers.");
@@ -278,7 +273,6 @@ public class TripMenu {
         }
         int driverId = drivers.get(driverChoice).getDriverId();
 
-        // departure time
         System.out.print("Departure Time (yyyy-MM-dd HH:mm): ");
         try {
             LocalDateTime departureTime = LocalDateTime.parse(scanner.nextLine().trim(), FORMATTER);
@@ -299,22 +293,107 @@ public class TripMenu {
             int tripId = parseId(scanner.nextLine().trim(), "TRP");
             Trip existing = tripService.getTripById(tripId);
 
-            System.out.println("Editing: " + existing.getFormattedId());
+            if ("Completed".equals(existing.getTripStatus()) || "Cancelled".equals(existing.getTripStatus())) {
+                System.out.println("Cannot edit a " + existing.getTripStatus() + " trip.");
+                return;
+            }
+
+            System.out.println("Editing: " + existing.getFormattedId() + " | Status: " + existing.getTripStatus());
             System.out.println("(Press Enter to keep current value)");
 
-            // departure time
-            System.out.print("Departure Time [" + existing.getDepartureTime().format(FORMATTER) + "]: ");
+            // Route
+            List<Route> routes = routeService.getAllRoutes();
+            System.out.println("\nAvailable Routes:");
+            for (int i = 0; i < routes.size(); i++) {
+                Route r = routes.get(i);
+                String marker = r.getRouteId() == existing.getRouteId() ? " *current*" : "";
+                System.out.printf("[%d] %s (Base Fare: %.2f)%s%n", i + 1, r.getRouteName(), r.getBaseFare(), marker);
+            }
+            System.out.print("Select route (Enter to keep current): ");
+            String routeInput = scanner.nextLine().trim();
+            Integer newRouteId = null;
+            if (!routeInput.isEmpty()) {
+                try {
+                    int routeChoice = Integer.parseInt(routeInput) - 1;
+                    if (routeChoice >= 0 && routeChoice < routes.size()) {
+                        newRouteId = routes.get(routeChoice).getRouteId();
+                    } else {
+                        System.out.println("Invalid selection. Keeping current route.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Keeping current route.");
+                }
+            }
+
+            // Van (only available vans shown)
+            List<Van> vans = tripService.getAvailableVans();
+            // also include the currently assigned van so it shows up
+            Van currentVan = null;
+            try { currentVan = tripService.getAvailableVans().stream()
+                    .filter(v -> v.getVanId() == existing.getVanId()).findFirst().orElse(null);
+            } catch (Exception ignored) {}
+
+            System.out.println("\nAvailable Vans:");
+            for (int i = 0; i < vans.size(); i++) {
+                Van v = vans.get(i);
+                String marker = v.getVanId() == existing.getVanId() ? " *current*" : "";
+                System.out.printf("[%d] %s - %s (Capacity: %d)%s%n",
+                    i + 1, v.getFormattedId(), v.getPlateNumber(), v.getCapacity(), marker);
+            }
+            System.out.print("Select van (Enter to keep current): ");
+            String vanInput = scanner.nextLine().trim();
+            Integer newVanId = null;
+            if (!vanInput.isEmpty()) {
+                try {
+                    int vanChoice = Integer.parseInt(vanInput) - 1;
+                    if (vanChoice >= 0 && vanChoice < vans.size()) {
+                        newVanId = vans.get(vanChoice).getVanId();
+                    } else {
+                        System.out.println("Invalid selection. Keeping current van.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Keeping current van.");
+                }
+            }
+
+            // Driver (only available drivers shown)
+            List<Driver> drivers = tripService.getAvailableDrivers();
+            System.out.println("\nAvailable Drivers:");
+            for (int i = 0; i < drivers.size(); i++) {
+                Driver d = drivers.get(i);
+                String marker = d.getDriverId() == existing.getDriverId() ? " *current*" : "";
+                System.out.printf("[%d] %s - %s (%s)%s%n",
+                    i + 1, d.getFormattedId(), d.getName(), d.getLicenseNo(), marker);
+            }
+            System.out.print("Select driver (Enter to keep current): ");
+            String driverInput = scanner.nextLine().trim();
+            Integer newDriverId = null;
+            if (!driverInput.isEmpty()) {
+                try {
+                    int driverChoice = Integer.parseInt(driverInput) - 1;
+                    if (driverChoice >= 0 && driverChoice < drivers.size()) {
+                        newDriverId = drivers.get(driverChoice).getDriverId();
+                    } else {
+                        System.out.println("Invalid selection. Keeping current driver.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input. Keeping current driver.");
+                }
+            }
+
+            // Departure time
+            System.out.print("\nDeparture Time [" + existing.getDepartureTime().format(FORMATTER) + "]: ");
             String dtInput = scanner.nextLine().trim();
-            LocalDateTime departureTime = null;
+            LocalDateTime newDepartureTime = null;
             if (!dtInput.isEmpty()) {
                 try {
-                    departureTime = LocalDateTime.parse(dtInput, FORMATTER);
+                    newDepartureTime = LocalDateTime.parse(dtInput, FORMATTER);
                 } catch (DateTimeParseException e) {
                     System.out.println("Invalid date format. Keeping current.");
                 }
             }
 
-            tripService.updateTrip(tripId, null, null, null, departureTime, null, null);
+            tripService.updateTrip(tripId, newRouteId, newVanId, newDriverId, newDepartureTime, null, null);
             System.out.println("Trip updated successfully.");
 
         } catch (NumberFormatException e) {
@@ -324,7 +403,7 @@ public class TripMenu {
         }
     }
 
-    // CANCEL TRIP 
+    // CANCEL TRIP
 
     private static void cancelTrip(Scanner scanner) {
         System.out.print("Enter Trip ID to cancel: ");
