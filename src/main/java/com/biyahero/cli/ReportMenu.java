@@ -27,27 +27,34 @@ public class ReportMenu {
             System.out.println("[1] View Reports by Date Range");
             System.out.println("[2] View All Reports");
             System.out.println("[3] Search Reports");
-            System.out.println("--- EXPORT ---");
+            System.out.println("--- EXPORT (All Trips) ---");
             System.out.println("[4] Export to CSV");
             System.out.println("[5] Export to JSON");
             System.out.println("[6] Export SQL Backup");
             System.out.println("[7] Export to PDF");
+            System.out.println("--- EXPORT (Passenger Manifest) ---");
+            System.out.println("[8] Export Manifest to CSV");
+            System.out.println("[9] Export Manifest to JSON");
+            System.out.println("[10] Export Manifest to PDF");
             System.out.println("--- IMPORT ---");
-            System.out.println("[8] Import SQL Backup");
+            System.out.println("[11] Import SQL Backup");
             System.out.println("[0] Back");
             System.out.print("Select: ");
 
             switch (scanner.nextLine().trim()) {
-                case "1" -> viewByDateRange(scanner);
-                case "2" -> viewAllReports();
-                case "3" -> searchReports(scanner);
-                case "4" -> exportCSV(scanner);
-                case "5" -> exportJSON(scanner);
-                case "6" -> exportSQL(scanner);
-                case "7" -> exportPDF(scanner);
-                case "8" -> importSQL(scanner);
-                case "0" -> running = false;
-                default  -> System.out.println("Invalid option.");
+                case "1"  -> viewByDateRange(scanner);
+                case "2"  -> viewAllReports();
+                case "3"  -> searchReports(scanner);
+                case "4"  -> exportCSV(scanner);
+                case "5"  -> exportJSON(scanner);
+                case "6"  -> exportSQL(scanner);
+                case "7"  -> exportPDF(scanner);
+                case "8"  -> exportManifestCSV(scanner);
+                case "9"  -> exportManifestJSON(scanner);
+                case "10" -> exportManifestPDF(scanner);
+                case "11" -> importSQL(scanner);
+                case "0"  -> running = false;
+                default   -> System.out.println("Invalid option.");
             }
         }
     }
@@ -109,7 +116,7 @@ public class ReportMenu {
         printSummary(results);
     }
 
-    // ── EXPORT ───────────────────────────────────────────────────────────────
+    // ── EXPORT (All Trips) ────────────────────────────────────────────────────
 
     private static void exportCSV(Scanner scanner) {
         List<TripReport> reports = reportService.getAllReports();
@@ -168,6 +175,88 @@ public class ReportMenu {
             fileService.exportTripReportsToPDF(reports, path, "All Completed Trips");
             System.out.println("Exported → " + path);
         } catch (IOException e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    // ── EXPORT (Passenger Manifest) ───────────────────────────────────────────
+
+    private static TripReport resolveTrip(Scanner scanner) {
+        List<TripReport> reports = reportService.getAllReports();
+        if (reports.isEmpty()) {
+            System.out.println("No completed trips found.");
+            return null;
+        }
+
+        System.out.print("Enter Trip ID (e.g. TRP0001): ");
+        String input = scanner.nextLine().trim();
+        String stripped = input.toUpperCase().startsWith("TRP")
+            ? input.substring(3) : input;
+
+        int tripId;
+        try {
+            tripId = Integer.parseInt(stripped);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid ID.");
+            return null;
+        }
+
+        final int id = tripId;
+        TripReport found = reports.stream()
+            .filter(r -> r.getTripId() == id)
+            .findFirst()
+            .orElse(null);
+
+        if (found == null) {
+            System.out.println("No completed trip found with that ID.");
+        }
+        return found;
+    }
+
+    private static void exportManifestCSV(Scanner scanner) {
+        TripReport trip = resolveTrip(scanner);
+        if (trip == null) return;
+
+        System.out.print("Save as (e.g. manifest.csv): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "manifest_" + trip.getFormattedTripId() + ".csv";
+
+        try {
+            fileService.exportManifestToCSV(trip, path);
+            System.out.println("Exported → " + path);
+        } catch (Exception e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    private static void exportManifestJSON(Scanner scanner) {
+        TripReport trip = resolveTrip(scanner);
+        if (trip == null) return;
+
+        System.out.print("Save as (e.g. manifest.json): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "manifest_" + trip.getFormattedTripId() + ".json";
+
+        try {
+            fileService.exportManifestToJSON(trip, path);
+            System.out.println("Exported → " + path);
+        } catch (Exception e) {
+            System.out.println("Export failed: " + e.getMessage());
+        }
+    }
+
+    private static void exportManifestPDF(Scanner scanner) {
+        TripReport trip = resolveTrip(scanner);
+        if (trip == null) return;
+
+        System.out.print("Save as (e.g. manifest.pdf): ");
+        String path = scanner.nextLine().trim();
+        if (path.isEmpty()) path = "manifest_" + trip.getFormattedTripId() + ".pdf";
+
+        try {
+            fileService.exportManifestToPDF(trip, path);
+            System.out.println("Exported → " + path);
+        } catch (Exception e) {
             System.out.println("Export failed: " + e.getMessage());
         }
     }
